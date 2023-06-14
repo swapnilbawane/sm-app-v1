@@ -1,8 +1,23 @@
 import '../../style.css'
 import '../../index.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useAuth } from '../../Context/auth-context'
 
 export function Login() {
+    const [user, setUser] = useState({ username: '', password: '' })
+    const { handleLogin } = useAuth(); 
+
+    const handleLoginInput = (e) => {
+        const targetValue = e.target.value
+
+        if (e.target.name === 'username') {
+            setUser({ ...user, username: targetValue })
+        } else if (e.target.name === 'password') {
+            setUser({ ...user, password: targetValue })
+        }
+    }
+
     return (
         <>
             <div className="flex flex-column flex-center h-full w-full">
@@ -18,25 +33,29 @@ export function Login() {
                     <h3 className="txt-center mb-m txt-l"> Login</h3>
 
                     <div className="flex flex-column">
-                        <label for="email">Email Address</label>
+                        <label htmlFor="username">Username</label>
                         <input
                             type="text"
-                            name="email"
-                            className="p-xs txt-s lynx-white-color br-s mb-s"
+                            name="username"
+                            className="p-xs txt-s br-s mb-s"
                             style={{ border: '1px solid grey' }}
-                            placeholder="tanay@neog.camp"
+                            placeholder="tanaypratap"
+                            value={user.username}
+                            onChange={handleLoginInput}
                         />
                     </div>
 
                     <div className="flex flex-column">
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             name="password"
                             id=""
-                            className="p-xs txt-s lynx-white-color br-s flex items-center"
+                            className="p-xs txt-s br-s flex items-center"
                             style={{ border: '1px solid grey' }}
                             placeholder="**************"
+                            value={user.password}
+                            onChange={handleLoginInput}
                         />
                     </div>
 
@@ -47,18 +66,19 @@ export function Login() {
                                 name="rmbr-me"
                                 className="p-s txt-cursor"
                             />
-                            <label for="rmbr-me" className="pl-xs txt-cursor">
+                            <label htmlFor="rmbr-me" className="pl-xs txt-cursor">
                                 Remember Me
                             </label>
                         </div>
 
                         <Link to="/" className="action-color">
-                            
                             Forgot your password?
                         </Link>
                     </div>
 
-                    <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s">
+                    <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
+                    onClick={()=> handleLogin(user)}
+                    >
                         Login
                     </button>
 
@@ -67,7 +87,6 @@ export function Login() {
                         className="txt-center w-full mt-m"
                         style={{ display: 'block' }}
                     >
-                        
                         Create New Account
                     </Link>
                 </div>
