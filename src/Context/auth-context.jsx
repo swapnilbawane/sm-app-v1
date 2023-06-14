@@ -1,53 +1,44 @@
-import { createContext, useContext } from "react";
-import axios from 'axios';
-import { useNavigate } from "react-router";
+import { createContext, useContext } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
 
-export const AuthContext = createContext(); 
+export const AuthContext = createContext()
 
-export function AuthProvider({children}) { 
+export function AuthProvider({ children }) {
+    const navigate = useNavigate()
 
- const navigate = useNavigate(); 
+    const handleLogin = async (user) => {
+        try {
+            const creds = {
+                username: user.username,
+                password: user.password,
+            }
 
- const handleLogin = async (user) => { 
+            console.log('user', user)
 
-  try { 
-    const creds = { 
-      username: user.username,
-      password: user.password
-     }
+            //  const res = await fetch("/api/auth/login", {
+            //   method: 'POST',
+            //   body: JSON.stringify(creds)
+            //   });
 
-     console.log("user", user)
-   
-    //  const res = await fetch("/api/auth/login", {
-    //   method: 'POST',
-    //   body: JSON.stringify(creds)   
-    //   }); 
+            const res2 = await axios.post(
+                '/api/auth/login',
+                JSON.stringify(creds)
+            )
+            const { foundUser, encodedToken } = res2.data
 
-      const res2 = await axios.post("/api/auth/login", JSON.stringify(creds)); 
-      const { foundUser, encodedToken } = res2.data;
-  
-    
-      localStorage.setItem("encodedToken",encodedToken);
-      navigate("/");
+            localStorage.setItem('encodedToken', encodedToken)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-
-  
-
-
-  }
-    catch(error) {
-    console.log(error);
-   }
-
- }
-
-
-    return(
-        <AuthContext.Provider value={{handleLogin}}>
+    return (
+        <AuthContext.Provider value={{ handleLogin }}>
             {children}
         </AuthContext.Provider>
-    );
-
+    )
 }
 
-export const useAuth = () => useContext(AuthContext); 
+export const useAuth = () => useContext(AuthContext)
