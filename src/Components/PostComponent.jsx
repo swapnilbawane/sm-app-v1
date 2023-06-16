@@ -3,7 +3,8 @@
 export function PostComponent({
 _id,
 content,
-
+username,
+likes
 }) {
     return (
         <>
@@ -39,5 +40,5 @@ content,
                 </div>
             </div>
         </>
-    )
+    );
 }

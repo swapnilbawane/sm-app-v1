@@ -42,6 +42,8 @@ export function AuthProvider({ children }) {
                 
                 const posts = await dataResponse.data;
 
+                console.log(posts);
+
                 setData(posts);
 
             }
@@ -57,7 +59,7 @@ export function AuthProvider({ children }) {
 
 
     return (
-        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn }}>
+        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn, data, setData }}>
             {children}
         </AuthContext.Provider>
     )
