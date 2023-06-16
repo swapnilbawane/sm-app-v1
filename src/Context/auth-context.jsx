@@ -1,11 +1,14 @@
-import { createContext, useContext } from 'react'
+import { useState, createContext, useContext } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 
 export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
+    
+    const [ loggedIn, setLoggedIn ] = useState(false)
     const navigate = useNavigate()
+
 
     const handleLogin = async (user) => {
         try {
@@ -16,11 +19,6 @@ export function AuthProvider({ children }) {
 
             console.log('user', user)
 
-            //  const res = await fetch("/api/auth/login", {
-            //   method: 'POST',
-            //   body: JSON.stringify(creds)
-            //   });
-
             const res = await axios.post(
                 '/api/auth/login',
                 JSON.stringify(creds)
@@ -28,14 +26,15 @@ export function AuthProvider({ children }) {
             const { foundUser, encodedToken } = res.data
 
             localStorage.setItem('encodedToken', encodedToken)
-            navigate('/')
+            setLoggedIn(true);
+            navigate('/home')
         } catch (error) {
             console.log(error)
         }
     }
 
     return (
-        <AuthContext.Provider value={{ handleLogin }}>
+        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn }}>
             {children}
         </AuthContext.Provider>
     )
