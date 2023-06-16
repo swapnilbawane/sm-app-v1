@@ -5,7 +5,9 @@ import { useAuth } from '../../Context/auth-context'
 
 export function MainHome() {
 
-  const { data } = useAuth(); 
+  const { data, currentUser } = useAuth(); 
+
+  console.log("data from main home", data)
 
 
     return (
@@ -48,8 +50,19 @@ export function MainHome() {
 
                 <div className="white-bg mr-xxl p-xs mt-s">
                   {/* TODO: Add a map function here but first get data on first load in login context */}
-                    <PostComponent />
-                    <PostComponent />
+                   
+                   { 
+                   data?.posts?.map((item)=> { 
+                    const postData = {...item,...currentUser}
+                    return(
+                        <div key={item._id}>
+                        <PostComponent {...postData}/>
+                        </div>
+                    ); 
+                   })
+                   }
+                    
+                    
                 </div>
             </main>
         </>

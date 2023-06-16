@@ -3,7 +3,10 @@
 export function PostComponent({
 _id,
 content,
-
+username,
+likes,
+firstName,
+lastName
 }) {
     return (
         <>
@@ -16,9 +19,9 @@ content,
                 <div>
                     <div className="flex flex-row flex-align-center flex-space-between">
                         <div className="flex flex-row">
-                            <p className="fw-semibold">Tanay Pratap</p>
+                            <p className="fw-semibold">{firstName} {lastName}</p>
                             <p className="grey-color pl-xs">
-                                @tanaypratap
+                                @{username}
                                 <span className="pl-xs">.</span>
                                 <span className="pl-xs">1 min</span>
                             </p>
@@ -39,5 +42,5 @@ content,
                 </div>
             </div>
         </>
-    )
+    );
 }

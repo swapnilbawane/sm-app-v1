@@ -8,6 +8,8 @@ export function AuthProvider({ children }) {
     
     const [ loggedIn, setLoggedIn ] = useState(false)
     const [ data, setData ] = useState([])
+    const [ loggedUserName, setLoggedUserName] = useState(""); 
+    const [ currentUser, setCurrentUser] = useState({}); 
     
     const navigate = useNavigate()
 
@@ -25,22 +27,31 @@ export function AuthProvider({ children }) {
                 '/api/auth/login',
                 JSON.stringify(creds)
             )
-            const { foundUser, encodedToken } = res.data
 
-            localStorage.setItem('encodedToken', encodedToken)
-            setLoggedIn(true);
-            navigate('/home')
+            if(res.status===200) { 
+                const { foundUser, encodedToken } = res.data
+
+                localStorage.setItem('encodedToken', encodedToken)
+                setLoggedIn(true);
+                setLoggedUserName(user.username); 
+                navigate('/home')
+            }
+           
         } catch (error) {
             console.log(error)
         }
     }
 
-    const getData = async() => { 
+    const getSingleUserPostsData = async() => { 
+
+           
             try {
     
-                const dataResponse = await axios.get("/api/posts");
+                const dataResponse = await axios.get(`/api/posts/user/${loggedUserName}`);
                 
                 const posts = await dataResponse.data;
+
+                console.log(posts);
 
                 setData(posts);
 
@@ -50,14 +61,35 @@ export function AuthProvider({ children }) {
             }
     }
 
+    const getUserData = async() => { 
+        try{
+             const userDataResponse = await axios.get("/api/users"); 
+             console.log("userDataResponse", userDataResponse);
+
+             const userList = await userDataResponse?.data?.users; 
+             console.log("userList",userList);
+             const currentUserData = userList?.find((item)=> item.username===loggedUserName); // this fetches me the object data 
+             console.log("currentUserData",currentUserData)
+             setCurrentUser(currentUserData);
+
+
+
+         }
+        catch(error){ 
+            console.log(error)
+        }
+    }
+
 
     useEffect(()=> { 
-    getData();  
+    getUserData(); 
+    getSingleUserPostsData();
+     
     },[loggedIn]);
 
 
     return (
-        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn }}>
+        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn, data, setData, currentUser }}>
             {children}
         </AuthContext.Provider>
     )
