@@ -5,7 +5,7 @@ import { useAuth } from '../../Context/auth-context'
 
 export function MainHome() {
 
-  const { data } = useAuth(); 
+  const { data, currentUser } = useAuth(); 
 
   console.log("data from main home", data)
 
@@ -53,9 +53,10 @@ export function MainHome() {
                    
                    { 
                    data?.posts?.map((item)=> { 
+                    const postData = {...item,...currentUser}
                     return(
                         <div key={item._id}>
-                        <PostComponent {...item}/>
+                        <PostComponent {...postData}/>
                         </div>
                     ); 
                    })
