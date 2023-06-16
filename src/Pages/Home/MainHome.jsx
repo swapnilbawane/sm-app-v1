@@ -9,11 +9,11 @@ return(
 
 <div className="white-bg mr-xxl p-xs mt-s">
 <div className="flex flex-row nowrap p-xs">
-   <div className="grey-bg br-full width-xl height-xl p-xs mr-xs" style="aspect-ratio:1"></div>
+   <div className="grey-bg br-full width-xl height-xl p-xs mr-xs" style={{aspectRatio:"1"}}></div>
    <div className="w-full">
-     <textarea cols="50" rows="6" className="w-full lynx-white-bg p-s outline-transparent border-none" style="resize: none;" placeholder="Write something interesting..." spellcheck="false" data-ms-editor="true"></textarea>
+     <textarea cols="50" rows="6" className="w-full lynx-white-bg p-s outline-transparent border-none" style={{resize: "none"}} placeholder="Write something interesting..." spellcheck="false" data-ms-editor="true"></textarea>
      <div className="flex flex-space-between pt-s">
-           <div className="flex" style="gap:1rem">
+           <div className="flex" style={{gap:"1rem"}}>
            <i className="bi bi-card-image"></i>
            <i className="bi bi-filetype-gif"></i>
            <i className="bi bi-emoji-smile"></i>

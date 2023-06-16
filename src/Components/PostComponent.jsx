@@ -3,7 +3,7 @@ export function PostComponent() {
         <>
         <div className="flex flex-row nowrap p-xs">
 
-<div className="grey-bg br-full width-xl height-xl p-xs mr-xs" style="aspect-ratio: 1"></div>
+<div className="grey-bg br-full width-xl height-xl p-xs mr-xs" style={{aspectRatio: "1"}}></div>
 
 <div>
 
