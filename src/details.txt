@@ -1,0 +1,13 @@
+username: "adarshbalika",
+    password: "adarshBalika123",
+.
+
+adarshbalika
+
+  const res = await axios.post("/api/auth/login", JSON.stringify(creds))
+
+
+{
+"username": "adarshbalika",
+"password": "adarshBalika123"
+}
