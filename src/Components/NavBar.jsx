@@ -5,7 +5,7 @@ export function NavBar() {
         <div>
 
 <div className="pt-s black-color fw-semibold">
-  <a href>
+  <a href="/">
       <i className="bi bi-house"> </i>
       &nbsp;
       <span className="fw-bold">Home</span>

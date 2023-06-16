@@ -10,7 +10,7 @@ return (
 
 <div className="white-bg mb-m pl-s border flex flex-row flex-center nowrap">
   <i className="bi bi-search"></i>
-  <input type="search" name="search-bar" id="" className="search-bar border-none outline-transparent p-s width-16" placeholder="Search Posts, People, Anything" spellcheck="false" data-ms-editor="true" />
+  <input type="search" name="search-bar" id="" className="search-bar border-none outline-transparent p-s width-16" placeholder="Search Posts, People, Anything" spellCheck={false} data-ms-editor={true} />
 </div>
 
 <div className="white-bg">
