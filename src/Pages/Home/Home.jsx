@@ -1,7 +1,20 @@
+import { Header } from "../../Components/Header";
+import { AsideLeft } from "../../Components/AsideLeft";
+import { AsideRight } from "../../Components/AsideRight";
+import { MainHome } from "./MainHome";
+
 export function Home() {
-    return(
+    return (
         <>
-        Home Page.
-        </> 
-    ); 
+            <div className="container">
+                <Header />
+
+                <AsideLeft />
+
+                <MainHome />
+
+                <AsideRight />
+            </div>
+        </>
+    );
 }
