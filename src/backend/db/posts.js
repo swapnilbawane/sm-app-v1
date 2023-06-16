@@ -1,5 +1,5 @@
-import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
+import { v4 as uuid } from 'uuid'
+import { formatDate } from '../utils/authUtils'
 
 /**
  * Posts can be added here.
@@ -7,30 +7,47 @@ import { formatDate } from "../utils/authUtils";
  * */
 
 export const posts = [
-  {
-    _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
+    {
+        _id: uuid(),
+        content:
+            'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
+        likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+        },
+        username: 'adarshbalika',
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
     },
-    username: "adarshbalika",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
-  {
-    _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
+    {
+        _id: uuid(),
+        content:
+            'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
+        likes: {
+            likeCount: 0,
+            likedBy: [],
+            dislikedBy: [],
+        },
+        username: 'shubhamsoni',
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
     },
-    username: "shubhamsoni",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    {
+      _id: uuid(),
+      content:
+          `Non programmers on my timeline. Attention.
+
+          After placing 100+ programmers in top Indian startups, I am thinking of coming up with a program for business roles as well.
+          
+          Interested in helping me build this course? Join the telegram group (in next tweet)`,
+      likes: {
+          likeCount: 0,
+          likedBy: [],
+          dislikedBy: [],
+      },
+      username: 'adarshbalika',
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
   },
-];
+]

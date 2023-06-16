@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react'
+import { useState, createContext, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 
@@ -7,6 +7,8 @@ export const AuthContext = createContext()
 export function AuthProvider({ children }) {
     
     const [ loggedIn, setLoggedIn ] = useState(false)
+    const [ data, setData ] = useState([])
+    
     const navigate = useNavigate()
 
 
@@ -32,6 +34,27 @@ export function AuthProvider({ children }) {
             console.log(error)
         }
     }
+
+    const getData = async() => { 
+            try {
+    
+                const dataResponse = await axios.get("/api/posts");
+                
+                const posts = await dataResponse.data;
+
+                setData(posts);
+
+            }
+            catch(error){
+                console.log(error);
+            }
+    }
+
+
+    useEffect(()=> { 
+    getData();  
+    },[loggedIn]);
+
 
     return (
         <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn }}>

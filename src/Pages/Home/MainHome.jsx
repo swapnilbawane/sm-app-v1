@@ -1,8 +1,13 @@
 import '../../style.css'
 import '../../index.css'
 import { PostComponent } from '../../Components/PostComponent'
+import { useAuth } from '../../Context/auth-context'
 
 export function MainHome() {
+
+  const { data } = useAuth(); 
+
+
     return (
         <>
             <main className="mt-xl">
@@ -19,8 +24,8 @@ export function MainHome() {
                                 className="w-full lynx-white-bg p-s outline-transparent border-none"
                                 style={{ resize: 'none' }}
                                 placeholder="Write something interesting..."
-                                spellcheck="false"
-                                data-ms-editor="true"
+                                spellCheck={false}
+                                data-ms-editor={true}
                             ></textarea>
                             <div className="flex flex-space-between pt-s">
                                 <div className="flex" style={{ gap: '1rem' }}>
@@ -42,6 +47,7 @@ export function MainHome() {
                 </div>
 
                 <div className="white-bg mr-xxl p-xs mt-s">
+                  {/* TODO: Add a map function here but first get data on first load in login context */}
                     <PostComponent />
                     <PostComponent />
                 </div>
