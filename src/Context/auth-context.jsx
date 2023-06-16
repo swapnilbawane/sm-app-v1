@@ -42,10 +42,12 @@ export function AuthProvider({ children }) {
         }
     }
 
-    const getData = async() => { 
+    const getSingleUserPostsData = async() => { 
+
+           
             try {
     
-                const dataResponse = await axios.get("/api/posts");
+                const dataResponse = await axios.get(`/api/posts/user/${loggedUserName}`);
                 
                 const posts = await dataResponse.data;
 
@@ -81,7 +83,7 @@ export function AuthProvider({ children }) {
 
     useEffect(()=> { 
     getUserData(); 
-    getData();
+    getSingleUserPostsData();
      
     },[loggedIn]);
 
