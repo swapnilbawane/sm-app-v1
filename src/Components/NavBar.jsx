@@ -1,4 +1,12 @@
+//  TODO: Conditional rendering based on useLocation for NavBar 
+
+import { useLocation } from "react-router";
+
+
 export function NavBar() { 
+
+const location = useLocation(); 
+
     return(
         <>
         {/* check by location if location is /home then keep it bold like className={location==="/home" ? "fw-bold" : "fw"} */}
@@ -8,7 +16,7 @@ export function NavBar() {
   <a href="/">
       <i className="bi bi-house"> </i>
       &nbsp;
-      <span className="fw-bold">Home</span>
+     <span className={location==="/home" ? "fw-bold" : "fw"}>Home</span> 
   </a>
 </div>
 
@@ -16,7 +24,7 @@ export function NavBar() {
   <a href="explore.html">
     <i className="bi bi-rocket"> </i>
     &nbsp;
-    <span>Explore</span>
+    <span className={location==="/explore" ? "fw-bold" : "fw"}>Explore</span>
 </a>
 </div>
 
@@ -24,7 +32,7 @@ export function NavBar() {
   <a href="bookmark.html">
     <i className="bi bi-bookmark"> </i>
     &nbsp;
-    <span>Bookmark</span>
+    <span className={location==="/bookmark" ? "fw-bold" : "fw"}>Bookmark</span>
 </a>
 </div>
 
@@ -32,7 +40,7 @@ export function NavBar() {
   <a href="profile.html">
     <i className="bi bi-person"> </i>
     &nbsp;
-    <span>Profile</span>
+    <span className={location==="/profile" ? "fw-bold" : "fw"}>Profile</span>
 </a>
 </div>  
 
