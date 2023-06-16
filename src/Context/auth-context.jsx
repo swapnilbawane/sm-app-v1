@@ -21,11 +21,11 @@ export function AuthProvider({ children }) {
             //   body: JSON.stringify(creds)
             //   });
 
-            const res2 = await axios.post(
+            const res = await axios.post(
                 '/api/auth/login',
                 JSON.stringify(creds)
             )
-            const { foundUser, encodedToken } = res2.data
+            const { foundUser, encodedToken } = res.data
 
             localStorage.setItem('encodedToken', encodedToken)
             navigate('/')
