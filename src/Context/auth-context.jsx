@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
     const [ data, setData ] = useState([])
     const [ loggedUserName, setLoggedUserName] = useState(""); 
     const [ currentUser, setCurrentUser] = useState({}); 
+    const [ allUsers, setAllUsers] = useState([])
     
     const navigate = useNavigate()
 
@@ -70,8 +71,9 @@ export function AuthProvider({ children }) {
              console.log("userList",userList);
              const currentUserData = userList?.find((item)=> item.username===loggedUserName); // this fetches me the object data 
              console.log("currentUserData",currentUserData)
+             
              setCurrentUser(currentUserData);
-
+             setAllUsers(userList); 
 
 
          }
@@ -80,6 +82,7 @@ export function AuthProvider({ children }) {
         }
     }
 
+    
 
     useEffect(()=> { 
     getUserData(); 
@@ -89,7 +92,7 @@ export function AuthProvider({ children }) {
 
 
     return (
-        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn, data, setData, currentUser }}>
+        <AuthContext.Provider value={{ handleLogin, loggedIn, setLoggedIn, data, setData, currentUser, allUsers }}>
             {children}
         </AuthContext.Provider>
     )

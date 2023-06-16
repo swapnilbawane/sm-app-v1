@@ -1,8 +1,12 @@
 import "../style.css";
 import "../index.css";
 import { FollowOtherComponent } from "./FollowOtherComponent";
+import { useAuth } from "../Context/auth-context";
+
 
 export function AsideRight() { 
+
+const { allUsers } = useAuth(); 
 
 return (
 <>
@@ -21,10 +25,16 @@ return (
 </div>
 
 {/* Render from the list of accounts present */}
-<FollowOtherComponent /> 
-<FollowOtherComponent />
-<FollowOtherComponent />
-<FollowOtherComponent />
+{ 
+allUsers?.map((item)=> { 
+  return(
+    <div key={item._id}>
+       <FollowOtherComponent {...item} /> 
+    </div>
+  );
+})
+}
+
 
 </div>
 
