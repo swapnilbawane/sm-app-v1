@@ -6,6 +6,7 @@ import { useLocation } from "react-router";
 export function NavBar() { 
 
 const location = useLocation(); 
+console.log("location", location);
 
     return(
         <>
@@ -16,7 +17,7 @@ const location = useLocation();
   <a href="/">
       <i className="bi bi-house"> </i>
       &nbsp;
-     <span className={location==="/home" ? "fw-bold" : "fw"}>Home</span> 
+     <span className={location.pathname==="/home" ? "fw-bold" : "fw"}>Home</span> 
   </a>
 </div>
 
@@ -24,7 +25,7 @@ const location = useLocation();
   <a href="explore.html">
     <i className="bi bi-rocket"> </i>
     &nbsp;
-    <span className={location==="/explore" ? "fw-bold" : "fw"}>Explore</span>
+    <span className={location.pathname==="/explore" ? "fw-bold" : "fw"}>Explore</span>
 </a>
 </div>
 
@@ -32,7 +33,7 @@ const location = useLocation();
   <a href="bookmark.html">
     <i className="bi bi-bookmark"> </i>
     &nbsp;
-    <span className={location==="/bookmark" ? "fw-bold" : "fw"}>Bookmark</span>
+    <span className={location.pathname==="/bookmark" ? "fw-bold" : "fw"}>Bookmark</span>
 </a>
 </div>
 
@@ -40,7 +41,7 @@ const location = useLocation();
   <a href="profile.html">
     <i className="bi bi-person"> </i>
     &nbsp;
-    <span className={location==="/profile" ? "fw-bold" : "fw"}>Profile</span>
+    <span className={location.pathname==="/profile" ? "fw-bold" : "fw"}>Profile</span>
 </a>
 </div>  
 

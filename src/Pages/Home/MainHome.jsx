@@ -3,6 +3,8 @@ import '../../index.css'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 
+// On clicking POST it calls API - recreate it.
+
 export function MainHome() {
 
   const { data, currentUser } = useAuth(); 
