@@ -17,7 +17,8 @@ lastName
                 ></div>
 
                 <div>
-                    <div className="flex flex-row flex-align-center flex-space-between">
+                    {/* TODO: CSS BUG the three dots spacing is affected by the number of lines posted */}
+                    <div className="flex flex-row flex-align-center flex-space-between"> 
                         <div className="flex flex-row">
                             <p className="fw-semibold">{firstName} {lastName}</p>
                             <p className="grey-color pl-xs">

@@ -52,7 +52,7 @@ export function AuthProvider({ children }) {
                 
                 const posts = await dataResponse.data;
 
-                console.log(posts);
+                console.log("posts from auth context:",posts);
 
                 setData(posts);
 
