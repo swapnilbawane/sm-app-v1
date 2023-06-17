@@ -36,8 +36,8 @@ lastName
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
                         <i className="bi bi-heart"></i>
-                        <i className="bi bi-chat-left"></i>
-                        <i className="bi bi-share"></i>
+                        {/* <i className="bi bi-chat-left"></i>
+                        <i className="bi bi-share"></i> */}
                         <i className="bi bi-bookmark-fill"></i>
                     </div>
                 </div>
