@@ -3,6 +3,7 @@ import '../../index.css'
 
 import { PostComponent } from "../../Components/PostComponent"; 
 import { useAuth } from '../../Context/auth-context'
+import { Link } from 'react-router-dom';
 
 export function MainProfile() {
     const { data, currentUser, setData } = useAuth()
@@ -22,7 +23,8 @@ export function MainProfile() {
                         biggest programming community | Tweets about JavaScript,
                         ReactJS, Career and Startups
                     </p>
-                    <p className="primary-color">tanaypratap.com</p>
+                    <p className="primary-color"> <a href="https://www.tanaypratap.com" target="_blank" rel="noopener noreferrer">tanaypratap.com </a> </p>
+                    
                     <div className="white-bg p-xs m-xs flex flex-row flex-space-evenly">
                         <div className="flex flex-column flex-center m-s ml-m mr-m">
                             <p className="fw-black">0</p>
