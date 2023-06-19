@@ -3,6 +3,8 @@ import { Login } from './Pages/Login/Login'
 import { Signup } from './Pages/Signup/Signup'
 import { Home } from './Pages/Home/Home'
 import { Explore } from './Pages/Explore/Explore'
+import { Bookmark } from './Pages/Bookmark/Bookmark'
+import { Profile } from './Pages/Profile/Profile'
 
 import Mockman from 'mockman-js'
 import { RequiresAuth } from './Components/RequiresAuth'
@@ -25,6 +27,24 @@ function App() {
                     element={
                         <RequiresAuth>
                             <Explore />
+                        </RequiresAuth>
+                    }
+                />
+
+                <Route
+                    path="/bookmark"
+                    element={
+                        <RequiresAuth>
+                            <Bookmark />
+                        </RequiresAuth>
+                    }
+                />
+
+                <Route
+                    path="/profile"
+                    element={
+                        <RequiresAuth>
+                            <Profile />
                         </RequiresAuth>
                     }
                 />
