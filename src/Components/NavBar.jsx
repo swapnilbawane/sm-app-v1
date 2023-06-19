@@ -1,7 +1,7 @@
 //  TODO: Conditional rendering based on useLocation for NavBar 
 
 import { useLocation } from "react-router";
-
+import { Link } from "react-router-dom";
 
 export function NavBar() { 
 
@@ -14,35 +14,35 @@ console.log("location", location);
         <div>
 
 <div className="pt-s black-color fw-semibold">
-  <a href="/">
+  <Link to="/">
       <i className="bi bi-house"> </i>
       &nbsp;
      <span className={location.pathname==="/home" ? "fw-bold" : "fw"}>Home</span> 
-  </a>
+  </Link>
 </div>
 
 <div className="pt-s black-color fw-semibold">
-  <a href="explore.html">
+  <Link to="/explore">
     <i className="bi bi-rocket"> </i>
     &nbsp;
     <span className={location.pathname==="/explore" ? "fw-bold" : "fw"}>Explore</span>
-</a>
+</Link>
 </div>
 
 <div className="pt-s black-color fw-semibold">
-  <a href="bookmark.html">
+  <Link to="/bookmark">
     <i className="bi bi-bookmark"> </i>
     &nbsp;
     <span className={location.pathname==="/bookmark" ? "fw-bold" : "fw"}>Bookmark</span>
-</a>
+</Link>
 </div>
 
 <div className="pt-s black-color fw-semibold">
-  <a href="profile.html">
+  <Link to="/profile">
     <i className="bi bi-person"> </i>
     &nbsp;
     <span className={location.pathname==="/profile" ? "fw-bold" : "fw"}>Profile</span>
-</a>
+</Link>
 </div>  
 
 <button className="mt-m p-s primary-bg white-color border-none outline-transparent new-post-btn"> Create New Post </button>
