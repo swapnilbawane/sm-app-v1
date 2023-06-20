@@ -1,6 +1,9 @@
 // TODO: This is a card component, this should receive the destructured data from the map function run in Main Home page. 
 
+import { useInteraction } from "../Context/interaction-context";
+
 export function PostComponent({
+itemid,
 _id,
 content,
 username,
@@ -8,6 +11,19 @@ likes,
 firstName,
 lastName
 }) {
+
+ const { likeHandler, dislikeHandler } = useInteraction(); 
+
+ const item = { 
+    itemid,
+    content,
+    username,
+    likes,
+    firstName,
+    lastName }
+
+console.log("item from post component", item)
+
     return (
         <>
             <div className="flex flex-row nowrap p-xs">
@@ -35,7 +51,13 @@ lastName
                     </p>
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
-                        <i className="bi bi-heart"></i>
+                       { 
+                       likes.likeCount>0
+                       ?
+                        <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(itemid)}></i>
+                       :
+                       <i className="bi bi-heart" onClick={()=> likeHandler(itemid)} ></i>        
+                       }
                         {/* <i className="bi bi-chat-left"></i>
                         <i className="bi bi-share"></i> */}
                         <i className="bi bi-bookmark-fill"></i>

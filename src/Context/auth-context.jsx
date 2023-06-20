@@ -41,16 +41,18 @@ export function AuthProvider({ children }) {
     }
 
     const getSingleUserPostsData = async () => {
+        console.log(`/api/posts/user/${loggedUserName}`)
         try {
             const dataResponse = await axios.get(
                 `/api/posts/user/${loggedUserName}`
             )
 
-            const posts = await dataResponse.data
-
-            console.log('posts from auth context:', posts)
-
-            setData(posts)
+            if(dataResponse.status===200) { 
+                const posts = await dataResponse.data
+                console.log('posts from auth context:', posts)
+                setData(posts)
+            }
+           
         } catch (error) {
             console.log(error)
         }

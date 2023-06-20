@@ -63,7 +63,8 @@ export function MainHome() {
                    
                    { 
                    data?.posts?.map((item)=> { 
-                    const postData = {...item,...currentUser}
+                    const itemid = item._id    // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id. 
+                    const postData = {...item,itemid,...currentUser} 
                     return(
                         <div key={item._id}>
                         <PostComponent {...postData}/>

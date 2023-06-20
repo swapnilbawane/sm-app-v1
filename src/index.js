@@ -6,6 +6,7 @@ import { makeServer } from './server'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Context/auth-context'
 import { PostProvider } from './Context/post-context'
+import { InteractionProvider } from './Context/interaction-context'
 
 // Call make Server
 makeServer()
@@ -16,7 +17,9 @@ root.render(
         <BrowserRouter>
             <AuthProvider>
                 <PostProvider>
+                    <InteractionProvider> 
                     <App />
+                    </InteractionProvider>
                 </PostProvider>
             </AuthProvider>
         </BrowserRouter>
