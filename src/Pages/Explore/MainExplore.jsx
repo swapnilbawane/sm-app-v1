@@ -38,7 +38,7 @@ export function MainExplore() {
                     cricket: false,
                     india: false,
                 })
-
+                setExploreData(data)
                 break
 
             case 'trending':
