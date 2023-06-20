@@ -3,7 +3,8 @@
 import { useInteraction } from "../Context/interaction-context";
 
 export function PostComponent({
-itemid,
+// itemid,
+// itemusername,
 _id,
 content,
 username,
@@ -15,7 +16,7 @@ lastName
  const { likeHandler, dislikeHandler } = useInteraction(); 
 
  const item = { 
-    itemid,
+    _id,
     content,
     username,
     likes,
@@ -54,9 +55,9 @@ console.log("item from post component", item)
                        { 
                        likes.likeCount>0
                        ?
-                        <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(itemid)}></i>
+                        <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
                        :
-                       <i className="bi bi-heart" onClick={()=> likeHandler(itemid)} ></i>        
+                       <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>        
                        }
                         {/* <i className="bi bi-chat-left"></i>
                         <i className="bi bi-share"></i> */}

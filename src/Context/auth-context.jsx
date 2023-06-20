@@ -58,6 +58,22 @@ export function AuthProvider({ children }) {
         }
     }
 
+    const getAllPostsData = async() => { 
+        try{
+            const allDataResponse = await fetch("/api/posts")
+
+            if(allDataResponse.status===200)
+            { 
+                const allPosts = await allDataResponse.json();
+                setData(allPosts);
+            }
+            
+        }
+        catch(error) { 
+            console.log(error);
+        }
+    }
+
     const getUserData = async () => {
         try {
             const userDataResponse = await axios.get('/api/users')
@@ -79,7 +95,8 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         getUserData()
-        getSingleUserPostsData()
+        // getSingleUserPostsData()
+        getAllPostsData()
     }, [loggedIn])
 
     return (

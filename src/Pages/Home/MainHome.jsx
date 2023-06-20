@@ -10,7 +10,7 @@ import axios from 'axios'
 
 export function MainHome() {
 
-  const { data, currentUser,setData } = useAuth(); 
+  const { data, currentUser,setData, allUsers } = useAuth(); 
   const { addNewPostHandler, postHandler, newPost, setNewPost } = usePost();
 
   console.log("data from main home", data)
@@ -63,8 +63,12 @@ export function MainHome() {
                    
                    { 
                    data?.posts?.map((item)=> { 
-                    const itemid = item._id    // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id. 
-                    const postData = {...item,itemid,...currentUser} 
+                    const itemid = item._id 
+                    const itemusername = item.username
+                    const { firstName, lastName } = allUsers.find((user)=> user.username===item.username) // finding first name based on username
+                    // itemid,itemusername,...currentUser
+                    // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id. 
+                    const postData = {...item, firstName, lastName} 
                     return(
                         <div key={item._id}>
                         <PostComponent {...postData}/>

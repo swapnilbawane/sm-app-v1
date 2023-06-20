@@ -1,11 +1,13 @@
 import { useContext, createContext, useState } from 'react'
 import { useAuth } from './auth-context'
+import { useLocation } from 'react-router'
 
 export const PostContext = createContext()
 
 export function PostProvider({ children }) {
     const [newPost, setNewPost] = useState('')
-    const { data, currentUser, setData } = useAuth()
+    const { data, currentUser, setData, loggedUserName } = useAuth()
+    const location = useLocation();
 
     const addNewPostHandler = (event) => {
         const textValue = event.target.value
@@ -42,8 +44,13 @@ export function PostProvider({ children }) {
                 let postsData = await postResponse.json()
                 console.log('before reverse', postsData) // { postsData : posts }
                 console.log('posts data', postsData.posts)
-                const posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts
-                postsData = { posts } // shorthand for object : posts: posts - this will put reversed posts to post key now it resembles postData = { posts : {[],[],[],[]}}
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts
+               
+                if(location.pathname==="/profile") { 
+                    posts = posts.filter((item)=> item.username === loggedUserName)
+                }
+                
+                postsData = { posts } // shorthand for object : posts: posts - this will put reversed posts to post key now it resembles postData = { posts : {[....],[....],[....],[....]}}
                 setData(postsData)
                 setNewPost('')
             }
