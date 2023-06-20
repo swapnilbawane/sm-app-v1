@@ -7,23 +7,23 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 export function MainExplore() {
-    const { data, currentUser, setData } = useAuth()
+    const { data, currentUser, setData, allUsers } = useAuth()
     // const [ newPost, setNewPost ] = useState("");
     const [exploreData, setExploreData] = useState(data)
     const [category, setCategory] = useState('foryou')
+
     const [isActive, setIsActive] = useState({
         foryou: true,
         trending: false,
-        technology: false,
-        sports: false,
-        news: false
+        science: false,
+        cricket: false,
+        india: false,
     })
 
     const semibold =
         'border p-xs mt-xs mb-xs mr-s width-7 txt-center fw-semibold'
     const greycolor =
         'border p-xs mt-xs mb-xs mr-s ml-s width-7 txt-center grey-color'
-    const link = null
 
     const categoryHandler = (e) => {
         const categoryName = e.target.value
@@ -31,47 +31,75 @@ export function MainExplore() {
         switch (categoryName) {
             case 'foryou':
                 console.log('foryou')
-                setIsActive({foryou: true,
-                  trending: false,
-                  technology: false,
-                  sports: false,
-                  news: false})
+                setIsActive({
+                    foryou: true,
+                    trending: false,
+                    science: false,
+                    cricket: false,
+                    india: false,
+                })
+
                 break
 
             case 'trending':
                 console.log('trending')
-                setIsActive({foryou: false,
-                  trending: true,
-                  technology: false,
-                  sports: false,
-                  news: false})
+                setIsActive({
+                    foryou: false,
+                    trending: true,
+                    science: false,
+                    cricket: false,
+                    india: false,
+                })
+
+                const trendingData = data.posts.filter(
+                    (posts) => posts.category === 'trending'
+                )
+                setExploreData({ posts: trendingData })
                 break
 
-            case 'technology':
-                console.log('technology')
-                setIsActive({foryou: false,
-                  trending: false,
-                  technology: true,
-                  sports: false,
-                  news: false})
+            case 'science':
+                console.log('science')
+                setIsActive({
+                    foryou: false,
+                    trending: false,
+                    science: true,
+                    cricket: false,
+                    india: false,
+                })
+                const scienceData = data.posts.filter(
+                    (posts) => posts.category === 'science'
+                )
+                setExploreData({ posts: scienceData })
                 break
 
-            case 'sports':
-                console.log('sports')
-                setIsActive({foryou: false,
-                  trending: false,
-                  technology: false,
-                  sports: true,
-                  news: false})
+            case 'cricket':
+                console.log('cricket')
+                setIsActive({
+                    foryou: false,
+                    trending: false,
+                    science: false,
+                    cricket: true,
+                    india: false,
+                })
+                const cricketData = data.posts.filter(
+                    (posts) => posts.category === 'cricket'
+                )
+                setExploreData({ posts: cricketData })
                 break
 
-            case 'news':
-                console.log('news')
-                setIsActive({foryou: false,
-                  trending: false,
-                  technology: false,
-                  sports: false,
-                  news: true})
+            case 'india':
+                console.log('india')
+                setIsActive({
+                    foryou: false,
+                    trending: false,
+                    science: false,
+                    cricket: false,
+                    india: true,
+                })
+                const indiaData = data.posts.filter(
+                    (posts) => posts.category === 'india'
+                )
+                setExploreData({ posts: indiaData })
                 break
 
             default:
@@ -103,27 +131,27 @@ export function MainExplore() {
                     </button>
 
                     <button
-                        className={isActive.technology ? semibold : greycolor}
-                        value="technology"
+                        className={isActive.science ? semibold : greycolor}
+                        value="science"
                         onClick={categoryHandler}
                     >
-                        Technology
+                        Science
                     </button>
 
                     <button
-                        className={isActive.sports ? semibold : greycolor}
-                        value="sports"
+                        className={isActive.cricket ? semibold : greycolor}
+                        value="cricket"
                         onClick={categoryHandler}
                     >
-                        Sports
+                       Cricket
                     </button>
 
                     <button
-                        className={isActive.news ? semibold : greycolor}
-                        value="news"
+                        className={isActive.india ? semibold : greycolor}
+                        value="india"
                         onClick={categoryHandler}
                     >
-                        News
+                        India
                     </button>
                 </div>
 
@@ -133,7 +161,8 @@ export function MainExplore() {
                     {/* TODO: Add a map function here but first get data on first load in login context */}
 
                     {exploreData?.posts?.map((item) => {
-                        const postData = { ...item, ...currentUser }
+                        const { firstName, lastName } = allUsers.find((user)=> user.username===item.username)
+                        const postData = { ...item, firstName, lastName }
                         return (
                             <div key={item._id}>
                                 <PostComponent {...postData} />
