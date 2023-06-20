@@ -14,6 +14,8 @@ export const users = [
     password: "adarshBalika123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Senior Software Engineer @Ubis | Posts about JavaScript, ReactJS, Career and Startups",
+    link: "https://ab.blogspot.com"
   },
   {
     _id: uuid(),
@@ -23,6 +25,8 @@ export const users = [
     password: "shubhambhai",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Writer Wizard @Craftz | Posts about Life, Motivation",
+    link: "https://albert.blogspot.com"
   },
   {
     _id: uuid(),
@@ -32,6 +36,8 @@ export const users = [
     password: "albertgyani",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Memorial Account of Sir Albert Einstein | Posts about Life, Science",
+    link: "https://alberteinstein.blogspot.com"
   },
   {
     _id: uuid(),
@@ -41,6 +47,8 @@ export const users = [
     password: "sirgenius",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Memorial Account of Sir C V Raman | Posts about Life, Science", 
+    link: "https://sircvraman.blogspot.com"
   },
   {
     _id: uuid(),
@@ -50,5 +58,7 @@ export const users = [
     password: "msdrocks",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio: "Fan account | Posts all about Cricket",
+    link: "https://crickmania.blogspot.com"
   },
 ];

@@ -29,18 +29,16 @@ export function MainProfile() {
                         Edit Profile
                     </button>
                     <p className="m-xs p-xs">
-                        Senior Software Engineer @Microsoft | Creator of India's
-                        biggest programming community | Tweets about JavaScript,
-                        ReactJS, Career and Startups
+                        {currentUser.bio}
                     </p>
                     <p className="primary-color">
                         {' '}
                         <a
-                            href="https://www.tanaypratap.com"
+                            href={currentUser.link}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            tanaypratap.com{' '}
+                            {currentUser.link}
                         </a>{' '}
                     </p>
 
