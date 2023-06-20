@@ -357,6 +357,7 @@ export const posts = [
         username: 'adarshbalika',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -370,6 +371,7 @@ export const posts = [
         username: 'shubhamsoni',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -383,6 +385,7 @@ export const posts = [
         username: 'sircvraman',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "india"
     },
 
     {
@@ -396,6 +399,7 @@ export const posts = [
         username: 'adarshbalika',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -409,6 +413,7 @@ export const posts = [
         username: 'cricketquotes',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "cricket"
     },
     {
         _id: uuid(),
@@ -421,6 +426,7 @@ export const posts = [
         username: 'sircvraman',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "india"
     },
     {
         _id: uuid(),
@@ -433,6 +439,7 @@ export const posts = [
         username: 'alberteinstein',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "science"
     },
     {
         _id: uuid(),
@@ -445,6 +452,7 @@ export const posts = [
         username: 'sircvraman',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "india"
     },
     {
         _id: uuid(),
@@ -461,6 +469,7 @@ export const posts = [
         username: 'shubhamsoni',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
     {
         _id: uuid(),
@@ -473,6 +482,7 @@ export const posts = [
         username: 'cricketquotes',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "cricket"
     },
     {
         _id: uuid(),
@@ -485,6 +495,7 @@ export const posts = [
         username: 'sircvraman',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "india"
     },
     {
         _id: uuid(),
@@ -498,6 +509,7 @@ export const posts = [
         username: 'alberteinstein',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "science"
     },
     {
         _id: uuid(),
@@ -510,6 +522,7 @@ export const posts = [
         username: 'cricketquotes',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "cricket"
     },
     {
         _id: uuid(),
@@ -522,6 +535,7 @@ export const posts = [
         username: 'sircvraman',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "india"
     },
     {
         _id: uuid(),
@@ -534,6 +548,7 @@ export const posts = [
         username: 'cricketquotes',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "cricket"
     },
     {
         _id: uuid(),
@@ -547,6 +562,7 @@ export const posts = [
         username: 'alberteinstein',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "science"
     },
     {
         _id: uuid(),
@@ -559,6 +575,7 @@ export const posts = [
         username: 'cricketquotes',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "cricket"
     },
 
     {
@@ -573,6 +590,7 @@ export const posts = [
         username: 'alberteinstein',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "science"
     },
 
     {
@@ -587,6 +605,7 @@ export const posts = [
         username: 'shubhamsoni',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -600,6 +619,7 @@ export const posts = [
         username: 'adarshbalika',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -614,6 +634,7 @@ export const posts = [
         username: 'shubhamsoni',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -627,6 +648,7 @@ export const posts = [
         username: 'adarshbalika',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -641,6 +663,7 @@ export const posts = [
         username: 'alberteinstein',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "science"
     },
 
     {
@@ -654,6 +677,7 @@ export const posts = [
         username: 'adarshbalika',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 
     {
@@ -668,5 +692,6 @@ export const posts = [
         username: 'shubhamsoni',
         createdAt: formatDate(),
         updatedAt: formatDate(),
+        category: "trending"
     },
 ]
