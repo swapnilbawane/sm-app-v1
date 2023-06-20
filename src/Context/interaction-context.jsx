@@ -55,9 +55,58 @@ export function InteractionProvider({ children }) {
             console.log(error)
         }
     }
+    
+ const followHandler = async(id) => { 
+    try {
+        const encodedToken = localStorage.getItem('encodedToken')
+
+        const followResponse = await fetch(`/api/users/follow/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `${encodedToken}`,
+            },
+        })
+
+        // console.log("likeResponse", await likeResponse.json());
+        const followData = await followResponse.json()
+        console.log("follow Data", followData);
+
+        // const posts = Array.from(likedData.posts).reverse(); 
+        // likedData = { posts }
+        // setData(likedData)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const unFollowHandler = async(id) => { 
+    try {
+        const encodedToken = localStorage.getItem('encodedToken')
+
+        const unFollowResponse = await fetch(`/api/users/unfollow/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `${encodedToken}`,
+            },
+        })
+
+        // console.log("likeResponse", await likeResponse.json());
+        const unFollowData = await unFollowResponse.json()
+        console.log("unfollow Data", unFollowData);
+
+        // const posts = Array.from(likedData.posts).reverse(); 
+        // likedData = { posts }
+        // setData(likedData)
+    } catch (error) {
+        console.log(error)
+    }
+}
+ 
 
     return (
-        <InteractionContext.Provider value={{ likeHandler, dislikeHandler }}>
+        <InteractionContext.Provider value={{ likeHandler, dislikeHandler, followHandler, unFollowHandler }}>
             {children}
         </InteractionContext.Provider>
     )
