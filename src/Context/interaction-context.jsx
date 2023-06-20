@@ -23,7 +23,9 @@ export function InteractionProvider({ children }) {
             })
 
             // console.log("likeResponse", await likeResponse.json());
-            const likedData = await likeResponse.json()
+            let likedData = await likeResponse.json()
+            const posts = Array.from(likedData.posts).reverse(); 
+            likedData = { posts }
             setData(likedData)
         } catch (error) {
             console.log(error)

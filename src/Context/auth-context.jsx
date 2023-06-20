@@ -64,7 +64,9 @@ export function AuthProvider({ children }) {
 
             if(allDataResponse.status===200)
             { 
-                const allPosts = await allDataResponse.json();
+                let allPosts = await allDataResponse.json();
+                const posts = Array.from(allPosts.posts).reverse();
+                allPosts = { posts }
                 setData(allPosts);
             }
             
