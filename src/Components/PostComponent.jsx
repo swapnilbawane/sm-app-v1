@@ -23,7 +23,7 @@ lastName
     firstName,
     lastName }
 
-console.log("item from post component", item)
+//  console.log("item from post component", item)
 
     return (
         <>

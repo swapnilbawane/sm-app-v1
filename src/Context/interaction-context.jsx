@@ -4,7 +4,7 @@ import { useAuth } from './auth-context'
 export const InteractionContext = createContext()
 
 export function InteractionProvider({ children }) {
-    const { data, setData } = useAuth()
+    const { data, setData, setCurrentUser } = useAuth()
 
     const likeHandler = async (id) => {
         console.log('id', id)
@@ -71,6 +71,9 @@ export function InteractionProvider({ children }) {
         // console.log("likeResponse", await likeResponse.json());
         const followData = await followResponse.json()
         console.log("follow Data", followData);
+        const updatedLoggedInUser = followData.user
+        setCurrentUser(updatedLoggedInUser)
+        // setAllusersData. 
 
         // const posts = Array.from(likedData.posts).reverse(); 
         // likedData = { posts }
@@ -95,7 +98,8 @@ const unFollowHandler = async(id) => {
         // console.log("likeResponse", await likeResponse.json());
         const unFollowData = await unFollowResponse.json()
         console.log("unfollow Data", unFollowData);
-
+        const updatedLoggedInUser = unFollowData.user
+        setCurrentUser(updatedLoggedInUser)
         // const posts = Array.from(likedData.posts).reverse(); 
         // likedData = { posts }
         // setData(likedData)

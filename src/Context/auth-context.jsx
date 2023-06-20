@@ -112,6 +112,7 @@ export function AuthProvider({ children }) {
                 currentUser,
                 allUsers,
                 loggedUserName,
+                setCurrentUser
             }}
         >
             {children}

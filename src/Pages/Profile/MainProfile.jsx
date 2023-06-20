@@ -8,6 +8,16 @@ import { Link } from 'react-router-dom'
 export function MainProfile() {
     const { data, currentUser, setData, loggedUserName } = useAuth()
 
+    const numberOfPosts = data.posts.reduce((acc,curr)=> {
+        return curr.username === currentUser.username 
+        ? 
+        acc+1 
+        : 
+        acc
+    },0)
+
+    console.log(`The number of posts for ${currentUser.username} is ${numberOfPosts}`);
+
     return (
         <>
             <main className="p-s">
@@ -36,15 +46,15 @@ export function MainProfile() {
 
                     <div className="white-bg p-xs m-xs flex flex-row flex-space-evenly">
                         <div className="flex flex-column flex-center m-s ml-m mr-m">
-                            <p className="fw-black">0</p>
+                            <p className="fw-black">{currentUser.following.length}</p>
                             <p className="fw-semibold">Following</p>
                         </div>
                         <div className="flex flex-column flex-center m-s ml-m mr-m">
-                            <p className="fw-black">2K</p>
+                            <p className="fw-black">{numberOfPosts}</p>
                             <p className="fw-semibold">Posts</p>
                         </div>
                         <div className="flex flex-column flex-center m-s ml-m mr-m">
-                            <p className="fw-black">37.3K</p>
+                            <p className="fw-black">{currentUser.followers.length}</p>
                             <p className="fw-semibold">Followers</p>
                         </div>
                     </div>
