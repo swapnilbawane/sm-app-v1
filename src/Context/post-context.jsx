@@ -22,7 +22,7 @@ export function PostProvider({ children }) {
             // const config = { headers : { authorization : encodedToken }, body : JSON.stringify(sendPost) }
             // const postResponse = await axios.post(url,config )
 
-            const sendPost = { postData: newPost }
+            const sendPost = { postData: { content: newPost } }
             console.log('sendPost', JSON.stringify(sendPost))
             const t = JSON.stringify(sendPost)
             console.log('parsed', JSON.parse(t))
