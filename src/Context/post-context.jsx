@@ -6,8 +6,8 @@ export const PostContext = createContext()
 
 export function PostProvider({ children }) {
     const [newPost, setNewPost] = useState('')
-    const { data, currentUser, setData, loggedUserName } = useAuth()
-    const location = useLocation();
+    const { setData, loggedUserName } = useAuth()
+    const location = useLocation()
 
     const addNewPostHandler = (event) => {
         const textValue = event.target.value
@@ -19,10 +19,6 @@ export function PostProvider({ children }) {
 
         try {
             const encodedToken = localStorage.getItem('encodedToken')
-
-            // const url = "/api/posts"
-            // const config = { headers : { authorization : encodedToken }, body : JSON.stringify(sendPost) }
-            // const postResponse = await axios.post(url,config )
 
             const sendPost = { postData: { content: newPost } }
             console.log('sendPost', JSON.stringify(sendPost))
@@ -45,11 +41,13 @@ export function PostProvider({ children }) {
                 console.log('before reverse', postsData) // { postsData : posts }
                 console.log('posts data', postsData.posts)
                 let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts
-               
-                if(location.pathname==="/profile") { 
-                    posts = posts.filter((item)=> item.username === loggedUserName)
+
+                if (location.pathname === '/profile') {
+                    posts = posts.filter(
+                        (item) => item.username === loggedUserName
+                    )
                 }
-                
+
                 postsData = { posts } // shorthand for object : posts: posts - this will put reversed posts to post key now it resembles postData = { posts : {[....],[....],[....],[....]}}
                 setData(postsData)
                 setNewPost('')

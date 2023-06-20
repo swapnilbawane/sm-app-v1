@@ -2,18 +2,15 @@ import '../../style.css'
 import '../../index.css'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
-import { useState } from 'react'
 import { usePost } from '../../Context/post-context'
-import axios from 'axios'
 
 // On clicking POST it calls API - recreate it.
 
 export function MainHome() {
+    const { data, allUsers } = useAuth()
+    const { addNewPostHandler, postHandler, newPost } = usePost()
 
-  const { data, currentUser,setData, allUsers } = useAuth(); 
-  const { addNewPostHandler, postHandler, newPost, setNewPost } = usePost();
-
-  console.log("data from main home", data)
+    console.log('data from main home', data)
 
     return (
         <>
@@ -42,9 +39,9 @@ export function MainHome() {
                                     <i className="bi bi-filetype-gif"></i>
                                     <i className="bi bi-emoji-smile"></i>
                                 </div> */}
-                                <button 
-                                className="primary-bg p-l pt-xs pb-xs secondary-color border-none outline-transparent"
-                                onClick={postHandler}
+                                <button
+                                    className="primary-bg p-l pt-xs pb-xs secondary-color border-none outline-transparent"
+                                    onClick={postHandler}
                                 >
                                     Post
                                 </button>
@@ -59,25 +56,23 @@ export function MainHome() {
                 </div>
 
                 <div className="white-bg mr-xxl p-xs mt-s">
-                  {/* TODO: Add a map function here but first get data on first load in login context */}
-                   
-                   { 
-                   data?.posts?.map((item)=> { 
-                    const itemid = item._id 
-                    const itemusername = item.username
-                    const { firstName, lastName } = allUsers.find((user)=> user.username===item.username) // finding first name based on username
-                    // itemid,itemusername,...currentUser
-                    // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id. 
-                    const postData = {...item, firstName, lastName} 
-                    return(
-                        <div key={item._id}>
-                        <PostComponent {...postData}/>
-                        </div>
-                    ); 
-                   })
-                   }
-                    
-                    
+                    {/* TODO: Add a map function here but first get data on first load in login context */}
+
+                    {data?.posts?.map((item) => {
+                        // const itemid = item._id
+                        // const itemusername = item.username
+                        const { firstName, lastName } = allUsers.find(
+                            (user) => user.username === item.username
+                        ) // finding first name based on username
+                        // itemid,itemusername,...currentUser
+                        // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id.
+                        const postData = { ...item, firstName, lastName }
+                        return (
+                            <div key={item._id}>
+                                <PostComponent {...postData} />
+                            </div>
+                        )
+                    })}
                 </div>
             </main>
         </>
