@@ -40,6 +40,36 @@ export function AuthProvider({ children }) {
         }
     }
 
+    const handleGuestLogin = async () => {
+        try {
+            const creds = {
+                username: "adarshbalika",
+                password: "adarshBalika123",
+            }
+
+            // console.log('user', user)
+
+            const res = await axios.post(
+                '/api/auth/login',
+                JSON.stringify(creds)
+            )
+
+            if (res.status === 200) {
+                const { foundUser, encodedToken } = res.data
+
+                localStorage.setItem('encodedToken', encodedToken)
+                setLoggedIn(true)
+                setLoggedUserName("adarshbalika")
+                navigate('/home')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+
     const getSingleUserPostsData = async () => {
         console.log(`/api/posts/user/${loggedUserName}`)
         try {
@@ -95,6 +125,46 @@ export function AuthProvider({ children }) {
         }
     }
 
+
+   const handleLogout = () => { 
+    localStorage.removeItem("encodedToken");
+    setLoggedIn(false);  
+    navigate("/")
+   }
+
+   const handleSignup = async (user) => { 
+    console.log("received user", user)
+
+    try {
+        const creds = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            password: user.password,
+        }
+
+        // console.log('user', user)
+
+        const res = await axios.post(
+            '/api/auth/signup',
+            JSON.stringify(creds)
+        )
+
+        if (res.status === 201) {
+            const { createdUser, encodedToken } = res.data
+
+            localStorage.setItem('encodedToken', encodedToken)
+            setLoggedIn(true)
+            setLoggedUserName(user.username)
+            navigate('/home')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+   }
+
+
     useEffect(() => {
         getUserData()
         // getSingleUserPostsData()
@@ -112,7 +182,10 @@ export function AuthProvider({ children }) {
                 currentUser,
                 allUsers,
                 loggedUserName,
-                setCurrentUser
+                setCurrentUser,
+                handleGuestLogin,
+                handleLogout,
+                handleSignup
             }}
         >
             {children}

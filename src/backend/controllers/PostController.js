@@ -169,6 +169,8 @@ export const likePostHandler = function (schema, request) {
         }
       );
     }
+
+    // updated here #TODO
     const postId = request.params.postId;
     // console.log("post id from controller",postId)
     const post = schema.posts.findBy({ _id: postId }).attrs;
@@ -185,7 +187,7 @@ export const likePostHandler = function (schema, request) {
       (currUser) => currUser._id !== user._id
     );
     post.likes.likeCount += 1;
-    post.likes.likedBy.push(user);
+    post.likes.likedBy.push(user); // updated new #TODO 
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
