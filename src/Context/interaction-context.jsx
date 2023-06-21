@@ -6,6 +6,9 @@ export const InteractionContext = createContext()
 export function InteractionProvider({ children }) {
     const { data, setData, setCurrentUser } = useAuth()
 
+
+
+
     const likeHandler = async (id) => {
         console.log('id', id)
         console.log(`/api/posts/like/${id}`)
@@ -109,8 +112,62 @@ const unFollowHandler = async(id) => {
 }
  
 
+const bookmarkHandler = async(id) => { 
+    try {
+        const encodedToken = localStorage.getItem('encodedToken')
+
+        const bookMarkResponse = await fetch(`/api/users/bookmark/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `${encodedToken}`,
+            },
+        })
+
+      
+        const bookmarkData = await bookMarkResponse.json()
+        console.log("bookmark Data", bookmarkData);
+
+        // const updatedLoggedInUser = unFollowData.user
+        // setCurrentUser(updatedLoggedInUser)
+        // const posts = Array.from(likedData.posts).reverse(); 
+        // likedData = { posts }
+        // setData(likedData)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const removeBookmarkHandler = async(id) => { 
+    try {
+        const encodedToken = localStorage.getItem('encodedToken')
+
+        const removeBookMarkResponse = await fetch(`/api/users/remove-bookmark/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `${encodedToken}`,
+            },
+        })
+
+      
+        const removeBookmarkData = await removeBookMarkResponse.json()
+        console.log("removed bookmark Data", removeBookmarkData);
+
+        // const updatedLoggedInUser = unFollowData.user
+        // setCurrentUser(updatedLoggedInUser)
+        // const posts = Array.from(likedData.posts).reverse(); 
+        // likedData = { posts }
+        // setData(likedData)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
     return (
-        <InteractionContext.Provider value={{ likeHandler, dislikeHandler, followHandler, unFollowHandler }}>
+        <InteractionContext.Provider value={{ likeHandler, dislikeHandler, followHandler, unFollowHandler, bookmarkHandler, removeBookmarkHandler }}>
             {children}
         </InteractionContext.Provider>
     )

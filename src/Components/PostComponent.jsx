@@ -1,6 +1,7 @@
 // TODO: This is a card component, this should receive the destructured data from the map function run in Main Home page. 
 
 import { useInteraction } from "../Context/interaction-context";
+import { useAuth } from "../Context/auth-context";
 
 export function PostComponent({
 // itemid,
@@ -13,7 +14,8 @@ firstName,
 lastName
 }) {
 
- const { likeHandler, dislikeHandler } = useInteraction(); 
+ const { likeHandler, dislikeHandler, bookmarkHandler, removeBookmarkHandler } = useInteraction();
+ const { currentUser } = useAuth()  
 
  const item = { 
     _id,
@@ -24,6 +26,7 @@ lastName
     lastName }
 
 //  console.log("item from post component", item)
+console.log("current user from post component", currentUser)
 
     return (
         <>
@@ -61,7 +64,15 @@ lastName
                        }
                         {/* <i className="bi bi-chat-left"></i>
                         <i className="bi bi-share"></i> */}
-                        <i className="bi bi-bookmark-fill"></i>
+
+                        { 
+                        currentUser?.bookmarks.length > 0 
+                        ?  
+                        <i className="bi bi-bookmark-fill" onClick={()=> removeBookmarkHandler(_id)}></i>
+                        : 
+                        <i className="bi bi-bookmark" onClick={()=> bookmarkHandler(_id)}></i>       
+                        }
+                        
                     </div>
                 </div>
             </div>
