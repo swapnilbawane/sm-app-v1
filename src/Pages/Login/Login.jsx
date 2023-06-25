@@ -6,7 +6,7 @@ import { useAuth } from '../../Context/auth-context'
 
 export function Login() {
     const [user, setUser] = useState({ username: '', password: '' })
-    const { handleLogin } = useAuth(); 
+    const { handleLogin, handleGuestLogin } = useAuth(); 
 
     const handleLoginInput = (e) => {
         const targetValue = e.target.value
@@ -83,12 +83,18 @@ export function Login() {
                     </button>
 
                     <Link
-                        to="/"
+                        to="/signup"
                         className="txt-center w-full mt-m"
                         style={{ display: 'block' }}
                     >
                         Create New Account
                     </Link>
+
+                    <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
+                    onClick={()=> handleGuestLogin()}
+                    >
+                        Login as Guest
+                    </button>
                 </div>
             </div>
         </>
