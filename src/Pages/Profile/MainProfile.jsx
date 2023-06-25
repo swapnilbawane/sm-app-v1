@@ -4,9 +4,11 @@ import '../../index.css'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export function MainProfile() {
-    const { data, currentUser, setData, loggedUserName } = useAuth()
+   
+    const { data, currentUser, setData, loggedUserName, profilePostsData, setProfilePostsData } = useAuth()
 
     const numberOfPosts = data.posts.reduce((acc,curr)=> {
         return curr.username === currentUser.username 
@@ -64,12 +66,13 @@ export function MainProfile() {
                     <div className="white-bg mr-xxl p-xs mt-s">
                         {/* TODO: Add a map function here but first get data on first load in login context */}
 
-                        {data?.posts?.map((item) => {
+                        {profilePostsData?.posts?.map((item,index) => {
                             // const postData = { ...item}
                             const firstName = currentUser.firstName
                             const lastName = currentUser.lastName
 
                             const itemData = {...item, firstName, lastName }
+                            console.log(index,"item data", itemData)
 
                             return item.username === loggedUserName ? (
                                 <div key={item._id}>

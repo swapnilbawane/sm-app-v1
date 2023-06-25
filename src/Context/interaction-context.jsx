@@ -4,7 +4,7 @@ import { useAuth } from './auth-context'
 export const InteractionContext = createContext()
 
 export function InteractionProvider({ children }) {
-    const { data, setData, setCurrentUser, bookmarkData, setBookmarkData } = useAuth()
+    const { data, setData, setCurrentUser, bookmarkData, setBookmarkData, loggedUserName, setProfilePostsData } = useAuth()
 
     const likeHandler = async (id) => {
         console.log('id', id)
@@ -27,8 +27,18 @@ export function InteractionProvider({ children }) {
 
             if(likeResponse.status===201) { 
                 const likedResponseData = await likeResponse.json()
+
                 const posts = Array.from(likedResponseData.posts).reverse()
+                let profileDataPosts = posts.filter(
+                    (item) => item.username === loggedUserName
+                )
+
+            //    console.log("new posts from profileDataPosts:", profileDataPosts)
+
                 const likedData = { posts }
+                const profileData = { posts: profileDataPosts } 
+
+                setProfilePostsData(profileData)
                 setData(likedData)
             }
            
@@ -56,8 +66,16 @@ export function InteractionProvider({ children }) {
 
             if(dislikeResponse.status===201) { 
                 const dislikedDataResponse = await dislikeResponse.json()
+
                 const posts = Array.from(dislikedDataResponse.posts).reverse()
+                let profileDataPosts = posts.filter(
+                    (item) => item.username === loggedUserName
+                )
+
                 const dislikedData = { posts }
+                const profileData = { posts: profileDataPosts } 
+
+                setProfilePostsData(profileData)
                 setData(dislikedData)
             }
       

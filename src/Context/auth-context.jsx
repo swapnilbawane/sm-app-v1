@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState({})
     const [allUsers, setAllUsers] = useState([])
     const [bookmarkData, setBookmarkData] = useState([])
+    const [ profilePostsData, setProfilePostsData ] = useState([])
     
 
     const navigate = useNavigate()
@@ -119,6 +120,7 @@ export function AuthProvider({ children }) {
                 const posts = await dataResponse.data
                 console.log('posts from auth context:', posts)
                 // setData(posts)
+                setProfilePostsData(posts)
             }
         } catch (error) {
             console.log(error)
@@ -191,7 +193,7 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         getUserData()
-        // getSingleUserPostsData()
+        getSingleUserPostsData()
         getAllPostsData()
         getAllBookMarks()
     }, [loggedIn])
@@ -213,7 +215,9 @@ export function AuthProvider({ children }) {
                 allUsers,
                 loggedUserName,
                 bookmarkData, 
-                setBookmarkData
+                setBookmarkData,
+                profilePostsData, 
+                setProfilePostsData
             }}
         >
             {children}
