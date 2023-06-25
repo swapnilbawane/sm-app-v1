@@ -16,7 +16,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Senior Software Engineer @Ubis | Posts about JavaScript, ReactJS, Career and Startups",
     link: "https://ab.blogspot.com",
-    bookmarks: []
+    // bookmarks: []
   },
   {
     _id: uuid(),
@@ -28,7 +28,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Writer Wizard @Craftz | Posts about Life, Motivation",
     link: "https://albert.blogspot.com",
-    bookmarks: []
+    // bookmarks: []
   },
   {
     _id: uuid(),
@@ -40,7 +40,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Memorial Account of Sir Albert Einstein | Posts about Life, Science",
     link: "https://alberteinstein.blogspot.com",
-    bookmarks: []
+    // bookmarks: []
   },
   {
     _id: uuid(),
@@ -52,7 +52,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Memorial Account of Sir C V Raman | Posts about Life, Science", 
     link: "https://sircvraman.blogspot.com",
-    bookmarks: []
+    // bookmarks: []
   },
   {
     _id: uuid(),
@@ -64,6 +64,6 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Fan account | Posts all about Cricket",
     link: "https://crickmania.blogspot.com",
-    bookmarks: []
+    // bookmarks: []
   },
 ];
