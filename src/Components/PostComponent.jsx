@@ -4,29 +4,25 @@ import { useInteraction } from "../Context/interaction-context";
 import { useAuth } from "../Context/auth-context";
 
 export function PostComponent({
-// itemid,
-// itemusername,
 _id,
 content,
 username,
 likes,
 firstName,
-lastName
+lastName,
+bookmark
 }) {
 
  const { likeHandler, dislikeHandler, bookmarkHandler, removeBookmarkHandler } = useInteraction();
- const { currentUser } = useAuth()  
+ const { currentUser,data,bookmarkData } = useAuth()  
+ let bookmarkLikes;
 
- const item = { 
-    _id,
-    content,
-    username,
-    likes,
-    firstName,
-    lastName }
-
-//  console.log("item from post component", item)
-console.log("current user from post component", currentUser)
+ if(bookmark) { 
+    const { likes } = data.posts.find((item)=>item._id===_id)
+    bookmarkLikes = likes
+ }
+ 
+ const isPresentInBookmarks = bookmarkData.findIndex((item)=>item._id===_id)
 
     return (
         <>
@@ -55,22 +51,39 @@ console.log("current user from post component", currentUser)
                     </p>
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
+                      
                        { 
-                       likes.likeCount>0
-                       ?
-                        <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
-                       :
-                       <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>        
+                       bookmark 
+                       ? 
+                       (
+                       bookmarkLikes.likeCount>0 
+                        ?
+                         <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
+                        :
+                        <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>  
+                       )
+                       : 
+                       ( 
+                        likes.likeCount>0 
+                        ?
+                         <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
+                        :
+                        <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>        
+                       )
                        }
+                      
+                       
+                       
+                       
                         {/* <i className="bi bi-chat-left"></i>
                         <i className="bi bi-share"></i> */}
 
                         { 
-                        currentUser?.bookmarks.length > 0 
-                        ?  
-                        <i className="bi bi-bookmark-fill" onClick={()=> removeBookmarkHandler(_id)}></i>
+                        isPresentInBookmarks === -1 
+                        ? 
+                        <i className="bi bi-bookmark" onClick={()=> bookmarkHandler(_id)}></i> 
                         : 
-                        <i className="bi bi-bookmark" onClick={()=> bookmarkHandler(_id)}></i>       
+                        <i className="bi bi-bookmark-fill" onClick={()=> removeBookmarkHandler(_id)}></i>     
                         }
                         
                     </div>

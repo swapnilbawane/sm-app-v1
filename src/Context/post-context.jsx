@@ -7,13 +7,16 @@ export const PostContext = createContext()
 export function PostProvider({ children }) {
     const [newPost, setNewPost] = useState('')
     const { setData, loggedUserName } = useAuth()
+
     const location = useLocation()
 
+    // capture data that is being typed store it in a state variable
     const addNewPostHandler = (event) => {
         const textValue = event.target.value
         setNewPost(textValue)
     }
 
+    // this function takes the text from the addnewPostHandler and then makes an API call to add it to db. 
     const postHandler = async () => {
         console.log('newPostContent', newPost)
 
@@ -21,9 +24,10 @@ export function PostProvider({ children }) {
             const encodedToken = localStorage.getItem('encodedToken')
 
             const sendPost = { postData: { content: newPost } }
-            console.log('sendPost', JSON.stringify(sendPost))
-            const t = JSON.stringify(sendPost)
-            console.log('parsed', JSON.parse(t))
+
+            // console.log('sendPost', JSON.stringify(sendPost))
+            // const t = JSON.stringify(sendPost)
+            // console.log('parsed', JSON.parse(t))
 
             const postResponse = await fetch('/api/posts', {
                 method: 'POST',
@@ -40,7 +44,7 @@ export function PostProvider({ children }) {
                 let postsData = await postResponse.json()
                 console.log('before reverse', postsData) // { postsData : posts }
                 console.log('posts data', postsData.posts)
-                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
 
                 if (location.pathname === '/profile') {
                     posts = posts.filter(
