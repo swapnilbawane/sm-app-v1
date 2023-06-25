@@ -7,7 +7,7 @@ import { usePost } from '../../Context/post-context'
 // On clicking POST it calls API - recreate it.
 
 export function MainHome() {
-    const { data, allUsers } = useAuth()
+    const { data, allUsers, currentUser } = useAuth()
     const { addNewPostHandler, postHandler, newPost } = usePost()
 
     console.log('data from main home', data)
@@ -63,9 +63,9 @@ export function MainHome() {
                         // const itemusername = item.username
                         const { firstName, lastName } = allUsers.find(
                             (user) => user.username === item.username
-                        ) // finding first name based on username
-                        // itemid,itemusername,...currentUser
-                        // this itemid corresponds to id of the item. whereas postData passed data that earlier shadowed or used the current username id instead of the item's id. So explicity passing the itemid with item's id.
+                        ) // finding first name based on username  
+                        //  what this does is that it is showing home feed so for each posts - it is taking user name from each posts and then from that it is searching data of all users and from that it is taking first name and lastname to be displayed on home feed. 
+
                         const postData = { ...item, firstName, lastName }
                         return (
                             <div key={item._id}>
