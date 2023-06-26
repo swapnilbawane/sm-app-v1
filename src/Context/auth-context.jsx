@@ -11,12 +11,11 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState({})
     const [allUsers, setAllUsers] = useState([])
     const [bookmarkData, setBookmarkData] = useState([])
-    const [ profilePostsData, setProfilePostsData ] = useState([])
-    
+    const [profilePostsData, setProfilePostsData] = useState([])
 
     const navigate = useNavigate()
 
-    // handle login, guest login, signup, logout 
+    // handle login, guest login, signup, logout
 
     const handleLogin = async (user) => {
         try {
@@ -101,14 +100,14 @@ export function AuthProvider({ children }) {
         }
     }
 
-     // for logout we need to delete the encoded token and set logged in to false so that private routing is maintained.
-     const handleLogout = () => {
+    // for logout we need to delete the encoded token and set logged in to false so that private routing is maintained.
+    const handleLogout = () => {
         localStorage.removeItem('encodedToken')
         setLoggedIn(false)
         navigate('/')
     }
 
-    // POSTS : get single user posts 
+    // POSTS : get single user posts
     const getSingleUserPostsData = async () => {
         console.log(`/api/posts/user/${loggedUserName}`)
         try {
@@ -167,8 +166,8 @@ export function AuthProvider({ children }) {
     }
 
     // This API call gets all user bookmarked posts from the db.
-    const getAllBookMarks = async() => { 
-        try { 
+    const getAllBookMarks = async () => {
+        try {
             const encodedToken = localStorage.getItem('encodedToken')
 
             const bookmarkResponse = await fetch('/api/users/bookmark/', {
@@ -179,16 +178,12 @@ export function AuthProvider({ children }) {
                 },
             })
 
-            if(bookmarkResponse.status===200) { 
+            if (bookmarkResponse.status === 200) {
                 // console.log("bookmark data all", await bookmarkResponse.json())
                 const bookmarkResponseData = await bookmarkResponse.json()
                 setBookmarkData(bookmarkResponseData.bookmarks)
             }
-
-        }
-        catch(error) { 
-
-        }
+        } catch (error) {}
     }
 
     useEffect(() => {
@@ -213,11 +208,12 @@ export function AuthProvider({ children }) {
                 currentUser,
                 setCurrentUser,
                 allUsers,
+                setAllUsers,
                 loggedUserName,
-                bookmarkData, 
+                bookmarkData,
                 setBookmarkData,
-                profilePostsData, 
-                setProfilePostsData
+                profilePostsData,
+                setProfilePostsData,
             }}
         >
             {children}

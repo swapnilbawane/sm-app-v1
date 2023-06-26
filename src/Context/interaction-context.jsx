@@ -4,7 +4,17 @@ import { useAuth } from './auth-context'
 export const InteractionContext = createContext()
 
 export function InteractionProvider({ children }) {
-    const { data, setData, setCurrentUser, bookmarkData, setBookmarkData, loggedUserName, setProfilePostsData } = useAuth()
+    const {
+        data,
+        setData,
+        setCurrentUser,
+        bookmarkData,
+        setBookmarkData,
+        loggedUserName,
+        setProfilePostsData,
+        allUsers,
+        setAllUsers,
+    } = useAuth()
 
     const likeHandler = async (id) => {
         console.log('id', id)
@@ -22,10 +32,9 @@ export function InteractionProvider({ children }) {
                 },
             })
 
-        
             // console.log("like response", likeResponse);
 
-            if(likeResponse.status===201) { 
+            if (likeResponse.status === 201) {
                 const likedResponseData = await likeResponse.json()
 
                 const posts = Array.from(likedResponseData.posts).reverse()
@@ -33,16 +42,14 @@ export function InteractionProvider({ children }) {
                     (item) => item.username === loggedUserName
                 )
 
-            //    console.log("new posts from profileDataPosts:", profileDataPosts)
+                //    console.log("new posts from profileDataPosts:", profileDataPosts)
 
                 const likedData = { posts }
-                const profileData = { posts: profileDataPosts } 
+                const profileData = { posts: profileDataPosts }
 
                 setProfilePostsData(profileData)
                 setData(likedData)
             }
-           
-            
         } catch (error) {
             console.log(error)
         }
@@ -64,7 +71,7 @@ export function InteractionProvider({ children }) {
                 },
             })
 
-            if(dislikeResponse.status===201) { 
+            if (dislikeResponse.status === 201) {
                 const dislikedDataResponse = await dislikeResponse.json()
 
                 const posts = Array.from(dislikedDataResponse.posts).reverse()
@@ -73,13 +80,11 @@ export function InteractionProvider({ children }) {
                 )
 
                 const dislikedData = { posts }
-                const profileData = { posts: profileDataPosts } 
+                const profileData = { posts: profileDataPosts }
 
                 setProfilePostsData(profileData)
                 setData(dislikedData)
             }
-      
-          
         } catch (error) {
             console.log(error)
         }
@@ -98,15 +103,30 @@ export function InteractionProvider({ children }) {
             })
 
             // console.log("likeResponse", await likeResponse.json());
-            const followData = await followResponse.json()
-            console.log('follow Data', followData)
-            const updatedLoggedInUser = followData.user
-            setCurrentUser(updatedLoggedInUser)
-            // setAllusersData.
 
-            // const posts = Array.from(likedData.posts).reverse();
-            // likedData = { posts }
-            // setData(likedData)
+            if (followResponse.status === 200) {
+                const followData = await followResponse.json()
+
+                // console.log('follow Data', followData)
+                const updatedLoggedInUser = followData.user
+
+                // update details of followed user also
+                let updatedAllUsersList = allUsers.map((item) =>
+                    item.username === followData.followUser.username
+                        ? followData.followUser
+                        : item
+                )
+
+                //   update logged user
+                updatedAllUsersList = allUsers.map((item) =>
+                    item.username === followData.user.username
+                        ? followData.user
+                        : item
+                )
+
+                setCurrentUser(updatedLoggedInUser)
+                setAllUsers(updatedAllUsersList)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -124,14 +144,27 @@ export function InteractionProvider({ children }) {
                 },
             })
 
-            // console.log("likeResponse", await likeResponse.json());
-            const unFollowData = await unFollowResponse.json()
-            console.log('unfollow Data', unFollowData)
-            const updatedLoggedInUser = unFollowData.user
-            setCurrentUser(updatedLoggedInUser)
-            // const posts = Array.from(likedData.posts).reverse();
-            // likedData = { posts }
-            // setData(likedData)
+            if (unFollowResponse.status === 200) {
+                // console.log("likeResponse", await likeResponse.json());
+                const unFollowData = await unFollowResponse.json()
+                //  console.log('unfollow Data', unFollowData)
+                const updatedLoggedInUser = unFollowData.user
+
+                let updatedAllUsersList = allUsers.map((item) =>
+                    item.username === unFollowData.followUser.username
+                        ? unFollowData.followUser
+                        : item
+                )
+
+                updatedAllUsersList = allUsers.map((item) =>
+                    item.username === unFollowData.user.username
+                        ? unFollowData.user
+                        : item
+                )
+
+                setCurrentUser(updatedLoggedInUser)
+                setAllUsers(updatedAllUsersList)
+            }
         } catch (error) {
             console.log(error)
         }
@@ -149,19 +182,11 @@ export function InteractionProvider({ children }) {
                 },
             })
 
-            if(bookMarkResponse.status===200) { 
+            if (bookMarkResponse.status === 200) {
                 const bookmarkData = await bookMarkResponse.json()
                 console.log('bookmark Data', bookmarkData)
                 setBookmarkData(bookmarkData.bookmarks)
             }
-            
-            
-
-            // const updatedLoggedInUser = unFollowData.user
-            // setCurrentUser(updatedLoggedInUser)
-            // const posts = Array.from(likedData.posts).reverse();
-            // likedData = { posts }
-            // setData(likedData)
         } catch (error) {
             console.log(error)
         }
@@ -182,18 +207,11 @@ export function InteractionProvider({ children }) {
                 }
             )
 
-            if(removeBookMarkResponse.status===200) { 
+            if (removeBookMarkResponse.status === 200) {
                 const removedBookmarkData = await removeBookMarkResponse.json()
                 // console.log('removed bookmark Data', removeBookmarkData)
                 setBookmarkData(removedBookmarkData.bookmarks)
             }
-            
-
-            // const updatedLoggedInUser = unFollowData.user
-            // setCurrentUser(updatedLoggedInUser)
-            // const posts = Array.from(likedData.posts).reverse();
-            // likedData = { posts }
-            // setData(likedData)
         } catch (error) {
             console.log(error)
         }

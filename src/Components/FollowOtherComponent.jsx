@@ -1,26 +1,42 @@
 import { useState } from 'react'
 import { useInteraction } from '../Context/interaction-context'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../Context/auth-context'
 
-export function FollowOtherComponent({ _id, firstName, lastName, username }) {
+export function FollowOtherComponent({
+    _id,
+    firstName,
+    lastName,
+    username,
+    followers,
+    following,
+}) {
     const { followHandler, unFollowHandler } = useInteraction()
-    const [followed, setFollowed] = useState(false)
+    const { allUsers, loggedUserName } = useAuth()
 
     const followLinkHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
         followHandler(_id)
-        setFollowed(true)
     }
 
     const unFollowLinkHandler = (e) => {
-      e.preventDefault()
-      e.stopPropagation()
-      unFollowHandler(_id)
-      setFollowed(false)
-  }
+        e.preventDefault()
+        e.stopPropagation()
+        unFollowHandler(_id)
+    }
 
     const link = null
+
+    const findLogged = allUsers.find((item) => item.username === loggedUserName)
+
+    // console.log('findLogged', findLogged)
+
+    const isFollowing = findLogged.following.findIndex(
+        (item) => item.username === username
+    )
+
+    // console.log('isFollowing:', isFollowing)
 
     return (
         <>
@@ -35,19 +51,16 @@ export function FollowOtherComponent({ _id, firstName, lastName, username }) {
                     </Link>
                 </div>
                 <div className="primary-color fw-bold">
-
-                   {  !followed 
-                   ?
-                   <Link to={link} onClick={(e) => followLinkHandler(e)}>
-                        Follow 
-                        <i className="bi bi-plus-lg"></i>
-                    </Link> 
-                   : 
-                   <Link to={link} onClick={(e) => unFollowLinkHandler(e)}>
-                        Following 
-                    </Link>
-                   }
-                    
+                    {isFollowing === -1 ? (
+                        <Link to={link} onClick={(e) => followLinkHandler(e)}>
+                            Follow
+                            <i className="bi bi-plus-lg"></i>
+                        </Link>
+                    ) : (
+                        <Link to={link} onClick={(e) => unFollowLinkHandler(e)}>
+                            Following
+                        </Link>
+                    )}
                 </div>
             </div>
         </>
