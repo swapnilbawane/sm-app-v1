@@ -134,7 +134,7 @@ export function PostComponent({
                                             <ModalHeader>Your post</ModalHeader>
                                             <ModalCloseButton />
                                             <ModalBody>
-                                                <p>{content}</p>
+                                                <textarea>{content}</textarea>
                                             </ModalBody>
                                             <ModalFooter>
                                                 <Button
@@ -142,7 +142,7 @@ export function PostComponent({
                                                     mr={3}
                                                     onClick={onClose}
                                                 >
-                                                    Edit
+                                                    Save
                                                 </Button>
                                                 {/* <Button variant="ghost">Delete</Button> */}
                                             </ModalFooter>
