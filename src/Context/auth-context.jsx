@@ -186,6 +186,53 @@ export function AuthProvider({ children }) {
         } catch (error) {}
     }
 
+    const editUserHandler = async (user) => {
+        try {
+            const encodedToken = localStorage.getItem('encodedToken')
+
+            const sendUserData = {
+                userData: { bio: user.bio, link: user.link },
+            }
+
+            const editedUserResponse = await fetch(`/api/users/edit/`, {
+                method: 'POST',
+                body: JSON.stringify(sendUserData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `${encodedToken}`,
+                },
+            })
+
+            // console.log('edited user response', await editedUserResponse.json())
+
+            if (editedUserResponse.status === 201) {
+                let updatedUserData = await editedUserResponse.json()
+                updatedUserData = updatedUserData.user
+
+                // map and update currentUser and allUser
+                const userEditedData = {
+                    ...currentUser,
+                    bio: updatedUserData.bio,
+                    link: updatedUserData.link,
+                }
+                const allUserEditedData = allUsers.map((item) =>
+                    item.username === user.username
+                        ? {
+                              ...item,
+                              bio: updatedUserData.bio,
+                              link: updatedUserData.link,
+                          }
+                        : item
+                )
+
+                setCurrentUser(userEditedData)
+                setAllUsers(allUserEditedData)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
         getUserData()
         getSingleUserPostsData()
@@ -214,6 +261,7 @@ export function AuthProvider({ children }) {
                 setBookmarkData,
                 profilePostsData,
                 setProfilePostsData,
+                editUserHandler,
             }}
         >
             {children}

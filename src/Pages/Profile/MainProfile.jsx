@@ -30,6 +30,7 @@ export function MainProfile() {
         loggedUserName,
         profilePostsData,
         setProfilePostsData,
+        editUserHandler
     } = useAuth()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [textEdit, setTextEdit] = useState({
@@ -117,8 +118,7 @@ export function MainProfile() {
                                     colorScheme="blue"
                                     mr={3}
                                     onClick={() => {
-                                        // editPostHandler(_id, textEdit)
-                                        console.log('text edit', textEdit)
+                                        editUserHandler(textEdit)
                                         handleCloseModal()
                                     }}
                                 >
