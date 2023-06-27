@@ -127,9 +127,58 @@ export function PostProvider({ children }) {
         }
     }
 
+    const editPostHandler = async (id,post) => {
+       
+        console.log('edited post', post)
+
+        try {
+            const encodedToken = localStorage.getItem('encodedToken')
+
+            const sendPost = { postData: { content: post } }
+
+            // console.log('sendPost', JSON.stringify(sendPost))
+            // const t = JSON.stringify(sendPost)
+            // console.log('parsed', JSON.parse(t))
+
+            const postResponse = await fetch(`/api/posts/edit/${id}`, {
+                method: 'POST',
+                body: JSON.stringify(sendPost),
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `${encodedToken}`,
+                },
+            })
+
+            console.log('edited post response', await postResponse.json())
+
+            // if (postResponse.status === 201) {
+            //     let postsData = await postResponse.json()
+            //     // console.log('before reverse', postsData) // { postsData : posts }
+            //     // console.log('posts data', postsData.posts)
+            //     let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+
+            //     let profileDataPosts = posts.filter(
+            //         (item) => item.username === loggedUserName
+            //     )
+
+            // //    console.log("new posts from profileDataPosts:", profileDataPosts)
+
+            //     const profileData = { posts: profileDataPosts } 
+                
+            //     postsData = { posts }
+                
+            //     setData(postsData)
+            //     setProfilePostsData(profileData)
+
+            // }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <PostContext.Provider
-            value={{ newPost, setNewPost, addNewPostHandler, postHandler, deletePostHandler }}
+            value={{ newPost, setNewPost, addNewPostHandler, postHandler, deletePostHandler, editPostHandler }}
         >
             {children}
         </PostContext.Provider>

@@ -36,7 +36,7 @@ export function PostComponent({
     } = useInteraction()
 
     const { currentUser, data, bookmarkData, loggedUserName } = useAuth()
-    const { deletePostHandler } = usePost()
+    const { deletePostHandler, editPostHandler } = usePost()
 
     let bookmarkLikes
 
@@ -52,6 +52,11 @@ export function PostComponent({
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [ textEdit, setTextEdit ] = useState(content)
+
+    const textEditHandler = (e) => { 
+    setTextEdit(e.target.value)
+    }
 
     const handleEditClick = () => {
         setIsModalOpen(true)
@@ -134,13 +139,13 @@ export function PostComponent({
                                             <ModalHeader>Your post</ModalHeader>
                                             <ModalCloseButton />
                                             <ModalBody>
-                                                <textarea>{content}</textarea>
+                                                <textarea value={textEdit} onChange={textEditHandler}>{content}</textarea>
                                             </ModalBody>
                                             <ModalFooter>
                                                 <Button
                                                     colorScheme="blue"
                                                     mr={3}
-                                                    onClick={onClose}
+                                                    onClick={()=> { onClose(); editPostHandler(_id, textEdit); }}
                                                 >
                                                     Save
                                                 </Button>
