@@ -12,6 +12,8 @@ export function AuthProvider({ children }) {
     const [allUsers, setAllUsers] = useState([])
     const [bookmarkData, setBookmarkData] = useState([])
     const [profilePostsData, setProfilePostsData] = useState([])
+    const [otherProfilePostsData, setOtherProfilePostsData] = useState([])
+    const [ originalPostsData, setOriginalPostsData] = useState([])
 
     const navigate = useNavigate()
 
@@ -136,6 +138,7 @@ export function AuthProvider({ children }) {
                 const posts = Array.from(allPosts.posts).reverse() // this is done so that the newest post is seen first.
                 allPosts = { posts } // this is because in home page we are rendering data.posts so data : { posts : [] }
                 setData(allPosts)
+                setOriginalPostsData(allPosts)
             }
         } catch (error) {
             console.log(error)
@@ -262,6 +265,10 @@ export function AuthProvider({ children }) {
                 profilePostsData,
                 setProfilePostsData,
                 editUserHandler,
+                otherProfilePostsData, 
+                setOtherProfilePostsData, 
+                originalPostsData, 
+                setOriginalPostsData
             }}
         >
             {children}

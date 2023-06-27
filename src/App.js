@@ -5,11 +5,12 @@ import { Home } from './Pages/Home/Home'
 import { Explore } from './Pages/Explore/Explore'
 import { Bookmark } from './Pages/Bookmark/Bookmark'
 import { Profile } from './Pages/Profile/Profile'
+import { OtherProfile } from './Pages/OtherProfile/OtherProfile'
+
 import { ModalTests } from './ModalTests'
-
 import { ModalTests2 } from './ModalTests2'
-
 import Mockman from 'mockman-js'
+
 import { RequiresAuth } from './Components/RequiresAuth'
 
 function App() {
@@ -52,11 +53,20 @@ function App() {
                     }
                 />
 
+                <Route
+                    path="/profile/:username"
+                    element={
+                        <RequiresAuth>
+                            <OtherProfile />
+                        </RequiresAuth>
+                    }
+                />
+
                 <Route path="/" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/mockman" element={<Mockman />} />
-                <Route path="/modals" element={<ModalTests />} /> 
-                <Route path="/modals2" element={<ModalTests2 />} /> 
+                <Route path="/modals" element={<ModalTests />} />
+                <Route path="/modals2" element={<ModalTests2 />} />
             </Routes>
         </div>
     )

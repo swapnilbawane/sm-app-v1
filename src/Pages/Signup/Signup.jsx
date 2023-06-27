@@ -39,6 +39,10 @@ const { handleSignup } = useAuth()
             case 'confirm-password':
                 setUser({ ...user, confirmPassword: inputValue })
                 break
+
+            default:
+                console.log("default case for signup")
+                break    
         }
     }
 
