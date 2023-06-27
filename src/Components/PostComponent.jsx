@@ -1,28 +1,67 @@
-// TODO: This is a card component, this should receive the destructured data from the map function run in Main Home page. 
+// TODO: This is a card component, this should receive the destructured data from the map function run in Main Home page.
+import { useState } from 'react'
+import { useInteraction } from '../Context/interaction-context'
+import { useAuth } from '../Context/auth-context'
+import { useLocation } from 'react-router'
 
-import { useInteraction } from "../Context/interaction-context";
-import { useAuth } from "../Context/auth-context";
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+} from '@chakra-ui/react'
+
+import { Button, useDisclosure } from '@chakra-ui/react'
+
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
+import { usePost } from '../Context/post-context'
 
 export function PostComponent({
-_id,
-content,
-username,
-likes,
-firstName,
-lastName,
-bookmark
+    _id,
+    content,
+    username,
+    likes,
+    firstName,
+    lastName,
+    bookmark,
 }) {
+    const {
+        likeHandler,
+        dislikeHandler,
+        bookmarkHandler,
+        removeBookmarkHandler,
+    } = useInteraction()
 
- const { likeHandler, dislikeHandler, bookmarkHandler, removeBookmarkHandler } = useInteraction();
- const { currentUser,data,bookmarkData } = useAuth()  
- let bookmarkLikes;
+    const { currentUser, data, bookmarkData, loggedUserName } = useAuth()
+    const { deletePostHandler } = usePost()
 
- if(bookmark) { 
-    const { likes } = data.posts.find((item)=>item._id===_id)
-    bookmarkLikes = likes
- }
- 
- const isPresentInBookmarks = bookmarkData.findIndex((item)=>item._id===_id)
+    let bookmarkLikes
+
+    if (bookmark) {
+        const { likes } = data.posts.find((item) => item._id === _id)
+        bookmarkLikes = likes
+    }
+
+    const isPresentInBookmarks = bookmarkData.findIndex(
+        (item) => item._id === _id
+    )
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleEditClick = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const location = useLocation()
 
     return (
         <>
@@ -34,61 +73,130 @@ bookmark
 
                 <div>
                     {/* TODO: CSS BUG the three dots spacing is affected by the number of lines posted */}
-                    <div className="flex flex-row flex-align-center flex-space-between"> 
+                    <div className="flex flex-row flex-align-center flex-space-between">
                         <div className="flex flex-row">
-                            <p className="fw-semibold">{firstName} {lastName}</p>
+                            <p className="fw-semibold">
+                                {firstName} {lastName}
+                            </p>
                             <p className="grey-color pl-xs">
                                 @{username}
                                 <span className="pl-xs">.</span>
                                 <span className="pl-xs">1 min</span>
                             </p>
                         </div>
-                        <p>...</p>
+                        <>
+                            {username !== loggedUserName ? (
+                                <>
+                                    <Menu>
+                                        <MenuButton>
+                                            <i
+                                                className="bi bi-three-dots"
+                                                onClick={onOpen}
+                                            ></i>
+                                        </MenuButton>
+
+                                        <MenuList>
+                                            <MenuItem>
+                                                Feature Coming Soon
+                                            </MenuItem>
+                                        </MenuList>
+                                    </Menu>
+                                </>
+                            ) : (
+                                <>
+                                    <Menu>
+                                        <MenuButton>
+                                            <i
+                                                className="bi bi-three-dots"
+                                                onClick={onOpen}
+                                            ></i>
+                                        </MenuButton>
+                                        <MenuList>
+                                            <MenuItem onClick={handleEditClick}>
+                                                Edit
+                                            </MenuItem>
+                                            <MenuItem
+                                                onClick={() =>
+                                                    deletePostHandler(_id)
+                                                }
+                                            >
+                                                Delete
+                                            </MenuItem>
+                                        </MenuList>
+                                    </Menu>
+
+                                    <Modal
+                                        isOpen={isModalOpen}
+                                        onClose={handleCloseModal}
+                                    >
+                                        <ModalOverlay />
+                                        <ModalContent>
+                                            <ModalHeader>Your post</ModalHeader>
+                                            <ModalCloseButton />
+                                            <ModalBody>
+                                                <p>{content}</p>
+                                            </ModalBody>
+                                            <ModalFooter>
+                                                <Button
+                                                    colorScheme="blue"
+                                                    mr={3}
+                                                    onClick={onClose}
+                                                >
+                                                    Edit
+                                                </Button>
+                                                {/* <Button variant="ghost">Delete</Button> */}
+                                            </ModalFooter>
+                                        </ModalContent>
+                                    </Modal>
+                                </>
+                            )}
+                        </>
                     </div>
 
-                    <p className="pr-s pt-xs">
-                    {content}
-                    </p>
+                    <p className="pr-s pt-xs width-xtralarge">{content}</p>
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
-                      
-                       { 
-                       bookmark 
-                       ? 
-                       (
-                       bookmarkLikes.likeCount>0 
-                        ?
-                         <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
-                        :
-                        <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>  
-                       )
-                       : 
-                       ( 
-                        likes.likeCount>0 
-                        ?
-                         <i className="bi bi-heart-fill" onClick={()=> dislikeHandler(_id)}></i>
-                        :
-                        <i className="bi bi-heart" onClick={()=> likeHandler(_id)} ></i>        
-                       )
-                       }
-                      
-                       
-                       
-                       
+                        {bookmark ? (
+                            bookmarkLikes.likeCount > 0 ? (
+                                <i
+                                    className="bi bi-heart-fill"
+                                    onClick={() => dislikeHandler(_id)}
+                                ></i>
+                            ) : (
+                                <i
+                                    className="bi bi-heart"
+                                    onClick={() => likeHandler(_id)}
+                                ></i>
+                            )
+                        ) : likes.likeCount > 0 ? (
+                            <i
+                                className="bi bi-heart-fill"
+                                onClick={() => dislikeHandler(_id)}
+                            ></i>
+                        ) : (
+                            <i
+                                className="bi bi-heart"
+                                onClick={() => likeHandler(_id)}
+                            ></i>
+                        )}
+
                         {/* <i className="bi bi-chat-left"></i>
                         <i className="bi bi-share"></i> */}
 
-                        { 
-                        isPresentInBookmarks === -1 
-                        ? 
-                        <i className="bi bi-bookmark" onClick={()=> bookmarkHandler(_id)}></i> 
-                        : 
-                        <i className="bi bi-bookmark-fill" onClick={()=> removeBookmarkHandler(_id)}></i>     
-                        }
-                        
+                        {isPresentInBookmarks === -1 ? (
+                            <i
+                                className="bi bi-bookmark"
+                                onClick={() => bookmarkHandler(_id)}
+                            ></i>
+                        ) : (
+                            <i
+                                className="bi bi-bookmark-fill"
+                                onClick={() => removeBookmarkHandler(_id)}
+                            ></i>
+                        )}
                     </div>
                 </div>
             </div>
         </>
-    );
+    )
 }

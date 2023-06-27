@@ -6,6 +6,7 @@ import { Explore } from './Pages/Explore/Explore'
 import { Bookmark } from './Pages/Bookmark/Bookmark'
 import { Profile } from './Pages/Profile/Profile'
 import { ModalTests } from './ModalTests'
+import { ModalTests2 } from './ModalTests2'
 
 import Mockman from 'mockman-js'
 import { RequiresAuth } from './Components/RequiresAuth'
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/mockman" element={<Mockman />} />
                 <Route path="/modals" element={<ModalTests />} /> 
+                <Route path="/modals2" element={<ModalTests2 />} /> 
             </Routes>
         </div>
     )

@@ -88,9 +88,48 @@ export function PostProvider({ children }) {
         }
     }
 
+    const deletePostHandler = async(id) => { 
+        try {
+            const encodedToken = localStorage.getItem('encodedToken')
+
+            const deleteResponse = await fetch(`/api/posts/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `${encodedToken}`,
+                },
+            })
+
+            console.log('delete response', deleteResponse)
+
+            if (deleteResponse.status === 201) {
+                let postsData = await deleteResponse.json()
+                // console.log('before reverse', postsData) // { postsData : posts }
+                // console.log('posts data', postsData.posts)
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+
+                let profileDataPosts = posts.filter(
+                    (item) => item.username === loggedUserName
+                )
+
+            //    console.log("new posts from profileDataPosts:", profileDataPosts)
+
+                const profileData = { posts: profileDataPosts } 
+                
+                postsData = { posts }
+                
+                setData(postsData)
+                setProfilePostsData(profileData)
+               
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <PostContext.Provider
-            value={{ newPost, setNewPost, addNewPostHandler, postHandler }}
+            value={{ newPost, setNewPost, addNewPostHandler, postHandler, deletePostHandler }}
         >
             {children}
         </PostContext.Provider>
