@@ -6,6 +6,7 @@ import { Explore } from './Pages/Explore/Explore'
 import { Bookmark } from './Pages/Bookmark/Bookmark'
 import { Profile } from './Pages/Profile/Profile'
 import { ModalTests } from './ModalTests'
+
 import { ModalTests2 } from './ModalTests2'
 
 import Mockman from 'mockman-js'
