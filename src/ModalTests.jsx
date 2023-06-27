@@ -1,147 +1,176 @@
-import { Link } from "react-router-dom";
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import ReactModal from 'react-modal';
+import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+// import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
-  
-  const modalStyles = {
-    overlay: {
-      background: 'rgba(0, 0, 0, 0.0)',
-     
-    },
-    content: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',  
-      background: '#fff',
-      border: 'none',
-      borderRadius: '8px',
-      padding: '20px',
-    },
-  };
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 
+import { useDisclosure, Button } from '@chakra-ui/react';
+
+// const customStyles = {
+//     content: {
+//         top: '50%',
+//         left: '50%',
+//         right: 'auto',
+//         bottom: 'auto',
+//         marginRight: '-50%',
+//         transform: 'translate(-50%, -50%)',
+//     },
+// }
+
+// const modalStyles = {
+//     overlay: {
+//         background: 'rgba(0, 0, 0, 0.0)',
+//     },
+//     content: {
+//         display: 'flex',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         background: '#fff',
+//         border: 'none',
+//         borderRadius: '8px',
+//         padding: '20px',
+//     },
+// }
 
 // Set the root element of the modal
-Modal.setAppElement('#root');
+// Modal.setAppElement('#root')
 
-export function ModalTests() { 
+export function ModalTests() {
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-const [modalIsOpen, setModalIsOpen] = useState(false);
+    // const openModal = () => {
+    //     setModalIsOpen(true)
+    // }
 
+    // const closeModal = () => {
+    //     setModalIsOpen(false)
+    // }
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+    // const handleOpenModal = () => {
+    //     setModalIsOpen(true)
+    // }
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+    // const handleCloseModal = () => {
+    //     setModalIsOpen(false)
+    // }
 
-  const handleOpenModal = () => {
-    setModalIsOpen(true);
-  };
+    // // new
+    // let subtitle
 
-  const handleCloseModal = () => {
-    setModalIsOpen(false);
-  };
+    // function afterOpenModal() {
+    //     // references are now sync'd and can be accessed.
+    //     subtitle.style.color = '#f00'
+    // }
 
-
-// new 
-let subtitle;
-
-function afterOpenModal() {
-  // references are now sync'd and can be accessed.
-  subtitle.style.color = '#f00';
-}
-
-
-    return(
+    return (
         <>
-        Modal Tests. 
-        <Link to="/home"> Home </Link>
-        <div>
-        <button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-      >
-        <h2>Hello Modal!</h2>
-        <button onClick={closeModal}>Close Modal</button>
-      </Modal>
-        </div>
+            Modal Tests.
+            <Link to="/home"> Home </Link>
+            {/* <div>
+                <button onClick={openModal}>Open Modal</button>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Example Modal"
+                >
+                    <h2>Hello Modal!</h2>
+                    <button onClick={closeModal}>Close Modal</button>
+                </Modal>
+            </div>
+            <div>
+                <button onClick={openModal}>Open Modal</button>
+                <Modal
+                    isOpen={modalIsOpen}
+                    onAfterOpen={afterOpenModal}
+                    onRequestClose={closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
+                    <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
+                    <button onClick={closeModal}>close</button>
+                    <div>I am a modal</div>
+                    <form>
+                        <input />
+                        <button>tab navigation</button>
+                        <button>stays</button>
+                        <button>inside</button>
+                        <button>the modal</button>
+                    </form>
+                </Modal>
+            </div>
+            <div>
+                <ReactModal
+                    isOpen={false}
+                    onRequestClose={() => {}}
+                    contentLabel="Example Modal"
+                >
+                    <p>Modal Content</p>
+                </ReactModal>
+            </div>
+            <div>
+                <button onClick={handleOpenModal}>Open Modal</button>
 
-<div>
-<button onClick={openModal}>Open Modal</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
-</div>
+                <ReactModal
+                    isOpen={modalIsOpen}
+                    onRequestClose={handleCloseModal}
+                    contentLabel="Example Modal"
+                    style={modalStyles}
+                >
+                    <div style={{ margin: 'auto' }}>
+                        <h2>Modal Title</h2>
+                        <p>This is the content of the modal.</p>
 
-<div>
-<ReactModal
-      isOpen={false}
-      onRequestClose={() => {}}
-      contentLabel="Example Modal"
-    >
-      <p>Modal Content</p>
-    </ReactModal>
-</div>
+                        <form>
+                            <label>
+                                Name:
+                                <input type="text" />
+                            </label>
 
-<div>
-<button onClick={handleOpenModal}>Open Modal</button>
+                            <button type="submit">Submit</button>
+                        </form>
 
-<ReactModal
-  isOpen={modalIsOpen}
-  onRequestClose={handleCloseModal}
-  contentLabel="Example Modal"
-  style={modalStyles}
->
-  <div style={{margin: "auto"}}> 
-  <h2>Modal Title</h2>
-  <p>This is the content of the modal.</p>
+                        <img
+                            src="https://via.placeholder.com/400"
+                            alt="Modal Image"
+                        />
 
-  <form>
-    <label>
-      Name:
-      <input type="text" />
-    </label>
+                        <button onClick={handleCloseModal}>Close Modal</button>
+                    </div>
+                </ReactModal>
+            </div> */}
 
-    <button type="submit">Submit</button>
-  </form>
 
-  <img src="https://via.placeholder.com/400" alt="Modal Image" />
+            <div>
+                <Button onClick={onOpen}>Open Modal</Button>
 
-  <button onClick={handleCloseModal}>Close Modal</button>
-  </div>
-</ReactModal>   
-     </div>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Your post</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                           <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum voluptatum repellat optio distinctio, fugiat dicta nemo reiciendis doloremque tempore adipisci, veritatis voluptates similique! Tempore magnam, sit quod temporibus veritatis corporis. </p>
+                        </ModalBody>
 
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={onClose}>
+                               Edit
+                            </Button>
+                            <Button variant="ghost">Delete</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+            </div>
         </>
-    );
+    )
 }

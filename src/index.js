@@ -8,6 +8,9 @@ import { AuthProvider } from './Context/auth-context'
 import { PostProvider } from './Context/post-context'
 import { InteractionProvider } from './Context/interaction-context'
 
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
+
 // Call make Server
 makeServer()
 
@@ -15,13 +18,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <AuthProvider>
-                <PostProvider>
-                    <InteractionProvider> 
-                    <App />
-                    </InteractionProvider>
-                </PostProvider>
-            </AuthProvider>
+            <ChakraProvider>
+                <AuthProvider>
+                    <PostProvider>
+                        <InteractionProvider>
+                            <App />
+                        </InteractionProvider>
+                    </PostProvider>
+                </AuthProvider>
+            </ChakraProvider>
         </BrowserRouter>
     </React.StrictMode>
 )

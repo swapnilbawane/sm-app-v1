@@ -16,7 +16,7 @@ export function ProfileTab() {
     <div className="fw-light grey-color">@{currentUser?.username}</div>
    </div>
 </div>
-<div className="grey-color fw-bold">...</div>
+<div className="grey-color fw-bold"><i className="bi bi-three-dots"></i></div>
 
 </div>
         </>
