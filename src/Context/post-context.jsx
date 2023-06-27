@@ -16,7 +16,7 @@ export function PostProvider({ children }) {
         setNewPost(textValue)
     }
 
-    // this function takes the text from the addnewPostHandler and then makes an API call to add it to db. 
+    // this function takes the text from the addnewPostHandler and then makes an API call to add it to db.
     const postHandler = async () => {
         console.log('newPostContent', newPost)
 
@@ -44,18 +44,21 @@ export function PostProvider({ children }) {
                 let postsData = await postResponse.json()
                 console.log('before reverse', postsData) // { postsData : posts }
                 console.log('posts data', postsData.posts)
-                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be.
 
                 let profileDataPosts = posts.filter(
                     (item) => item.username === loggedUserName
                 )
 
-               console.log("new posts from profileDataPosts:", profileDataPosts)
+                console.log(
+                    'new posts from profileDataPosts:',
+                    profileDataPosts
+                )
 
-                const profileData = { posts: profileDataPosts } 
-                
+                const profileData = { posts: profileDataPosts }
+
                 postsData = { posts }
-                
+
                 setData(postsData)
                 setProfilePostsData(profileData)
 
@@ -69,26 +72,26 @@ export function PostProvider({ children }) {
                 //     setProfilePostsData(postsData)
                 //     setNewPost('')
                 // }
-                // else { 
+                // else {
                 //     postsData = { posts } // shorthand for object : posts: posts - this will put reversed posts to post key now it resembles postData = { posts : {[....],[....],[....],[....]}}
                 //     setData(postsData)
 
                 //     let profileDataPosts = posts.filter(
                 //         (item) => item.username === loggedUserName
                 //     )
-                //     const profileData = { posts: profileDataPosts } 
+                //     const profileData = { posts: profileDataPosts }
                 //     setProfilePostsData(profileData)
 
                 //     setNewPost('')
                 // }
-               
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    const deletePostHandler = async(id) => { 
+    // This function deletes the post by it's id
+    const deletePostHandler = async (id) => {
         try {
             const encodedToken = localStorage.getItem('encodedToken')
 
@@ -106,29 +109,28 @@ export function PostProvider({ children }) {
                 let postsData = await deleteResponse.json()
                 // console.log('before reverse', postsData) // { postsData : posts }
                 // console.log('posts data', postsData.posts)
-                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be.
 
                 let profileDataPosts = posts.filter(
                     (item) => item.username === loggedUserName
                 )
 
-            //    console.log("new posts from profileDataPosts:", profileDataPosts)
+                //    console.log("new posts from profileDataPosts:", profileDataPosts)
 
-                const profileData = { posts: profileDataPosts } 
-                
+                const profileData = { posts: profileDataPosts }
+
                 postsData = { posts }
-                
+
                 setData(postsData)
                 setProfilePostsData(profileData)
-               
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    const editPostHandler = async (id,post) => {
-       
+    // This function edits the post by it's id and the content and return full array of posts 
+    const editPostHandler = async (id, post) => {
         console.log('edited post', post)
 
         try {
@@ -136,11 +138,7 @@ export function PostProvider({ children }) {
 
             const sendPost = { postData: { content: post } }
 
-            // console.log('sendPost', JSON.stringify(sendPost))
-            // const t = JSON.stringify(sendPost)
-            // console.log('parsed', JSON.parse(t))
-
-            const postResponse = await fetch(`/api/posts/edit/${id}`, {
+            const editedPostResponse = await fetch(`/api/posts/edit/${id}`, {
                 method: 'POST',
                 body: JSON.stringify(sendPost),
                 headers: {
@@ -149,27 +147,26 @@ export function PostProvider({ children }) {
                 },
             })
 
-            // console.log('edited post response', await postResponse.json())
+            // console.log('edited post response', await editedPostResponse.json())
 
-            if (postResponse.status === 201) {
-                let postsData = await postResponse.json()
+            if (editedPostResponse.status === 201) {
+                let postsData = await editedPostResponse.json()
                 // console.log('before reverse', postsData) // { postsData : posts }
                 // console.log('posts data', postsData.posts)
-                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be.
 
                 let profileDataPosts = posts.filter(
                     (item) => item.username === loggedUserName
                 )
 
-            //    console.log("new posts from profileDataPosts:", profileDataPosts)
+                //    console.log("new posts from profileDataPosts:", profileDataPosts)
 
-                const profileData = { posts: profileDataPosts } 
-                
+                const profileData = { posts: profileDataPosts }
+
                 postsData = { posts }
-                
+
                 setData(postsData)
                 setProfilePostsData(profileData)
-
             }
         } catch (error) {
             console.log(error)
@@ -178,7 +175,14 @@ export function PostProvider({ children }) {
 
     return (
         <PostContext.Provider
-            value={{ newPost, setNewPost, addNewPostHandler, postHandler, deletePostHandler, editPostHandler }}
+            value={{
+                newPost,
+                setNewPost,
+                addNewPostHandler,
+                postHandler,
+                deletePostHandler,
+                editPostHandler,
+            }}
         >
             {children}
         </PostContext.Provider>
