@@ -89,7 +89,7 @@ export function AuthProvider({ children }) {
 
             if (res.status === 201) {
                 const { createdUser, encodedToken } = res.data
-
+                console.log("createdUser", createdUser)
                 localStorage.setItem('encodedToken', encodedToken)
                 setLoggedIn(true)
                 setLoggedUserName(user.username)

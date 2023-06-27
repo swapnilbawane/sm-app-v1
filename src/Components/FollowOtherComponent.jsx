@@ -28,11 +28,11 @@ export function FollowOtherComponent({
 
     const link = null
 
-    const findLogged = allUsers.find((item) => item.username === loggedUserName)
+    const findLogged = allUsers?.find((item) => item.username === loggedUserName)
 
     // console.log('findLogged', findLogged)
 
-    const isFollowing = findLogged.following.findIndex(
+    const isFollowing = findLogged?.following.findIndex(
         (item) => item.username === username
     )
 
