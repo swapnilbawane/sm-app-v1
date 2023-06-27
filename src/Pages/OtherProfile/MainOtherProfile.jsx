@@ -23,10 +23,14 @@ allUsers,
 otherProfilePostsData,
 setOtherProfilePostsData,
 originalPostsData,
-loggedUserName
+loggedUserName,
+currentUser
 } = useAuth()
 
-const isFollowing = allUsers.findIndex((item)=> item.username===loggedUserName && item.following.find((person)=> person.username===loggedUserName))
+const [ user, setUser ] = useState({followers:[], following:[]})
+
+const isFollowing = currentUser.following.findIndex((item)=>item.username===username)
+
 
 console.log("other profile isFollowing", isFollowing)
 
@@ -42,7 +46,7 @@ const getOtherUserData = () => {
 
 useEffect(()=> { 
     getOtherUserData();
-},[username])
+},[])
 
     return(
         <>
