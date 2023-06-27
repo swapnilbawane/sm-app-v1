@@ -149,28 +149,28 @@ export function PostProvider({ children }) {
                 },
             })
 
-            console.log('edited post response', await postResponse.json())
+            // console.log('edited post response', await postResponse.json())
 
-            // if (postResponse.status === 201) {
-            //     let postsData = await postResponse.json()
-            //     // console.log('before reverse', postsData) // { postsData : posts }
-            //     // console.log('posts data', postsData.posts)
-            //     let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
+            if (postResponse.status === 201) {
+                let postsData = await postResponse.json()
+                // console.log('before reverse', postsData) // { postsData : posts }
+                // console.log('posts data', postsData.posts)
+                let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be. 
 
-            //     let profileDataPosts = posts.filter(
-            //         (item) => item.username === loggedUserName
-            //     )
+                let profileDataPosts = posts.filter(
+                    (item) => item.username === loggedUserName
+                )
 
-            // //    console.log("new posts from profileDataPosts:", profileDataPosts)
+            //    console.log("new posts from profileDataPosts:", profileDataPosts)
 
-            //     const profileData = { posts: profileDataPosts } 
+                const profileData = { posts: profileDataPosts } 
                 
-            //     postsData = { posts }
+                postsData = { posts }
                 
-            //     setData(postsData)
-            //     setProfilePostsData(profileData)
+                setData(postsData)
+                setProfilePostsData(profileData)
 
-            // }
+            }
         } catch (error) {
             console.log(error)
         }

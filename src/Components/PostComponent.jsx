@@ -145,7 +145,7 @@ export function PostComponent({
                                                 <Button
                                                     colorScheme="blue"
                                                     mr={3}
-                                                    onClick={()=> { onClose(); editPostHandler(_id, textEdit); }}
+                                                    onClick={()=> {  editPostHandler(_id, textEdit); handleCloseModal(); }}
                                                 >
                                                     Save
                                                 </Button>
