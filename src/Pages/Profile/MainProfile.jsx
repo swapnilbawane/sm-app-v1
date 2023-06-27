@@ -5,6 +5,7 @@ import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { EmptyProfileFeed } from './EmptyProfileFeed'
 
 export function MainProfile() {
    
@@ -66,7 +67,11 @@ export function MainProfile() {
                     <div className="white-bg mr-xxl p-xs mt-s">
                         {/* TODO: Add a map function here but first get data on first load in login context */}
 
-                        {profilePostsData?.posts?.map((item,index) => {
+                        {
+                        profilePostsData?.posts.length===0 ? 
+                        <EmptyProfileFeed />
+                        :
+                        profilePostsData?.posts?.map((item,index) => {
                             // const postData = { ...item}
                             const firstName = currentUser.firstName
                             const lastName = currentUser.lastName
@@ -79,7 +84,9 @@ export function MainProfile() {
                                     <PostComponent {...itemData } />
                                 </div>
                             ) : null
-                        })}
+                        })
+                        
+                        }
                     </div>
                 </div>
             </main>
