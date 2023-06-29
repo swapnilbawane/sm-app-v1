@@ -14,6 +14,7 @@ export function InteractionProvider({ children }) {
         setProfilePostsData,
         allUsers,
         setAllUsers,
+        setOriginalPostsData
     } = useAuth()
 
     const likeHandler = async (id) => {
@@ -49,6 +50,8 @@ export function InteractionProvider({ children }) {
 
                 setProfilePostsData(profileData)
                 setData(likedData)
+                setOriginalPostsData(likedData)
+
             }
         } catch (error) {
             console.log(error)
@@ -84,6 +87,7 @@ export function InteractionProvider({ children }) {
 
                 setProfilePostsData(profileData)
                 setData(dislikedData)
+                setOriginalPostsData(dislikedData)
             }
         } catch (error) {
             console.log(error)

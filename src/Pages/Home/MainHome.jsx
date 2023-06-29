@@ -8,7 +8,7 @@ import { usePost } from '../../Context/post-context'
 
 export function MainHome() {
     const { data, allUsers, currentUser } = useAuth()
-    const { addNewPostHandler, postHandler, newPost } = usePost()
+    const { addNewPostHandler, postHandler, newPost, trendingPostsHandler,latestPostsHandler } = usePost()
 
     console.log('data from main home', data)
 
@@ -52,7 +52,14 @@ export function MainHome() {
 
                 <div className="flex flex-space-between mr-xxl flex-align-center pt-s">
                     <h3>Latest Posts</h3>
+
+                    <div> 
+                        <button onClick={() => latestPostsHandler() }> Latests Posts </button>
+                        <button onClick={() => trendingPostsHandler() }> Trending Posts </button>
+                    </div>
+                    
                     <i className="bi bi-sliders2-vertical"></i>
+                   
                 </div>
 
                 <div className="white-bg mr-xxl p-xs mt-s">

@@ -6,8 +6,8 @@ export const PostContext = createContext()
 
 export function PostProvider({ children }) {
     const [newPost, setNewPost] = useState('')
-    const { setData, loggedUserName, setProfilePostsData } = useAuth()
-
+    const { setData, loggedUserName, setProfilePostsData, originalPostsData, setOriginalPostsData } = useAuth()
+    
     const location = useLocation()
 
     // capture data that is being typed store it in a state variable
@@ -60,6 +60,8 @@ export function PostProvider({ children }) {
                 postsData = { posts }
 
                 setData(postsData)
+                setOriginalPostsData(postsData)
+
                 setProfilePostsData(profileData)
 
                 setNewPost('')
@@ -122,6 +124,7 @@ export function PostProvider({ children }) {
                 postsData = { posts }
 
                 setData(postsData)
+                setOriginalPostsData(postsData)
                 setProfilePostsData(profileData)
             }
         } catch (error) {
@@ -166,6 +169,7 @@ export function PostProvider({ children }) {
                 postsData = { posts }
 
                 setData(postsData)
+                setOriginalPostsData(postsData)
                 setProfilePostsData(profileData)
             }
         } catch (error) {
@@ -173,6 +177,21 @@ export function PostProvider({ children }) {
         }
     }
 
+    const trendingPostsHandler = () => { 
+         const posts = {...originalPostsData}?.posts.filter((item)=> item.category==="trending")
+        //  console.log("trending posts", trending)
+         const trendingPosts = { posts }
+         setData(trendingPosts)
+    }
+
+    const latestPostsHandler = () => { 
+        const posts = {...originalPostsData}.posts
+        // console.log("original posts", {...originalPostsData}.posts)
+        const latestPosts = { posts }
+        setData(latestPosts)
+    }
+
+    
     return (
         <PostContext.Provider
             value={{
@@ -182,6 +201,8 @@ export function PostProvider({ children }) {
                 postHandler,
                 deletePostHandler,
                 editPostHandler,
+                trendingPostsHandler,
+                latestPostsHandler
             }}
         >
             {children}

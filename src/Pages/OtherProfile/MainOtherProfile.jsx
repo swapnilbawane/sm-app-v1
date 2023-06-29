@@ -51,7 +51,7 @@ export function MainOtherProfile({
                     let userResponse = await otherUserPostsResponse.json()
                     userResponse = userResponse.user
                     // console.log('userResponse', userResponse)
-                    const otherUserPosts = originalPostsData?.posts?.filter(
+                    const otherUserPosts = {...originalPostsData}?.posts?.filter(
                         (item) => item.username === username
                     )
                     setOtherProfilePostsData(otherUserPosts)
