@@ -83,6 +83,7 @@ export function AuthProvider({ children }) {
                 lastName: user.lastName,
                 username: user.username,
                 password: user.password,
+                profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg"
             }
 
             const res = await axios.post(
