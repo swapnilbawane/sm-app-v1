@@ -161,8 +161,8 @@ export function MainExplore() {
                     {/* TODO: Add a map function here but first get data on first load in login context */}
 
                     {exploreData?.posts?.map((item) => {
-                        const { firstName, lastName } = allUsers.find((user)=> user.username===item.username)
-                        const postData = { ...item, firstName, lastName }
+                        const { firstName, lastName, profileimage } = allUsers.find((user)=> user.username===item.username)
+                        const postData = { ...item, firstName, lastName, profileimage }
                         return (
                             <div key={item._id}>
                                 <PostComponent {...postData} />

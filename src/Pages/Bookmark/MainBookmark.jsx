@@ -33,10 +33,10 @@ export function MainBookmark() {
                     
                     :
                     bookmarkData?.map((item) => {
-                        const { firstName, lastName } = allUsers.find(
+                        const { firstName, lastName, profileimage } = allUsers.find(
                             (user) => user.username === item.username
                         )
-                        const postData = { ...item, firstName, lastName }
+                        const postData = { ...item, firstName, lastName, profileimage }
                         return (
                             <div key={item._id}>
                                 <PostComponent {...postData} bookmark />
