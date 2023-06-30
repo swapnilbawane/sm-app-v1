@@ -226,7 +226,7 @@ export function MainProfile() {
                                     colorScheme="blue"
                                     mr={3}
                                     onClick={() => {
-                                        console.log({textEdit})
+                                        // console.log({textEdit})
                                         editUserHandler(textEdit)
                                         handleCloseModal()
                                     }}

@@ -13,8 +13,7 @@ export function AuthProvider({ children }) {
     const [bookmarkData, setBookmarkData] = useState([])
     const [profilePostsData, setProfilePostsData] = useState([])
     const [otherProfilePostsData, setOtherProfilePostsData] = useState([])
-    const [ originalPostsData, setOriginalPostsData] = useState([])
-    
+    const [originalPostsData, setOriginalPostsData] = useState([])
 
     const navigate = useNavigate()
 
@@ -83,7 +82,8 @@ export function AuthProvider({ children }) {
                 lastName: user.lastName,
                 username: user.username,
                 password: user.password,
-                profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg"
+                profileimage:
+                    'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg',
             }
 
             const res = await axios.post(
@@ -114,19 +114,22 @@ export function AuthProvider({ children }) {
     // POSTS : get single user posts
     const getSingleUserPostsData = async () => {
         // console.log(`/api/posts/user/${loggedUserName}`)
-        try {
-            const dataResponse = await axios.get(
-                `/api/posts/user/${loggedUserName}`
-            )
 
-            if (dataResponse.status === 200) {
-                const posts = await dataResponse.data
-                // console.log('posts from auth context:', posts)
-                // setData(posts)
-                setProfilePostsData(posts)
+        if (loggedUserName) {
+            try {
+                const dataResponse = await axios.get(
+                    `/api/posts/user/${loggedUserName}`
+                )
+
+                if (dataResponse.status === 200) {
+                    const posts = await dataResponse.data
+                    // console.log('posts from auth context:', posts)
+                    // setData(posts)
+                    setProfilePostsData(posts)
+                }
+            } catch (error) {
+                console.log(error)
             }
-        } catch (error) {
-            console.log(error)
         }
     }
 
@@ -196,10 +199,14 @@ export function AuthProvider({ children }) {
             const encodedToken = localStorage.getItem('encodedToken')
 
             const sendUserData = {
-                userData: { bio: user.bio, link: user.link, profileimage: user.profileimage },
+                userData: {
+                    bio: user.bio,
+                    link: user.link,
+                    profileimage: user.profileimage,
+                },
             }
-            
-            console.log({sendUserData})
+
+            // console.log({sendUserData})
 
             const editedUserResponse = await fetch(`/api/users/edit/`, {
                 method: 'POST',
@@ -221,7 +228,7 @@ export function AuthProvider({ children }) {
                     ...currentUser,
                     bio: updatedUserData.bio,
                     link: updatedUserData.link,
-                    profileimage: updatedUserData.profileimage
+                    profileimage: updatedUserData.profileimage,
                 }
                 const allUserEditedData = allUsers.map((item) =>
                     item.username === user.username
@@ -229,7 +236,7 @@ export function AuthProvider({ children }) {
                               ...item,
                               bio: updatedUserData.bio,
                               link: updatedUserData.link,
-                              profileimage: updatedUserData.profileimage
+                              profileimage: updatedUserData.profileimage,
                           }
                         : item
                 )
@@ -271,9 +278,9 @@ export function AuthProvider({ children }) {
                 profilePostsData,
                 setProfilePostsData,
                 editUserHandler,
-                otherProfilePostsData, 
-                setOtherProfilePostsData, 
-                originalPostsData, 
+                otherProfilePostsData,
+                setOtherProfilePostsData,
+                originalPostsData,
                 setOriginalPostsData,
             }}
         >
