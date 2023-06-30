@@ -178,18 +178,19 @@ export function PostProvider({ children }) {
     }
 
     const trendingPostsHandler = () => { 
-         const posts1 = {...originalPostsData}.posts.sort((a,b)=> b.likes.likeCount - a.likes.likeCount)
-         const posts = {...originalPostsData}?.posts.filter((item)=> item.category==="trending")
+         const posts = {...originalPostsData}.posts.sort((a,b)=> b.likes.likeCount - a.likes.likeCount)
+        //  const posts = {...originalPostsData}?.posts.filter((item)=> item.category==="trending")
         //  console.log("trending posts", trending)
          const trendingPosts = { posts }
          setData(trendingPosts)
     }
 
     const latestPostsHandler = () => { 
-        const posts2 = {...originalPostsData}.posts.sort((a,b)=> Date.parse(b.createdAt) - Date.parse(a.createdAt))
-        const posts = {...originalPostsData}.posts
+        const posts = {...originalPostsData}.posts.sort((a,b)=> Date.parse(b.createdAt) - Date.parse(a.createdAt))
+        // const posts = {...originalPostsData}.posts
         // console.log("original posts", {...originalPostsData}.posts)
         const latestPosts = { posts }
+        console.log("latest posts", latestPosts)
         setData(latestPosts)
     }
 
