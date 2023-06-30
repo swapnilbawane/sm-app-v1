@@ -783,3 +783,7 @@ h6 {
 .website-title { 
   width: 350px;
 }
+
+.gapleft { 
+gap: 200px;
+}

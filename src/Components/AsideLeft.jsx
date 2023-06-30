@@ -9,7 +9,7 @@ export function AsideLeft() {
         <> 
 <aside className="p-s pt-xl pl-xxl ml-m sidebar1">
 
-<div className="flex flex-column flex-space-between sidebar">
+<div className="flex flex-column sidebar gapleft">
   
 {/* Nav bar side */}
 <NavBar /> 
