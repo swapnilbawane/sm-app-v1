@@ -47,6 +47,7 @@ body {
     font-family: var(--font);
     color: var(--black-color);
     /* overflow-y: auto; */
+    /* overflow-y: scroll; */
 }
 
 a {
