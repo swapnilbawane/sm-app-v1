@@ -211,7 +211,7 @@ export function MainProfile() {
 
                                     <hr />
                                     <br />
-                                    <p> Link </p>
+                                    <p> Link ( eg. https://www.example.com ) </p>
                                     <textarea
                                         name="link"
                                         value={textEdit.link}
@@ -283,11 +283,13 @@ export function MainProfile() {
                                 // const postData = { ...item}
                                 const firstName = currentUser.firstName
                                 const lastName = currentUser.lastName
+                                const profileimage = currentUser.profileimage
 
                                 const itemData = {
                                     ...item,
                                     firstName,
                                     lastName,
+                                    profileimage
                                 }
                                 // console.log(index, 'item data', itemData)
 

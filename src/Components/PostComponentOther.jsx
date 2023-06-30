@@ -101,7 +101,7 @@ export function PostComponentOther({
                             <Menu>
                                 <MenuButton>
                                     <i
-                                        className="bi bi-three-dots"
+                                        className="bi bi-three-dots cursor-pointer"
                                         onClick={onOpen}
                                     ></i>
                                 </MenuButton>
@@ -118,12 +118,12 @@ export function PostComponentOther({
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
                         {likes?.likeCount > 0 ? (
                             <i
-                                className="bi bi-heart-fill"
+                                className="bi bi-heart-fill cursor-pointer"
                                 onClick={() => dislikeHandler(_id)}
                             ></i>
                         ) : (
                             <i
-                                className="bi bi-heart"
+                                className="bi bi-heart cursor-pointer"
                                 onClick={() => likeHandler(_id)}
                             ></i>
                         )}
@@ -133,12 +133,12 @@ export function PostComponentOther({
 
                         {isPresentInBookmarks === -1 ? (
                             <i
-                                className="bi bi-bookmark"
+                                className="bi bi-bookmark cursor-pointer"
                                 onClick={() => bookmarkHandler(_id)}
                             ></i>
                         ) : (
                             <i
-                                className="bi bi-bookmark-fill"
+                                className="bi bi-bookmark-fill cursor-pointer"
                                 onClick={() => removeBookmarkHandler(_id)}
                             ></i>
                         )}

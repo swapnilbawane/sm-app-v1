@@ -182,23 +182,23 @@ export function PostComponent({
                         {bookmark ? (
                             bookmarkLikes.likeCount > 0 ? (
                                 <i
-                                    className="bi bi-heart-fill"
+                                    className="bi bi-heart-fill cursor-pointer"
                                     onClick={() => dislikeHandler(_id)}
                                 ></i>
                             ) : (
                                 <i
-                                    className="bi bi-heart"
+                                    className="bi bi-heart cursor-pointer"
                                     onClick={() => likeHandler(_id)}
                                 ></i>
                             )
                         ) : likes.likeCount > 0 ? (
                             <i
-                                className="bi bi-heart-fill"
+                                className="bi bi-heart-fill cursor-pointer"
                                 onClick={() => dislikeHandler(_id)}
                             ></i>
                         ) : (
                             <i
-                                className="bi bi-heart"
+                                className="bi bi-heart cursor-pointer"
                                 onClick={() => likeHandler(_id)}
                             ></i>
                         )}
@@ -208,12 +208,12 @@ export function PostComponent({
 
                         {isPresentInBookmarks === -1 ? (
                             <i
-                                className="bi bi-bookmark"
+                                className="bi bi-bookmark cursor-pointer"
                                 onClick={() => bookmarkHandler(_id)}
                             ></i>
                         ) : (
                             <i
-                                className="bi bi-bookmark-fill"
+                                className="bi bi-bookmark-fill cursor-pointer"
                                 onClick={() => removeBookmarkHandler(_id)}
                             ></i>
                         )}
