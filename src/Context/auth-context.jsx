@@ -141,6 +141,7 @@ export function AuthProvider({ children }) {
             if (allDataResponse.status === 200) {
                 let allPosts = await allDataResponse.json()
                 const posts = Array.from(allPosts.posts).reverse() // this is done so that the newest post is seen first.
+                console.log({posts}) // CONSOLE
                 allPosts = { posts } // this is because in home page we are rendering data.posts so data : { posts : [] }
                 setData(allPosts)
                 setOriginalPostsData(allPosts)
