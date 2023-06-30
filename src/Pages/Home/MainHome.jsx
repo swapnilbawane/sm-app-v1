@@ -4,6 +4,8 @@ import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 import { usePost } from '../../Context/post-context'
 
+import { Menu, MenuButton, MenuList, MenuItem, useDisclosure } from '@chakra-ui/react'
+
 // On clicking POST it calls API - recreate it.
 
 export function MainHome() {
@@ -15,6 +17,8 @@ export function MainHome() {
         trendingPostsHandler,
         latestPostsHandler,
     } = usePost()
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     // console.log('data from main home', data)
 
@@ -67,7 +71,7 @@ export function MainHome() {
                 <div className="flex flex-space-between mr-xxl flex-align-center pt-s">
                     <h3>Latest Posts</h3>
 
-                    <div>
+                    {/* <div>
                         <button onClick={() => latestPostsHandler()}>
                             {' '}
                             Latests Posts{' '}
@@ -76,9 +80,31 @@ export function MainHome() {
                             {' '}
                             Trending Posts{' '}
                         </button>
-                    </div>
+                    </div> */}
 
-                    <i className="bi bi-sliders2-vertical"></i>
+                    {/* <i className="bi bi-sliders2-vertical"></i> */}
+                    <>
+                        <Menu>
+                            <MenuButton>
+                                <i
+                                    className="bi bi-sliders2-vertical"
+                                    onClick={onOpen}
+                                ></i>
+                            </MenuButton>
+
+                            <MenuList>
+                                <MenuItem
+                                    onClick={() => trendingPostsHandler()}
+                                >
+                                    Trending Posts
+                                </MenuItem>
+
+                                <MenuItem onClick={() => latestPostsHandler()}>
+                                    Latests Posts
+                                </MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </>
                 </div>
 
                 <div className="white-bg mr-xxl p-xs mt-s">
