@@ -1,26 +1,31 @@
-import "../style.css";
-import "../index.css";
-import { useAuth } from "../Context/auth-context";
-
+import '../style.css'
+import '../index.css'
+import { useAuth } from '../Context/auth-context'
+import { Link } from 'react-router-dom'
 
 export function Header() {
+    const { handleLogout } = useAuth()
 
-const { handleLogout } = useAuth()
+    return (
+        <>
+            <nav className="white-bg">
+                <div className="p-s pl-xxl txt-m ml-m header-bar">
+                    <Link to="/home">
+                        <div className="website-title">
+                            <span className="primary-color">Baat</span>
+                            <span> Cheet </span> <sup> {'>'} Speak your mind! </sup>
+                        </div>
+                    </Link>
 
-    return(
-<>
-<nav className="white-bg">
-   <div className="p-s pl-xxl txt-m ml-m">
-    
-       <a href="index.html"> 
-           <span className="primary-color">My</span>Website 
-       </a>
-
-       <button onClick={handleLogout}> Logout </button>
-
-   </div>
-</nav>
-
-</>
-);
+                    <button
+                        className="primary-bg p-l pt-xs pb-xs secondary-color border-none outline-transparent logout"
+                        onClick={handleLogout}
+                    >
+                        {' '}
+                        Logout{' '}
+                    </button>
+                </div>
+            </nav>
+        </>
+    )
 }

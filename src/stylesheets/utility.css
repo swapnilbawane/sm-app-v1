@@ -767,3 +767,19 @@ h6 {
 .cursor-pointer { 
   cursor: pointer;
 }
+
+.header-bar { 
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  gap: 1250px;
+}
+
+.logout { 
+  border-radius: 1rem;
+  /* padding: 1rem; */
+}
+
+.website-title { 
+  width: 350px;
+}

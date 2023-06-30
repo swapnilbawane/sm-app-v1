@@ -10,7 +10,7 @@ export function AsideRight() {
     return (
         <>
             <aside className="mt-xl mr-xxl sidebar2">
-                <div className="white-bg mb-m pl-s border flex flex-row flex-center nowrap">
+                {/* <div className="white-bg mb-m pl-s border flex flex-row flex-center nowrap">
                     <i className="bi bi-search"></i>
                     <input
                         type="search"
@@ -21,7 +21,7 @@ export function AsideRight() {
                         spellCheck={false}
                         data-ms-editor={true}
                     />
-                </div>
+                </div> */}
 
                 <div className="white-bg">
                     <div className="fw-bold flex flex-row flex-space-between flex-align-center border-bottom p-s">

@@ -21,7 +21,7 @@ export function Home() {
                 <AsideLeft />
 
                 <MainHome />
-                <Link to="/modals"> Modals </Link>
+                {/* <Link to="/modals"> Modals </Link> */}
 
                 <AsideRight />
             </div>

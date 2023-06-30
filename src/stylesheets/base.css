@@ -45,7 +45,8 @@ html {
 body {
     background-color: var(--lynx-white-color);
     font-family: var(--font);
-    color: var(--black-color)
+    color: var(--black-color);
+    /* overflow-y: auto; */
 }
 
 a {
