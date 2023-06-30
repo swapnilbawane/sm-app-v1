@@ -29,7 +29,7 @@ export function MainHome() {
                         ></div> */}
 
                         <img
-                            src={currentUser.profileimage}
+                            src={currentUser?.profileimage}
                             alt="gravatar_1"
                             className="br-full width-xl height-xl p-xs mr-xs"
                             style={{ aspectRatio: '1' }}

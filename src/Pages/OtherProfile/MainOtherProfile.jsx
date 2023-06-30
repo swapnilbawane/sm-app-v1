@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { PostComponentOther } from '../../Components/PostComponentOther'
 import { useAuth } from '../../Context/auth-context'
 import { EmptyProfileFeed } from '../Profile/EmptyProfileFeed'
+import { useInteraction } from '../../Context/interaction-context'
 
 export function MainOtherProfile({
     firstName,
@@ -14,7 +15,7 @@ export function MainOtherProfile({
     following, // comment
     bio,
     link,
-    profileimage
+    profileimage,
 }) {
     const {
         data,
@@ -25,6 +26,8 @@ export function MainOtherProfile({
         loggedUserName,
         currentUser,
     } = useAuth()
+
+    const { followHandler, unFollowHandler } = useInteraction()
 
     const [user, setUser] = useState({})
 
@@ -52,9 +55,9 @@ export function MainOtherProfile({
                     let userResponse = await otherUserPostsResponse.json()
                     userResponse = userResponse.user
                     // console.log('userResponse', userResponse)
-                    const otherUserPosts = {...originalPostsData}?.posts?.filter(
-                        (item) => item.username === username
-                    )
+                    const otherUserPosts = {
+                        ...originalPostsData,
+                    }?.posts?.filter((item) => item.username === username)
                     setOtherProfilePostsData(otherUserPosts)
                     setUser(userResponse)
                 }
@@ -82,12 +85,22 @@ export function MainOtherProfile({
                         {firstName} {lastName}
                     </h3>
                     <p className="grey-color txt-s">@{username}</p>
-                    <button
-                        className="border lynx-white-bg p-xs m-xs fw-semibold width-8"
-                        // onClick={handleProfileEditClick}
-                    >
-                        {isFollowing === -1 ? `Follow` : `Following`}
-                    </button>
+
+                    {isFollowing === -1 ? (
+                        <button
+                            className="border lynx-white-bg p-xs m-xs fw-semibold width-8"
+                            onClick={() => followHandler(otherUserId)}
+                        >
+                            Follow
+                        </button>
+                    ) : (
+                        <button
+                            className="border lynx-white-bg p-xs m-xs fw-semibold width-8"
+                            onClick={() => unFollowHandler(otherUserId)}
+                        >
+                            Unfollow
+                        </button>
+                    )}
 
                     <p className="m-xs p-xs">{bio}</p>
                     <p className="primary-color">
@@ -134,7 +147,7 @@ export function MainOtherProfile({
                                     ...item,
                                     firstName,
                                     lastName,
-                                    profileimage
+                                    profileimage,
                                 }
 
                                 // console.log(index, 'item data', itemData)
