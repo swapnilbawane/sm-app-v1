@@ -1,11 +1,12 @@
 import { useAuth } from '../Context/auth-context'
+import { Link } from 'react-router-dom'
 
 export function ProfileTab() {
     const { currentUser } = useAuth()
 
     return (
         <>
-            <div className="flex flex-space-between flex-align-center">
+            <Link to="/profile" className="flex flex-space-between flex-align-center">
                 <div className="flex">
                     {/* <div className="grey-bg br-full width-xl height-xl"></div> */}
 
@@ -15,7 +16,7 @@ export function ProfileTab() {
                         className="br-full width-xl height-xl"
                     />
 
-                    <div className="flex flex-column ml-xs">
+                    <div className="flex flex-column ml-xs cursor-pointer">
                         <div className="fw-bold">
                             {currentUser?.firstName} {currentUser?.lastName}
                         </div>
@@ -23,11 +24,12 @@ export function ProfileTab() {
                             @{currentUser?.username}
                         </div>
                     </div>
+
                 </div>
-                <div className="grey-color fw-bold">
+                {/* <div className="grey-color fw-bold">
                     <i className="bi bi-three-dots"></i>
-                </div>
-            </div>
+                </div> */}
+            </Link>
         </>
     )
 }
