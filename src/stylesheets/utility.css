@@ -738,3 +738,28 @@ h6 {
     padding-right: var(--xs-size);
   }
 }
+
+.gravatar-container { 
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.gravatar-body { 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gravatar-icon { 
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.editprofile-container { 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

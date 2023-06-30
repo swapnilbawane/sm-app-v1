@@ -18,7 +18,7 @@ export function PostProvider({ children }) {
 
     // this function takes the text from the addnewPostHandler and then makes an API call to add it to db.
     const postHandler = async () => {
-        console.log('newPostContent', newPost)
+        // console.log('newPostContent', newPost)
 
         try {
             const encodedToken = localStorage.getItem('encodedToken')
@@ -38,22 +38,22 @@ export function PostProvider({ children }) {
                 },
             })
 
-            console.log('post response', postResponse)
+            // console.log('post response', postResponse)
 
             if (postResponse.status === 201) {
                 let postsData = await postResponse.json()
-                console.log('before reverse', postsData) // { postsData : posts }
-                console.log('posts data', postsData.posts)
+                // console.log('before reverse', postsData) // { postsData : posts }
+                // console.log('posts data', postsData.posts)
                 let posts = Array.from(postsData.posts).reverse() // reverse posts from postsData to show most recent posts. the need to reverse is that the newest posts get added to the list at list if we don't reverse it in main feed. This means that the last post comes first, which is how the user experience should be.
 
                 let profileDataPosts = posts.filter(
                     (item) => item.username === loggedUserName
                 )
 
-                console.log(
-                    'new posts from profileDataPosts:',
-                    profileDataPosts
-                )
+                // console.log(
+                //     'new posts from profileDataPosts:',
+                //     profileDataPosts
+                // )
 
                 const profileData = { posts: profileDataPosts }
 
@@ -105,7 +105,7 @@ export function PostProvider({ children }) {
                 },
             })
 
-            console.log('delete response', deleteResponse)
+            // console.log('delete response', deleteResponse)
 
             if (deleteResponse.status === 201) {
                 let postsData = await deleteResponse.json()
@@ -134,7 +134,7 @@ export function PostProvider({ children }) {
 
     // This function edits the post by it's id and the content and return full array of posts 
     const editPostHandler = async (id, post) => {
-        console.log('edited post', post)
+        // console.log('edited post', post)
 
         try {
             const encodedToken = localStorage.getItem('encodedToken')
@@ -178,6 +178,7 @@ export function PostProvider({ children }) {
     }
 
     const trendingPostsHandler = () => { 
+         const posts1 = {...originalPostsData}.posts.sort((a,b)=> b.likes.likeCount - a.likes.likeCount)
          const posts = {...originalPostsData}?.posts.filter((item)=> item.category==="trending")
         //  console.log("trending posts", trending)
          const trendingPosts = { posts }
@@ -185,6 +186,7 @@ export function PostProvider({ children }) {
     }
 
     const latestPostsHandler = () => { 
+        const posts2 = {...originalPostsData}.posts.sort((a,b)=> Date.parse(b.createdAt) - Date.parse(a.createdAt))
         const posts = {...originalPostsData}.posts
         // console.log("original posts", {...originalPostsData}.posts)
         const latestPosts = { posts }

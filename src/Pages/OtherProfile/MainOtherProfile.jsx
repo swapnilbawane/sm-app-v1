@@ -1,9 +1,9 @@
-import '../../style.css'
 import '../../index.css'
+import '../../style.css'
 
+import { useEffect, useState } from 'react'
 import { PostComponentOther } from '../../Components/PostComponentOther'
 import { useAuth } from '../../Context/auth-context'
-import { useEffect, useState } from 'react'
 import { EmptyProfileFeed } from '../Profile/EmptyProfileFeed'
 
 export function MainOtherProfile({
@@ -14,6 +14,7 @@ export function MainOtherProfile({
     following, // comment
     bio,
     link,
+    profileimage
 }) {
     const {
         data,
@@ -69,7 +70,14 @@ export function MainOtherProfile({
         <>
             <main className="p-s">
                 <div className="flex flex-column flex-center">
-                    <div className="lynx-gray-bg width-7 height-7 br-full"></div>
+                    {/* <div className="lynx-gray-bg width-7 height-7 br-full"></div> */}
+
+                    <img
+                        src={profileimage}
+                        alt="gravatar_1"
+                        className="gravatar-icon"
+                    />
+
                     <h3 className="pt-s">
                         {firstName} {lastName}
                     </h3>
@@ -126,9 +134,10 @@ export function MainOtherProfile({
                                     ...item,
                                     firstName,
                                     lastName,
+                                    profileimage
                                 }
 
-                                console.log(index, 'item data', itemData)
+                                // console.log(index, 'item data', itemData)
 
                                 return (
                                     <div key={item._id}>

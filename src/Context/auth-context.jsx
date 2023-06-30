@@ -1,5 +1,5 @@
-import { useState, createContext, useContext, useEffect } from 'react'
 import axios from 'axios'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 export const AuthContext = createContext()
@@ -14,6 +14,7 @@ export function AuthProvider({ children }) {
     const [profilePostsData, setProfilePostsData] = useState([])
     const [otherProfilePostsData, setOtherProfilePostsData] = useState([])
     const [ originalPostsData, setOriginalPostsData] = useState([])
+    
 
     const navigate = useNavigate()
 
@@ -26,7 +27,7 @@ export function AuthProvider({ children }) {
                 password: user.password,
             }
 
-            console.log('user', user)
+            // console.log('user', user)
 
             const res = await axios.post(
                 '/api/auth/login',
@@ -74,7 +75,7 @@ export function AuthProvider({ children }) {
     }
 
     const handleSignup = async (user) => {
-        console.log('received user', user)
+        // console.log('received user', user)
 
         try {
             const creds = {
@@ -91,7 +92,7 @@ export function AuthProvider({ children }) {
 
             if (res.status === 201) {
                 const { createdUser, encodedToken } = res.data
-                console.log("createdUser", createdUser)
+                // console.log("createdUser", createdUser)
                 localStorage.setItem('encodedToken', encodedToken)
                 setLoggedIn(true)
                 setLoggedUserName(user.username)
@@ -111,7 +112,7 @@ export function AuthProvider({ children }) {
 
     // POSTS : get single user posts
     const getSingleUserPostsData = async () => {
-        console.log(`/api/posts/user/${loggedUserName}`)
+        // console.log(`/api/posts/user/${loggedUserName}`)
         try {
             const dataResponse = await axios.get(
                 `/api/posts/user/${loggedUserName}`
@@ -119,7 +120,7 @@ export function AuthProvider({ children }) {
 
             if (dataResponse.status === 200) {
                 const posts = await dataResponse.data
-                console.log('posts from auth context:', posts)
+                // console.log('posts from auth context:', posts)
                 // setData(posts)
                 setProfilePostsData(posts)
             }
@@ -149,16 +150,16 @@ export function AuthProvider({ children }) {
     const getUserData = async () => {
         try {
             const userDataResponse = await axios.get('/api/users')
-            console.log('api response from all users', userDataResponse)
+            // console.log('api response from all users', userDataResponse)
 
             if (userDataResponse.status === 200) {
                 const userList = await userDataResponse?.data?.users
-                console.log('api data about all users', userList)
+                // console.log('api data about all users', userList)
 
                 const currentUserData = userList?.find(
                     (item) => item.username === loggedUserName
                 ) // this fetches me the object data
-                console.log('current user data from all users', currentUserData)
+                // console.log('current user data from all users', currentUserData)
 
                 setCurrentUser(currentUserData)
                 setAllUsers(userList)
@@ -194,8 +195,10 @@ export function AuthProvider({ children }) {
             const encodedToken = localStorage.getItem('encodedToken')
 
             const sendUserData = {
-                userData: { bio: user.bio, link: user.link },
+                userData: { bio: user.bio, link: user.link, profileimage: user.profileimage },
             }
+            
+            console.log({sendUserData})
 
             const editedUserResponse = await fetch(`/api/users/edit/`, {
                 method: 'POST',
@@ -217,6 +220,7 @@ export function AuthProvider({ children }) {
                     ...currentUser,
                     bio: updatedUserData.bio,
                     link: updatedUserData.link,
+                    profileimage: updatedUserData.profileimage
                 }
                 const allUserEditedData = allUsers.map((item) =>
                     item.username === user.username
@@ -224,6 +228,7 @@ export function AuthProvider({ children }) {
                               ...item,
                               bio: updatedUserData.bio,
                               link: updatedUserData.link,
+                              profileimage: updatedUserData.profileimage
                           }
                         : item
                 )
@@ -268,7 +273,7 @@ export function AuthProvider({ children }) {
                 otherProfilePostsData, 
                 setOtherProfilePostsData, 
                 originalPostsData, 
-                setOriginalPostsData
+                setOriginalPostsData,
             }}
         >
             {children}

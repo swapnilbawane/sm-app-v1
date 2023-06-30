@@ -1,8 +1,8 @@
-import { Header } from "../../Components/Header";
+import { Link } from "react-router-dom";
 import { AsideLeft } from "../../Components/AsideLeft";
 import { AsideRight } from "../../Components/AsideRight";
+import { Header } from "../../Components/Header";
 import { MainHome } from "./MainHome";
-import { Link } from "react-router-dom";
 // import { useEffect } from "react";
 // import { useAuth } from "../../Context/auth-context";
 

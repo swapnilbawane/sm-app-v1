@@ -16,6 +16,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Senior Software Engineer @Ubis | Posts about JavaScript, ReactJS, Career and Startups",
     link: "https://ab.blogspot.com",
+    profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg" 
     // bookmarks: []
   },
   {
@@ -28,6 +29,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Writer Wizard @Craftz | Posts about Life, Motivation",
     link: "https://albert.blogspot.com",
+    profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106577/Gravatar/Gravatar_3.jpg" 
     // bookmarks: []
   },
   {
@@ -40,6 +42,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Memorial Account of Sir Albert Einstein | Posts about Life, Science",
     link: "https://alberteinstein.blogspot.com",
+    profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_4.jpg"
     // bookmarks: []
   },
   {
@@ -52,6 +55,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Memorial Account of Sir C V Raman | Posts about Life, Science", 
     link: "https://sircvraman.blogspot.com",
+    profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_5.jpg"
     // bookmarks: []
   },
   {
@@ -64,6 +68,7 @@ export const users = [
     updatedAt: formatDate(),
     bio: "Fan account | Posts all about Cricket",
     link: "https://crickmania.blogspot.com",
+    profileimage: "https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_6.jpg"
     // bookmarks: []
   },
 ];

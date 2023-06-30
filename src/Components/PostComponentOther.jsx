@@ -27,8 +27,8 @@ export function PostComponentOther({
     likes,
     firstName,
     lastName,
+    profileimage
 }) {
-    
     const {
         likeHandler,
         dislikeHandler,
@@ -37,7 +37,6 @@ export function PostComponentOther({
     } = useInteraction()
 
     const { currentUser, data, bookmarkData, loggedUserName } = useAuth()
-   
 
     // let bookmarkLikes
 
@@ -73,10 +72,16 @@ export function PostComponentOther({
     return (
         <>
             <div className="flex flex-row nowrap p-xs">
-                <div
+                {/* <div
                     className="grey-bg br-full width-xl height-xl p-xs mr-xs"
                     style={{ aspectRatio: '1' }}
-                ></div>
+                ></div> */}
+
+                <img
+                    src={profileimage}
+                    alt="gravatar_1"
+                    className="br-full width-xl height-xl p-xs mr-xs"
+                />
 
                 <div>
                     {/* TODO: CSS BUG the three dots spacing is affected by the number of lines posted */}
@@ -93,29 +98,25 @@ export function PostComponentOther({
                         </div>
 
                         <>
-                                    <Menu>
-                                        <MenuButton>
-                                            <i
-                                                className="bi bi-three-dots"
-                                                onClick={onOpen}
-                                            ></i>
-                                        </MenuButton>
+                            <Menu>
+                                <MenuButton>
+                                    <i
+                                        className="bi bi-three-dots"
+                                        onClick={onOpen}
+                                    ></i>
+                                </MenuButton>
 
-                                        <MenuList>
-                                            <MenuItem>
-                                                Feature Coming Soon
-                                            </MenuItem>
-                                        </MenuList>
-                                    </Menu>                        
+                                <MenuList>
+                                    <MenuItem>Feature Coming Soon</MenuItem>
+                                </MenuList>
+                            </Menu>
                         </>
                     </div>
 
                     <p className="pr-s pt-xs width-xtralarge">{content}</p>
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
-                      
-                       { 
-                         likes?.likeCount > 0 ? (
+                        {likes?.likeCount > 0 ? (
                             <i
                                 className="bi bi-heart-fill"
                                 onClick={() => dislikeHandler(_id)}

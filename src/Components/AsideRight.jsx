@@ -32,7 +32,7 @@ export function AsideRight() {
                   
                     {/* Render from the list of accounts present and do not show the user loggedin in the list of follow*/}
                     {allUsers?.map((item) => {
-                      console.log("value",item.username,loggedUserName)
+                    //   console.log("value",item.username,loggedUserName)
                         return item.username !== loggedUserName ? (
                             <div key={item._id}>
                                 <FollowOtherComponent {...item} />

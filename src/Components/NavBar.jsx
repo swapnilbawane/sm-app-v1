@@ -12,9 +12,10 @@ import { usePost } from '../Context/post-context'
 
 export function NavBar() {
     const location = useLocation()
-    console.log('location', location)
+    // console.log('location', location)
 
     const { addNewPostHandler, postHandler, newPost, setNewPost } = usePost()
+    const { currentUser } = useAuth()
 
     return (
         <>
@@ -103,12 +104,21 @@ export function NavBar() {
                                 </button>
 
                                 <div className="header"> Create New Post </div>
+
                                 <div className="white-bg mr-xxl p-xs mt-s">
                                     <div className="flex flex-row nowrap p-xs">
-                                        <div
+                                        {/* <div
                                             className="grey-bg br-full width-xl height-xl p-xs mr-xs"
                                             style={{ aspectRatio: '1' }}
-                                        ></div>
+                                        ></div> */}
+
+                                        <img
+                                            src={currentUser.profileimage}
+                                            alt="gravatar_1"
+                                            className="br-full width-xl height-xl p-xs mr-xs"
+                                            style={{ aspectRatio: '1' }}
+                                        />
+
                                         <div className="w-full">
                                             <textarea
                                                 cols="50"

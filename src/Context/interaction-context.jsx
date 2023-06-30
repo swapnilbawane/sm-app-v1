@@ -18,8 +18,8 @@ export function InteractionProvider({ children }) {
     } = useAuth()
 
     const likeHandler = async (id) => {
-        console.log('id', id)
-        console.log(`/api/posts/like/${id}`)
+        // console.log('id', id)
+        // console.log(`/api/posts/like/${id}`)
 
         // /api/posts/like/:postId
         try {
@@ -59,8 +59,8 @@ export function InteractionProvider({ children }) {
     }
 
     const dislikeHandler = async (id) => {
-        console.log('id', id)
-        console.log(`/api/posts/dislike/${id}`)
+        // console.log('id', id)
+        // console.log(`/api/posts/dislike/${id}`)
 
         // /api/posts/dislike/:postId
         try {
@@ -188,7 +188,7 @@ export function InteractionProvider({ children }) {
 
             if (bookMarkResponse.status === 200) {
                 const bookmarkData = await bookMarkResponse.json()
-                console.log('bookmark Data', bookmarkData)
+                // console.log('bookmark Data', bookmarkData)
                 setBookmarkData(bookmarkData.bookmarks)
             }
         } catch (error) {

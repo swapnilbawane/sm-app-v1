@@ -30,7 +30,7 @@ export function MainExplore() {
 
         switch (categoryName) {
             case 'foryou':
-                console.log('foryou')
+                // console.log('foryou')
                 setIsActive({
                     foryou: true,
                     trending: false,
@@ -42,7 +42,7 @@ export function MainExplore() {
                 break
 
             case 'trending':
-                console.log('trending')
+                // console.log('trending')
                 setIsActive({
                     foryou: false,
                     trending: true,
@@ -58,7 +58,7 @@ export function MainExplore() {
                 break
 
             case 'science':
-                console.log('science')
+                // console.log('science')
                 setIsActive({
                     foryou: false,
                     trending: false,
@@ -73,7 +73,7 @@ export function MainExplore() {
                 break
 
             case 'cricket':
-                console.log('cricket')
+                // console.log('cricket')
                 setIsActive({
                     foryou: false,
                     trending: false,
@@ -88,7 +88,7 @@ export function MainExplore() {
                 break
 
             case 'india':
-                console.log('india')
+                // console.log('india')
                 setIsActive({
                     foryou: false,
                     trending: false,

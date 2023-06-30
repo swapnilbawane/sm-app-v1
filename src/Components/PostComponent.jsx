@@ -27,6 +27,7 @@ export function PostComponent({
     firstName,
     lastName,
     bookmark,
+    profileimage,
 }) {
     const {
         likeHandler,
@@ -52,10 +53,10 @@ export function PostComponent({
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [ textEdit, setTextEdit ] = useState(content)
+    const [textEdit, setTextEdit] = useState(content)
 
-    const textEditHandler = (e) => { 
-    setTextEdit(e.target.value)
+    const textEditHandler = (e) => {
+        setTextEdit(e.target.value)
     }
 
     const handleEditClick = () => {
@@ -71,10 +72,16 @@ export function PostComponent({
     return (
         <>
             <div className="flex flex-row nowrap p-xs">
-                <div
+                {/* <div
                     className="grey-bg br-full width-xl height-xl p-xs mr-xs"
                     style={{ aspectRatio: '1' }}
-                ></div>
+                ></div> */}
+
+                <img
+                    src={profileimage}
+                    alt="gravatar_1"
+                    className="br-full width-xl height-xl p-xs mr-xs"
+                />
 
                 <div>
                     {/* TODO: CSS BUG the three dots spacing is affected by the number of lines posted */}
@@ -139,13 +146,24 @@ export function PostComponent({
                                             <ModalHeader>Your post</ModalHeader>
                                             <ModalCloseButton />
                                             <ModalBody>
-                                                <textarea value={textEdit} onChange={textEditHandler}>{content}</textarea>
+                                                <textarea
+                                                    value={textEdit}
+                                                    onChange={textEditHandler}
+                                                >
+                                                    {content}
+                                                </textarea>
                                             </ModalBody>
                                             <ModalFooter>
                                                 <Button
                                                     colorScheme="blue"
                                                     mr={3}
-                                                    onClick={()=> {  editPostHandler(_id, textEdit); handleCloseModal(); }}
+                                                    onClick={() => {
+                                                        editPostHandler(
+                                                            _id,
+                                                            textEdit
+                                                        )
+                                                        handleCloseModal()
+                                                    }}
                                                 >
                                                     Save
                                                 </Button>

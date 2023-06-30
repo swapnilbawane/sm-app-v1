@@ -10,6 +10,7 @@ export function FollowOtherComponent({
     username,
     followers,
     following,
+    profileimage
 }) {
     const { followHandler, unFollowHandler } = useInteraction()
     const { allUsers, loggedUserName } = useAuth()
@@ -41,7 +42,14 @@ export function FollowOtherComponent({
     return (
         <>
             <div className="flex p-s flex-space-between flex-align-center">
-                <div className="grey-bg br-full width-xl height-xl"></div>
+                {/* <div className="grey-bg br-full width-xl height-xl"></div> */}
+
+                <img
+                        src={profileimage}
+                        alt="gravatar_1"
+                        className="br-full width-xl height-xl"
+                    /> 
+
                 <div className="flex flex-column">
                     <Link to={`/profile/${username}`}>
                         <div className="fw-bold">

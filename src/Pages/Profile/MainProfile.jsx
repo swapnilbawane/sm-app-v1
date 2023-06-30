@@ -3,7 +3,6 @@ import '../../index.css'
 
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { EmptyProfileFeed } from './EmptyProfileFeed'
 
@@ -17,9 +16,7 @@ import {
     ModalCloseButton,
 } from '@chakra-ui/react'
 
-import { Button, useDisclosure } from '@chakra-ui/react'
-import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
-
+import { Button } from '@chakra-ui/react'
 
 export function MainProfile() {
     const {
@@ -29,13 +26,20 @@ export function MainProfile() {
         loggedUserName,
         profilePostsData,
         setProfilePostsData,
-        editUserHandler
+        editUserHandler,
     } = useAuth()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [textEdit, setTextEdit] = useState({
         bio: currentUser.bio,
         link: currentUser.link,
+        profileimage: currentUser.profileimage,
     })
+
+    const avatarHandler = (imageLink) => {
+        // if(e.target.name==="gr_1") {
+        setTextEdit({ ...textEdit, profileimage: imageLink })
+        // }
+    }
 
     const textEditHandler = (e) => {
         if (e.target.name === 'bio') {
@@ -59,15 +63,22 @@ export function MainProfile() {
         return curr.username === currentUser.username ? acc + 1 : acc
     }, 0)
 
-    console.log(
-        `The number of posts for ${currentUser.username} is ${numberOfPosts}`
-    )
+    // console.log(
+    //     `The number of posts for ${currentUser.username} is ${numberOfPosts}`
+    // )
 
     return (
         <>
             <main className="p-s">
                 <div className="flex flex-column flex-center">
-                    <div className="lynx-gray-bg width-7 height-7 br-full"></div>
+                    {/* <div className="lynx-gray-bg width-7 height-7 br-full">  */}
+                    <img
+                        src={currentUser.profileimage}
+                        alt="gravatar_1"
+                        className="gravatar-icon"
+                    />
+                    {/* </div> */}
+
                     <h3 className="pt-s">
                         {currentUser.firstName} {currentUser.lastName}
                     </h3>
@@ -85,8 +96,106 @@ export function MainProfile() {
                             <ModalHeader>Your Profile Details</ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
-                                <>
-                                    <p> Name: {currentUser.firstName} {currentUser.lastName} </p>
+                                <div className="editprofile-container">
+                                    <div className="gravatar-body">
+                                        <div>
+                                            {' '}
+                                            <p> Change your Gravatar </p>{' '}
+                                        </div>
+
+                                        <div className="gravatar-container">
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_1"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_2.jpg'
+                                                    )
+                                                }
+                                            />
+
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106577/Gravatar/Gravatar_3.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_2"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106577/Gravatar/Gravatar_3.jpg'
+                                                    )
+                                                }
+                                            />
+
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_4.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_3"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_4.jpg'
+                                                    )
+                                                }
+                                            />
+
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_5.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_4"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_5.jpg'
+                                                    )
+                                                }
+                                            />
+
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_6.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_5"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688106576/Gravatar/Gravatar_6.jpg'
+                                                    )
+                                                }
+                                            />
+
+                                            <img
+                                                src="https://res.cloudinary.com/djhnar3ju/image/upload/v1688107497/Gravatar/Gravatar_1.jpg"
+                                                alt="gravatar_1"
+                                                name="gr_6"
+                                                className="gravatar-icon"
+                                                onClick={() =>
+                                                    avatarHandler(
+                                                        'https://res.cloudinary.com/djhnar3ju/image/upload/v1688107497/Gravatar/Gravatar_1.jpg'
+                                                    )
+                                                }
+                                            />
+                                        </div>
+
+                                        <hr />
+
+                                        <div className="current-gravatar">
+                                            <p> Your gravatar </p>
+                                            <img
+                                                src={textEdit.profileimage}
+                                                alt="gravatar_1"
+                                                className="gravatar-icon"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <p>
+                                        {' '}
+                                        Name: {currentUser.firstName}{' '}
+                                        {currentUser.lastName}{' '}
+                                    </p>
                                     <hr />
                                     <p> Username: {currentUser.username} </p>
                                     <hr />
@@ -110,13 +219,14 @@ export function MainProfile() {
                                     >
                                         {currentUser.link}
                                     </textarea>
-                                </>
+                                </div>
                             </ModalBody>
                             <ModalFooter>
                                 <Button
                                     colorScheme="blue"
                                     mr={3}
                                     onClick={() => {
+                                        console.log({textEdit})
                                         editUserHandler(textEdit)
                                         handleCloseModal()
                                     }}
@@ -179,7 +289,7 @@ export function MainProfile() {
                                     firstName,
                                     lastName,
                                 }
-                                console.log(index, 'item data', itemData)
+                                // console.log(index, 'item data', itemData)
 
                                 return item.username === loggedUserName ? (
                                     <div key={item._id}>
