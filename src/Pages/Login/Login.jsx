@@ -90,7 +90,7 @@ export function Login() {
 
                     <Link
                         to="/signup"
-                        className="txt-center w-full grey-color p-s pt-xs pb-xs"
+                        className="txt-center w-full grey-button p-s pt-xs pb-xs"
                         style={{ display: 'block' }}
                     >
                         Create New Account

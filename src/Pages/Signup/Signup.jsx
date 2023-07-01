@@ -48,13 +48,13 @@ const { handleSignup } = useAuth()
 
     return (
         <>
-            <div className="flex flex-column flex-center h-full w-full">
+            <div className="flex flex-column flex-center h-full w-full signup">
                 <h2 className="fw-black mb-m">
-                    <span className="primary-color">My</span> Website
+                    <span className="primary-color">Baat</span> Cheet
                 </h2>
 
                 <div
-                    className="white-bg br-m p-xxl pt-l pb-l"
+                    className="white-bg br-m p-xxl pt-l pb-l signuppage"
                     style={{ width: '30rem' }}
                 >
                     <h3 className="txt-center mb-s txt-l">Signup</h3>
@@ -153,7 +153,7 @@ const { handleSignup } = useAuth()
 
                     <Link
                         to="/"
-                        className="txt-center w-full mt-m"
+                        className="txt-center w-full mt-m grey-button p-s pt-xs pb-xs"
                         style={{ display: 'block' }}
                     >
                         Already have an account
