@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --primary-color: #FF3B30;
+    --primary-color: #1D9BF0;
+    /* --primary-color: #FF3B30; */
     --secondary-color: #FFF6EA;
     --action-color: #3B82F6;
     --grey-color: #9a9a9a;
@@ -10,7 +13,10 @@
     --lynx-white-color: #f7f7f7;
     --violet-color: #5348C7;
     --lynx-gray-color: #C5C5C5;
-    --font: 'Open Sans', sans-serif;
+    --font: 'Mukta', sans-serif;
+    /* 'Mukta', sans-serif; */
+    /* 'Noto Sans', sans-serif; */
+    /* --font: 'Open Sans', sans-serif; */
     --xxl-size: 4rem;
     --xl-size: 2.5rem;
     --l-size: 2rem;
