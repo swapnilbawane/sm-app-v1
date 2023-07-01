@@ -159,7 +159,7 @@ export function AuthProvider({ children }) {
 
             if (userDataResponse.status === 200) {
                 const userList = await userDataResponse?.data?.users
-                // console.log('api data about all users', userList)
+                console.log('api data about all users', userList)
 
                 const currentUserData = userList?.find(
                     (item) => item.username === loggedUserName

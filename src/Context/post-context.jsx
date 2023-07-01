@@ -59,6 +59,8 @@ export function PostProvider({ children }) {
 
                 postsData = { posts }
 
+                console.log( postsData )
+
                 setData(postsData)
                 setOriginalPostsData(postsData)
 
