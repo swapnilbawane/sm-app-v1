@@ -62,9 +62,9 @@ h6 {
   width: 100%;
 }
 
-.width-xtralarge { 
+/* .width-xtralarge { 
   width: 800px;
-}
+} */
 
 /* for margin */
 .m-xxl {
@@ -771,13 +771,13 @@ h6 {
 .header-bar { 
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
-  gap: 1250px;
+  justify-content: space-between;
+  /* gap: 1250px; */
 }
 
 .logout { 
   border-radius: 1rem;
-  /* padding: 1rem; */
+  padding-bottom: 0.8rem;
 }
 
 .website-title { 
@@ -786,4 +786,14 @@ h6 {
 
 .gapleft { 
 gap: 200px;
+}
+
+.login { 
+  background: url("https://res.cloudinary.com/djhnar3ju/image/upload/v1688187474/Social%20Media/loginpage2.png");
+  background-size:cover;
+  background-repeat: no-repeat; 
+}
+
+textarea {
+  margin-top: 0;
 }

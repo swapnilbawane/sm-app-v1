@@ -9,7 +9,7 @@ export function AsideRight() {
    
     return (
         <>
-            <aside className="mt-xl mr-xxl sidebar2">
+            <aside className="mt-xl sidebar2">
                 {/* <div className="white-bg mb-m pl-s border flex flex-row flex-center nowrap">
                     <i className="bi bi-search"></i>
                     <input

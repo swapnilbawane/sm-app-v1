@@ -20,10 +20,10 @@ export function Login() {
 
     return (
         <>
-            <div className="flex flex-column flex-center h-full w-full">
+            <div className="flex flex-column flex-center h-full w-full login">
                 <h2 className="fw-black txt-xl mb-m">
-                    <span className="primary-color"> My </span>
-                    Website
+                    <span className="primary-color"> Baat </span>
+                    Cheet
                 </h2>
 
                 <div

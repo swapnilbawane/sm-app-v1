@@ -80,7 +80,7 @@ export function PostComponent({
                 <img
                     src={profileimage}
                     alt="gravatar_1"
-                    className="br-full width-xl height-xl p-xs mr-xs"
+                    className="br-full width-xl height-xl mr-xs"
                 />
 
                 <div>
@@ -176,7 +176,7 @@ export function PostComponent({
                         </>
                     </div>
 
-                    <p className="pr-s pt-xs width-xtralarge">{content}</p>
+                    <p className="pr-s pt-xs">{content}</p>
 
                     <div className="flex flex-row nowrap flex-space-between pb-xs pt-m pr-s flex-align-center">
                         {bookmark ? (

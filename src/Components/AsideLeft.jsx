@@ -7,8 +7,8 @@ import { ProfileTab } from "./ProfileTab";
 export function AsideLeft() { 
     return (
         <> 
-<aside className="p-s pt-xl pl-xxl ml-m sidebar1">
-
+<aside className="p-s pt-xl ml-m sidebar1"> 
+{/* removed from above mr-xxl / pl-xxl class */}
 <div className="flex flex-column sidebar gapleft">
   
 {/* Nav bar side */}

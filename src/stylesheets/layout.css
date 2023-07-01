@@ -9,10 +9,13 @@
       "aside1 main aside2"
       "aside1 main aside2"
       "aside1 main aside2";
+      overflow: auto;
+
   }
   
   nav {
     grid-area: header;
+    /* width: max-content; */
   }
   
   .sidebar1 {
@@ -22,6 +25,7 @@
   
   .sidebar2 {
     grid-area: aside2;
+    /* width: max-content; */
     height: max-content;
   }
   

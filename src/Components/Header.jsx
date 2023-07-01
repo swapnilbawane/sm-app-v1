@@ -9,7 +9,7 @@ export function Header() {
     return (
         <>
             <nav className="white-bg">
-                <div className="p-s pl-xxl txt-m ml-m header-bar">
+                <div className="p-s txt-m ml-m header-bar">
                     <Link to="/home">
                         <div className="website-title">
                             <span className="primary-color">Baat</span>
