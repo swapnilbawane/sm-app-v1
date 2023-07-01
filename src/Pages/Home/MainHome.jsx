@@ -1,10 +1,17 @@
 import '../../style.css'
 import '../../index.css'
+import { useState } from 'react'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 import { usePost } from '../../Context/post-context'
 
-import { Menu, MenuButton, MenuList, MenuItem, useDisclosure } from '@chakra-ui/react'
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    useDisclosure,
+} from '@chakra-ui/react'
 
 // On clicking POST it calls API - recreate it.
 
@@ -19,6 +26,8 @@ export function MainHome() {
     } = usePost()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const [posts, setPosts] = useState({ trending: false, latest: true })
 
     // console.log('data from main home', data)
 
@@ -69,7 +78,8 @@ export function MainHome() {
                 </div>
 
                 <div className="flex flex-space-between mr-xxl flex-align-center pt-s">
-                    <h3>Latest Posts</h3>
+                    {posts.latest === true && <h3>Latest Posts</h3>}
+                    {posts.trending === true && <h3>Trending Posts</h3>}
 
                     {/* <div>
                         <button onClick={() => latestPostsHandler()}>
@@ -94,12 +104,28 @@ export function MainHome() {
 
                             <MenuList>
                                 <MenuItem
-                                    onClick={() => trendingPostsHandler()}
+                                    onClick={() => {
+                                        setPosts({
+                                            ...posts,
+                                            latest: false,
+                                            trending: true,
+                                        })
+                                        trendingPostsHandler()
+                                    }}
                                 >
                                     Trending Posts
                                 </MenuItem>
 
-                                <MenuItem onClick={() => latestPostsHandler()}>
+                                <MenuItem
+                                    onClick={() => {
+                                        setPosts({
+                                            ...posts,
+                                            latest: true,
+                                            trending: false,
+                                        })
+                                        latestPostsHandler()
+                                    }}
+                                >
                                     Latests Posts
                                 </MenuItem>
                             </MenuList>
