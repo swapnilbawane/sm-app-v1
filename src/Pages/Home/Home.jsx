@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { AsideLeft } from "../../Components/AsideLeft";
 import { AsideRight } from "../../Components/AsideRight";
 import { Header } from "../../Components/Header";
