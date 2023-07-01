@@ -27,7 +27,7 @@ export function Login() {
                 </h2>
 
                 <div
-                    className="white-bg br-m p-xxl pt-xl pb-xl"
+                    className="white-bg br-m p-xxl pt-xl pb-xl loginpage"
                     style={{ width: '30rem' }}
                 >
                     <h3 className="txt-center mb-m txt-l"> Login</h3>
@@ -59,7 +59,7 @@ export function Login() {
                         />
                     </div>
 
-                    <div className="flex flex-align-center flex-space-between mt-m mb-m">
+                    {/* <div className="flex flex-align-center flex-space-between mt-m mb-m">
                         <div className="txt-s flex flex-align-center">
                             <input
                                 type="checkbox"
@@ -74,7 +74,7 @@ export function Login() {
                         <Link to="/" className="action-color">
                             Forgot your password?
                         </Link>
-                    </div>
+                    </div> */}
 
                     <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
                     onClick={()=> handleLogin(user)}
@@ -82,19 +82,22 @@ export function Login() {
                         Login
                     </button>
 
-                    <Link
-                        to="/signup"
-                        className="txt-center w-full mt-m"
-                        style={{ display: 'block' }}
-                    >
-                        Create New Account
-                    </Link>
-
                     <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
                     onClick={()=> handleGuestLogin()}
                     >
                         Login as Guest
                     </button>
+
+                    <Link
+                        to="/signup"
+                        className="txt-center w-full grey-color p-s pt-xs pb-xs"
+                        style={{ display: 'block' }}
+                    >
+                        Create New Account
+                    </Link>
+
+                    
+
                 </div>
             </div>
         </>
