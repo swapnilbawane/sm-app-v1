@@ -787,3 +787,9 @@ h6 {
 .gapleft { 
 gap: 200px;
 }
+
+.login { 
+  background: url("https://res.cloudinary.com/djhnar3ju/image/upload/v1688187474/Social%20Media/loginpage2.png");
+  background-size:cover;
+  background-repeat: no-repeat; 
+}
