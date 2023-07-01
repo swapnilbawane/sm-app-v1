@@ -3,7 +3,7 @@
 - The project is built with Mockbee as backend and ReactJS, Vanilla CSS. 
 
 ## Project is live at 
-https://baat-cheet.netlify.app/
+https://baat-cheet-reactv1.netlify.app/
 
 ## This social media app has following features:
 - Home page with user feed - filter by trending or latest posts.  
