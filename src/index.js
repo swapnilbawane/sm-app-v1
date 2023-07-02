@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Context/auth-context'
 import { PostProvider } from './Context/post-context'
 import { InteractionProvider } from './Context/interaction-context'
+import { ToastProvider } from './Context/toast-context'
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
@@ -19,13 +20,15 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ChakraProvider>
-                <AuthProvider>
-                    <PostProvider>
-                        <InteractionProvider>
-                            <App />
-                        </InteractionProvider>
-                    </PostProvider>
-                </AuthProvider>
+                <ToastProvider>
+                    <AuthProvider>
+                        <PostProvider>
+                            <InteractionProvider>
+                                <App />
+                            </InteractionProvider>
+                        </PostProvider>
+                    </AuthProvider>
+                </ToastProvider>
             </ChakraProvider>
         </BrowserRouter>
     </React.StrictMode>

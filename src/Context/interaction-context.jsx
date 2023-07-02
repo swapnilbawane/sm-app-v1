@@ -1,5 +1,6 @@
 import { useContext, createContext } from 'react'
 import { useAuth } from './auth-context'
+import { useToast } from './toast-context'
 
 export const InteractionContext = createContext()
 
@@ -14,8 +15,23 @@ export function InteractionProvider({ children }) {
         setProfilePostsData,
         allUsers,
         setAllUsers,
-        setOriginalPostsData
+        setOriginalPostsData,
     } = useAuth()
+
+    const {
+        addedToBookmarkToastMessage,
+        alreadyBookmarkedToastMessage,
+        bookmarkUsernameErrorToastMessage,
+        bookmarkErrorToastMessage,
+        removedFromBookmarksToastMessage,
+        notBookmarkedToastMessage,
+        removeBookmarkErrorToastMessage,
+        unFollowUserToastMessage,
+        unFollowUserErrorToastMessage,
+        notFollowingUserErrorToastMessage,
+        unfollowUserErrorToastMessage
+
+    } = useToast()
 
     const likeHandler = async (id) => {
         // console.log('id', id)
@@ -51,7 +67,6 @@ export function InteractionProvider({ children }) {
                 setProfilePostsData(profileData)
                 setData(likedData)
                 setOriginalPostsData(likedData)
-
             }
         } catch (error) {
             console.log(error)
@@ -168,6 +183,14 @@ export function InteractionProvider({ children }) {
 
                 setCurrentUser(updatedLoggedInUser)
                 setAllUsers(updatedAllUsersList)
+                unFollowUserToastMessage()
+            }
+            else if (unFollowResponse.status === 400) {
+                notFollowingUserErrorToastMessage()
+            } else if (unFollowResponse.status === 404) {
+                unFollowUserErrorToastMessage()
+            } else if (unFollowResponse.status === 500) {
+                unfollowUserErrorToastMessage()
             }
         } catch (error) {
             console.log(error)
@@ -190,6 +213,13 @@ export function InteractionProvider({ children }) {
                 const bookmarkData = await bookMarkResponse.json()
                 // console.log('bookmark Data', bookmarkData)
                 setBookmarkData(bookmarkData.bookmarks)
+                addedToBookmarkToastMessage()
+            } else if (bookMarkResponse.status === 400) {
+                alreadyBookmarkedToastMessage()
+            } else if (bookMarkResponse.status === 404) {
+                bookmarkUsernameErrorToastMessage()
+            } else if (bookMarkResponse.status === 500) {
+                bookmarkErrorToastMessage()
             }
         } catch (error) {
             console.log(error)
@@ -215,6 +245,14 @@ export function InteractionProvider({ children }) {
                 const removedBookmarkData = await removeBookMarkResponse.json()
                 // console.log('removed bookmark Data', removeBookmarkData)
                 setBookmarkData(removedBookmarkData.bookmarks)
+                removedFromBookmarksToastMessage()
+            }
+            else if (bookMarkResponse.status === 400) {
+                notBookmarkedToastMessage()
+            } else if (bookMarkResponse.status === 404) {
+                bookmarkUsernameErrorToastMessage()
+            } else if (bookMarkResponse.status === 500) {
+                removeBookmarkErrorToastMessage()
             }
         } catch (error) {
             console.log(error)

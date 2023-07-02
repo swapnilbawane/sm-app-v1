@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { useToast } from './toast-context'
 
 export const AuthContext = createContext()
 
@@ -14,6 +15,20 @@ export function AuthProvider({ children }) {
     const [profilePostsData, setProfilePostsData] = useState([])
     const [otherProfilePostsData, setOtherProfilePostsData] = useState([])
     const [originalPostsData, setOriginalPostsData] = useState([])
+
+    const {
+        showLoggedInToastMessage,
+        usernameNotFoundToastMessage,
+        passwordWrongToastMessage,
+        errorLoginToastMessage,
+        usernameExistsToastMessage,
+        errorSignupToastMessage,
+        loggedOutToastMessage,
+        savedUserDetailsToastMessage,
+        editUserDetailsErrorToastMessage,
+        editUserErrorToastMessage
+
+    } = useToast()
 
     const navigate = useNavigate()
 
@@ -40,6 +55,13 @@ export function AuthProvider({ children }) {
                 setLoggedIn(true)
                 setLoggedUserName(user.username)
                 navigate('/home')
+                showLoggedInToastMessage()
+            } else if (res.status === 404) {
+                usernameNotFoundToastMessage()
+            } else if (res.status === 401) {
+                passwordWrongToastMessage()
+            } else if (res.status === 500) {
+                errorLoginToastMessage()
             }
         } catch (error) {
             console.log(error)
@@ -68,6 +90,14 @@ export function AuthProvider({ children }) {
                 setLoggedUserName('adarshbalika')
                 navigate('/home')
             }
+            else if (res.status === 404) {
+                usernameNotFoundToastMessage()
+            } else if (res.status === 401) {
+                passwordWrongToastMessage()
+            } else if (res.status === 500) {
+                errorLoginToastMessage()
+            }
+
         } catch (error) {
             console.log(error)
         }
@@ -98,6 +128,12 @@ export function AuthProvider({ children }) {
                 setLoggedIn(true)
                 setLoggedUserName(user.username)
                 navigate('/home')
+                showLoggedInToastMessage()
+            }
+            else if (res.status === 422) {
+                usernameExistsToastMessage()
+            } else if (res.status === 500) {
+                errorSignupToastMessage()
             }
         } catch (error) {
             console.log(error)
@@ -108,7 +144,9 @@ export function AuthProvider({ children }) {
     const handleLogout = () => {
         localStorage.removeItem('encodedToken')
         setLoggedIn(false)
+        loggedOutToastMessage()
         navigate('/')
+
     }
 
     // POSTS : get single user posts
@@ -141,7 +179,7 @@ export function AuthProvider({ children }) {
             if (allDataResponse.status === 200) {
                 let allPosts = await allDataResponse.json()
                 const posts = Array.from(allPosts.posts).reverse() // this is done so that the newest post is seen first.
-                console.log({posts}) // CONSOLE
+                console.log({ posts }) // CONSOLE
                 allPosts = { posts } // this is because in home page we are rendering data.posts so data : { posts : [] }
                 setData(allPosts)
                 setOriginalPostsData(allPosts)
@@ -244,6 +282,14 @@ export function AuthProvider({ children }) {
 
                 setCurrentUser(userEditedData)
                 setAllUsers(allUserEditedData)
+                savedUserDetailsToastMessage()
+            }
+
+            else if(editedUserResponse.status === 404) { 
+                editUserDetailsErrorToastMessage()
+            }
+            else if(editedUserResponse.status === 500) { 
+                editUserErrorToastMessage()
             }
         } catch (error) {
             console.log(error)
