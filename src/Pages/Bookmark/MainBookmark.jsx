@@ -1,8 +1,7 @@
-import '../../style.css'
-import '../../index.css'
-import { useAuth } from '../../Context/auth-context'
 import { PostComponent } from '../../Components/PostComponent'
-import { Link } from 'react-router-dom'
+import { useAuth } from '../../Context/auth-context'
+import '../../index.css'
+import '../../style.css'
 
 import { EmptyBookmarkPage } from './EmptyBookmarkPage'
 
@@ -24,29 +23,27 @@ export function MainBookmark() {
                 <div className="white-bg mr-xxl p-xs mt-s">
                     {/* TODO: Add a map function here but first get data on first load in login context */}
 
-
-                    {
-                    bookmarkData.length===0 
-                    ? 
-
-                    <EmptyBookmarkPage />
-                    
-                    :
-                    bookmarkData?.map((item) => {
-                        const { firstName, lastName, profileimage } = allUsers.find(
-                            (user) => user.username === item.username
-                        )
-                        const postData = { ...item, firstName, lastName, profileimage }
-                        return (
-                            <div key={item._id}>
-                                <PostComponent {...postData} bookmark />
-                            </div>
-                        )
-                    })
-                    
-                    }
-
-
+                    {bookmarkData.length === 0 ? (
+                        <EmptyBookmarkPage />
+                    ) : (
+                        bookmarkData?.map((item) => {
+                            const { firstName, lastName, profileimage } =
+                                allUsers.find(
+                                    (user) => user.username === item.username
+                                )
+                            const postData = {
+                                ...item,
+                                firstName,
+                                lastName,
+                                profileimage,
+                            }
+                            return (
+                                <div key={item._id}>
+                                    <PostComponent {...postData} bookmark />
+                                </div>
+                            )
+                        })
+                    )}
                 </div>
             </main>
         </>
