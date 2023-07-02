@@ -89,7 +89,7 @@ https://baat-cheet-reactv1.netlify.app/
 ![14_ExploreScienceCategory](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/23e24815-3d8b-4d09-a860-a23397e10b4f)
 
 
-## Explore Bookmark Page 
+## Bookmark Page 
 ![15_BookmarkPage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/84cb1849-3068-44af-81ca-818cf1cecb04)
 
 ## Like Posts
