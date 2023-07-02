@@ -5,6 +5,9 @@
 ## Project is live at 
 https://baat-cheet-reactv1.netlify.app/
 
+## Watch demo here
+https://www.loom.com/share/a5ebb45335854df7964654dcb504940c?sid=afeca7f2-f79b-4de0-9215-56153f325b79
+
 ## This social media app has following features:
 - Home page with user feed - filter by trending or latest posts.  
 - Explore page to view posts by topic
