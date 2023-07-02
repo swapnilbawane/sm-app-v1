@@ -1,4 +1,4 @@
-import { useContext, createContext } from 'react'
+import { createContext, useContext } from 'react'
 import { useAuth } from './auth-context'
 import { useToast } from './toast-context'
 
@@ -29,8 +29,7 @@ export function InteractionProvider({ children }) {
         unFollowUserToastMessage,
         unFollowUserErrorToastMessage,
         notFollowingUserErrorToastMessage,
-        unfollowUserErrorToastMessage
-
+        unfollowUserErrorToastMessage,
     } = useToast()
 
     const likeHandler = async (id) => {
@@ -184,8 +183,7 @@ export function InteractionProvider({ children }) {
                 setCurrentUser(updatedLoggedInUser)
                 setAllUsers(updatedAllUsersList)
                 unFollowUserToastMessage()
-            }
-            else if (unFollowResponse.status === 400) {
+            } else if (unFollowResponse.status === 400) {
                 notFollowingUserErrorToastMessage()
             } else if (unFollowResponse.status === 404) {
                 unFollowUserErrorToastMessage()
@@ -246,8 +244,7 @@ export function InteractionProvider({ children }) {
                 // console.log('removed bookmark Data', removeBookmarkData)
                 setBookmarkData(removedBookmarkData.bookmarks)
                 removedFromBookmarksToastMessage()
-            }
-            else if (removeBookMarkResponse.status === 400) {
+            } else if (removeBookMarkResponse.status === 400) {
                 notBookmarkedToastMessage()
             } else if (removeBookMarkResponse.status === 404) {
                 bookmarkUsernameErrorToastMessage()

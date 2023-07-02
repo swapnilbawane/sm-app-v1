@@ -16,9 +16,12 @@ export function ToastProvider({ children }) {
 
     // Signup: 422 if username already exists
     const usernameExistsToastMessage = () => {
-        toast.warning('This username already exists.. Login with the same or enter new username!', {
-            position: toast.POSITION.TOP_RIGHT,
-        })
+        toast.warning(
+            'This username already exists.. Login with the same or enter new username!',
+            {
+                position: toast.POSITION.TOP_RIGHT,
+            }
+        )
     }
 
     // Signup: 500 Error
@@ -73,7 +76,7 @@ export function ToastProvider({ children }) {
         })
     }
 
-   // Edit profile: 500 Error message
+    // Edit profile: 500 Error message
     const editUserErrorToastMessage = () => {
         toast.error('Error while editing user details !', {
             position: toast.POSITION.TOP_RIGHT,
@@ -88,20 +91,22 @@ export function ToastProvider({ children }) {
         })
     }
 
-    // Already in bookmarks: 400 
+    // Already in bookmarks: 400
     const alreadyBookmarkedToastMessage = () => {
         toast.success('This post is already added to bookmarks !', {
             position: toast.POSITION.BOTTOM_RIGHT,
         })
     }
 
-
-   // Bookmark: Username is not registered: 404
-   const bookmarkUsernameErrorToastMessage = () => {
-    toast.success('The username you entered is not Registered. Not Found error !', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-    })
-} 
+    // Bookmark: Username is not registered: 404
+    const bookmarkUsernameErrorToastMessage = () => {
+        toast.success(
+            'The username you entered is not Registered. Not Found error !',
+            {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            }
+        )
+    }
 
     // Bookmark: 500 Error
     const bookmarkErrorToastMessage = () => {
@@ -117,8 +122,8 @@ export function ToastProvider({ children }) {
         })
     }
 
-     // Not bookmarked: 400 
-     const notBookmarkedToastMessage = () => {
+    // Not bookmarked: 400
+    const notBookmarkedToastMessage = () => {
         toast.success('Post not bookmarked yet !', {
             position: toast.POSITION.BOTTOM_RIGHT,
         })
@@ -140,20 +145,23 @@ export function ToastProvider({ children }) {
 
     // Unfollow user 404 error username not registered, not found
     const unFollowUserErrorToastMessage = () => {
-        toast.success('The username you entered is not Registered. Not Found error !', {
-            position: toast.POSITION.TOP_RIGHT,
-        })
+        toast.success(
+            'The username you entered is not Registered. Not Found error !',
+            {
+                position: toast.POSITION.TOP_RIGHT,
+            }
+        )
     }
 
-     // Unfollow user 400 error user not following
-     const notFollowingUserErrorToastMessage = () => {
+    // Unfollow user 400 error user not following
+    const notFollowingUserErrorToastMessage = () => {
         toast.success('User already not following !', {
             position: toast.POSITION.TOP_RIGHT,
         })
     }
 
-     // Unfollow user: 500 Error
-     const unfollowUserErrorToastMessage = () => {
+    // Unfollow user: 500 Error
+    const unfollowUserErrorToastMessage = () => {
         toast.error('Error 500: while unfollowing user !', {
             position: toast.POSITION.TOP_RIGHT,
         })
@@ -190,7 +198,7 @@ export function ToastProvider({ children }) {
                 removeBookmarkErrorToastMessage,
                 unFollowUserErrorToastMessage,
                 notFollowingUserErrorToastMessage,
-                unfollowUserErrorToastMessage
+                unfollowUserErrorToastMessage,
             }}
         >
             {children}

@@ -26,8 +26,7 @@ export function AuthProvider({ children }) {
         loggedOutToastMessage,
         savedUserDetailsToastMessage,
         editUserDetailsErrorToastMessage,
-        editUserErrorToastMessage
-
+        editUserErrorToastMessage,
     } = useToast()
 
     const navigate = useNavigate()
@@ -90,15 +89,13 @@ export function AuthProvider({ children }) {
                 setLoggedUserName('adarshbalika')
                 navigate('/home')
                 showLoggedInToastMessage()
-            }
-            else if (res.status === 404) {
+            } else if (res.status === 404) {
                 usernameNotFoundToastMessage()
             } else if (res.status === 401) {
                 passwordWrongToastMessage()
             } else if (res.status === 500) {
                 errorLoginToastMessage()
             }
-
         } catch (error) {
             console.log(error)
         }
@@ -130,8 +127,7 @@ export function AuthProvider({ children }) {
                 setLoggedUserName(user.username)
                 navigate('/home')
                 showLoggedInToastMessage()
-            }
-            else if (res.status === 422) {
+            } else if (res.status === 422) {
                 usernameExistsToastMessage()
             } else if (res.status === 500) {
                 errorSignupToastMessage()
@@ -147,7 +143,6 @@ export function AuthProvider({ children }) {
         setLoggedIn(false)
         loggedOutToastMessage()
         navigate('/')
-
     }
 
     // POSTS : get single user posts
@@ -284,12 +279,9 @@ export function AuthProvider({ children }) {
                 setCurrentUser(userEditedData)
                 setAllUsers(allUserEditedData)
                 savedUserDetailsToastMessage()
-            }
-
-            else if(editedUserResponse.status === 404) { 
+            } else if (editedUserResponse.status === 404) {
                 editUserDetailsErrorToastMessage()
-            }
-            else if(editedUserResponse.status === 500) { 
+            } else if (editedUserResponse.status === 500) {
                 editUserErrorToastMessage()
             }
         } catch (error) {

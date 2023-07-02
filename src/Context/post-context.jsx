@@ -1,13 +1,19 @@
-import { useContext, createContext, useState } from 'react'
-import { useAuth } from './auth-context'
+import { createContext, useContext, useState } from 'react'
 import { useLocation } from 'react-router'
+import { useAuth } from './auth-context'
 
 export const PostContext = createContext()
 
 export function PostProvider({ children }) {
     const [newPost, setNewPost] = useState('')
-    const { setData, loggedUserName, setProfilePostsData, originalPostsData, setOriginalPostsData } = useAuth()
-    
+    const {
+        setData,
+        loggedUserName,
+        setProfilePostsData,
+        originalPostsData,
+        setOriginalPostsData,
+    } = useAuth()
+
     const location = useLocation()
 
     // capture data that is being typed store it in a state variable
@@ -134,7 +140,7 @@ export function PostProvider({ children }) {
         }
     }
 
-    // This function edits the post by it's id and the content and return full array of posts 
+    // This function edits the post by it's id and the content and return full array of posts
     const editPostHandler = async (id, post) => {
         // console.log('edited post', post)
 
@@ -179,16 +185,20 @@ export function PostProvider({ children }) {
         }
     }
 
-    const trendingPostsHandler = () => { 
-         const posts = {...originalPostsData}.posts.sort((a,b)=> b.likes.likeCount - a.likes.likeCount)
+    const trendingPostsHandler = () => {
+        const posts = { ...originalPostsData }.posts.sort(
+            (a, b) => b.likes.likeCount - a.likes.likeCount
+        )
         //  const posts = {...originalPostsData}?.posts.filter((item)=> item.category==="trending")
         //  console.log("trending posts", trending)
-         const trendingPosts = { posts }
-         setData(trendingPosts)
+        const trendingPosts = { posts }
+        setData(trendingPosts)
     }
 
-    const latestPostsHandler = () => { 
-        const posts = {...originalPostsData}.posts.sort((a,b)=> Date.parse(b.createdAt) - Date.parse(a.createdAt))
+    const latestPostsHandler = () => {
+        const posts = { ...originalPostsData }.posts.sort(
+            (a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)
+        )
         // const posts = {...originalPostsData}.posts
         // console.log("original posts", {...originalPostsData}.posts)
         const latestPosts = { posts }
@@ -196,7 +206,6 @@ export function PostProvider({ children }) {
         setData(latestPosts)
     }
 
-    
     return (
         <PostContext.Provider
             value={{
@@ -207,7 +216,7 @@ export function PostProvider({ children }) {
                 deletePostHandler,
                 editPostHandler,
                 trendingPostsHandler,
-                latestPostsHandler
+                latestPostsHandler,
             }}
         >
             {children}
