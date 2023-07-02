@@ -26,7 +26,7 @@ https://baat-cheet-reactv1.netlify.app/
 :heavy_check_mark: - checked and working 
 
 | Action | Login | Signup | Login as Guest | 
-| --- | --- |  --- |  --- |
+| --- | :---: |  :---: |  :---: |
 | Home feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Explore feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Bookmark feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
