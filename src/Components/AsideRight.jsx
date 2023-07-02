@@ -1,12 +1,11 @@
-import '../style.css'
-import '../index.css'
-import { FollowOtherComponent } from './FollowOtherComponent'
 import { useAuth } from '../Context/auth-context'
-
+import '../index.css'
+import '../style.css'
+import { FollowOtherComponent } from './FollowOtherComponent'
 
 export function AsideRight() {
     const { allUsers, loggedUserName } = useAuth()
-   
+
     return (
         <>
             <aside className="mt-xl sidebar2">
@@ -29,10 +28,9 @@ export function AsideRight() {
                         {/* <div className="primary-color">Show More</div> */}
                     </div>
 
-                  
                     {/* Render from the list of accounts present and do not show the user loggedin in the list of follow*/}
                     {allUsers?.map((item) => {
-                    //   console.log("value",item.username,loggedUserName)
+                        //   console.log("value",item.username,loggedUserName)
                         return item.username !== loggedUserName ? (
                             <div key={item._id}>
                                 <FollowOtherComponent {...item} />

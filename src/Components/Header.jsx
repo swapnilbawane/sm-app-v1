@@ -1,7 +1,7 @@
-import '../style.css'
-import '../index.css'
-import { useAuth } from '../Context/auth-context'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../Context/auth-context'
+import '../index.css'
+import '../style.css'
 
 export function Header() {
     const { handleLogout } = useAuth()
@@ -13,7 +13,8 @@ export function Header() {
                     <Link to="/home">
                         <div className="website-title">
                             <span className="primary-color">Baat</span>
-                            <span> Cheet </span> <sup> {'>'} Speak your mind! </sup>
+                            <span> Cheet </span>{' '}
+                            <sup> {'>'} Speak your mind! </sup>
                         </div>
                     </Link>
 
@@ -21,8 +22,7 @@ export function Header() {
                         className="primary-bg p-l pt-xs pb-xs secondary-color border-none outline-transparent logout"
                         onClick={handleLogout}
                     >
-                        {' '}
-                        Logout{' '}
+                        Logout
                     </button>
                 </div>
             </nav>

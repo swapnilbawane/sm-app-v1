@@ -1,24 +1,11 @@
 // TODO: This is a card component, this should receive the destructured data from the map function run in Other Profile page.
 import { useState } from 'react'
-import { useInteraction } from '../Context/interaction-context'
 import { useAuth } from '../Context/auth-context'
-import { useLocation } from 'react-router'
+import { useInteraction } from '../Context/interaction-context'
 
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-} from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
 
-import { Button, useDisclosure } from '@chakra-ui/react'
-
-import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
-
-import { usePost } from '../Context/post-context'
+import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 
 export function PostComponentOther({
     _id,
@@ -27,7 +14,7 @@ export function PostComponentOther({
     likes,
     firstName,
     lastName,
-    profileimage
+    profileimage,
 }) {
     const {
         likeHandler,

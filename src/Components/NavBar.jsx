@@ -4,11 +4,10 @@ import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
-import '../style.css'
-import '../index.css'
 import { useAuth } from '../Context/auth-context'
-import { useState } from 'react'
 import { usePost } from '../Context/post-context'
+import '../index.css'
+import '../style.css'
 
 export function NavBar() {
     const location = useLocation()

@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import { useInteraction } from '../Context/interaction-context'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../Context/auth-context'
+import { useInteraction } from '../Context/interaction-context'
 
 export function FollowOtherComponent({
     _id,
@@ -10,7 +9,7 @@ export function FollowOtherComponent({
     username,
     followers,
     following,
-    profileimage
+    profileimage,
 }) {
     const { followHandler, unFollowHandler } = useInteraction()
     const { allUsers, loggedUserName } = useAuth()
@@ -29,7 +28,9 @@ export function FollowOtherComponent({
 
     const link = null
 
-    const findLogged = allUsers?.find((item) => item.username === loggedUserName)
+    const findLogged = allUsers?.find(
+        (item) => item.username === loggedUserName
+    )
 
     // console.log('findLogged', findLogged)
 
@@ -45,10 +46,10 @@ export function FollowOtherComponent({
                 {/* <div className="grey-bg br-full width-xl height-xl"></div> */}
 
                 <img
-                        src={profileimage}
-                        alt="gravatar_1"
-                        className="br-full width-xl height-xl"
-                    /> 
+                    src={profileimage}
+                    alt="gravatar_1"
+                    className="br-full width-xl height-xl"
+                />
 
                 <div className="flex flex-column">
                     <Link to={`/profile/${username}`}>
