@@ -27,16 +27,18 @@ https://baat-cheet-reactv1.netlify.app/
 
 | Action | Login | Signup | Login as Guest | 
 | --- | :---: |  :---: |  :---: |
-| Home feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Explore feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Bookmark feed | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| View self Profile page | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Edit self Profile page | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| View other profile page | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Follow / Unfollow other profile | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Like / remove like all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Bookmark / remove bookmark all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
-| Logout | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
+| Home feed | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Latest / trending user feed | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Explore feed | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Bookmark feed | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| View self Profile page | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Edit self Profile page | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| View other profile page | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Follow / Unfollow other profile | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Write new posts | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Like / remove like all posts | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
+| Bookmark / remove bookmark all posts | :heavy_check_mark:   |  :heavy_check_mark: | :heavy_check_mark: |
+| Logout | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
 
 ## Login Page
 ![1_Login](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/574bae8d-4f81-4e0c-b2df-0ebdcf3ceb18)
