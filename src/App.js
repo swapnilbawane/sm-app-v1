@@ -11,6 +11,9 @@ import { ModalTests } from './ModalTests'
 import { ModalTests2 } from './ModalTests2'
 import Mockman from 'mockman-js'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { RequiresAuth } from './Components/RequiresAuth'
 
 function App() {
@@ -68,6 +71,8 @@ function App() {
                 <Route path="/modals" element={<ModalTests />} />
                 <Route path="/modals2" element={<ModalTests2 />} />
             </Routes>
+
+            <ToastContainer />
         </div>
     )
 }

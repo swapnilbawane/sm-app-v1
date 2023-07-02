@@ -89,6 +89,7 @@ export function AuthProvider({ children }) {
                 setLoggedIn(true)
                 setLoggedUserName('adarshbalika')
                 navigate('/home')
+                showLoggedInToastMessage()
             }
             else if (res.status === 404) {
                 usernameNotFoundToastMessage()
