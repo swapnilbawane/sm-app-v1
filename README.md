@@ -36,6 +36,7 @@ https://baat-cheet-reactv1.netlify.app/
 | Follow / Unfollow other profile | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Like / remove like all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Bookmark / remove bookmark all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
+| Logout | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 
 ## Login Page
 ![1_Login](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/574bae8d-4f81-4e0c-b2df-0ebdcf3ceb18)
