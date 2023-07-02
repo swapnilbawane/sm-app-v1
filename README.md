@@ -44,71 +44,65 @@ https://baat-cheet-reactv1.netlify.app/
 | Logout | :heavy_check_mark:   |  :heavy_check_mark:  | :heavy_check_mark: |
 
 ## Login Page
-![1_Login](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/574bae8d-4f81-4e0c-b2df-0ebdcf3ceb18)
-
-
+![1_Login](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/525a0218-4c3d-4d48-8cc5-5f3a98f40f62)
 
 ## Signup Page
-![2_Signup](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/76626fb2-834c-4a3b-89bb-d16f2f4354b1)
-
+![2_Signup](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/1bce22eb-e942-4517-9b57-d46a15e318bc)
 
 ## Home Page
-![4_HomePage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/05dd32d5-0898-4f30-821a-2b07af77e47a)
-
+![4_HomePage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/d7512585-df92-4219-8fb7-cccdc9b1a213)
 
 ## Home Page after creation of new post
-![5_HomePage_NewPost](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/d3873989-1b56-452c-97f8-1437c40c85c8)
-
+![5_HomePage_NewPost](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/9fd6c26d-ea17-4711-9937-50f0a7d4966e)
 
 ## Profile Page
-![5_ProfilePage_Self_Whole](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/b930a5fc-ffa4-4a63-a63a-4e08e4095bbc)
-
+![5_ProfilePage_Self_Whole](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/e6bc6a87-df16-4168-9ce7-880fbfead8c9)
 
 ## After Following other User - logged in user profile Page
-![6_ProfileUpdate_Following](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/9ab1c980-7c4f-409d-b4c7-51d7a672174e)
+![6_ProfileUpdate_Following](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/dfe4fd73-403c-4ac7-a105-68ef104f9cd7)
 
 
 ## Edit Profile Page 
-![7_EditProfile_1](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/791547d2-fe00-4854-8439-d421fbcad42f)
+![7_EditProfile_1](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/473cd704-4a97-48c9-aa6c-cf65b418f3d9)
 
-![7_EditProfile_2](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/808ab106-c434-45ae-b599-715d75e5be67)
+![7_EditProfile_2](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/7d4c4643-f357-4f44-96d3-50ecb4365f2b)
 
-![8_EditProfile_Updated](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/7bbfc674-9cbd-4ad2-9afa-82de980d3ee2)
+![8_EditProfile_Updated](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/3bfbb082-e589-4b7e-bd09-4e18414af5ba)
 
 
 ## Other Person Profile Page
-![10_OtherProfile](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/6b43d517-26d7-4f8e-8ab9-10bc50d09c54)
+![10_OtherProfile](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/ff230ee5-f183-46c8-af64-ff105859c1b9)
 
-![10_OtherProfile_Follow](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/4650b820-3414-4eb7-b21b-9475f6175c86)
+![10_OtherProfile_Follow](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/c83cfa9d-8769-4458-8f67-37c82dfc1d8f)
 
 
 ## Make new post Modal
-![11_MakeNew_PostModal](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/964a3779-c620-4b5b-a968-a6624c227638)
+![11_MakeNew_PostModal](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/f095e51b-6262-4efe-a255-4f54a219a7b3)
 
 
 ## Explore Page
-![13_ExplorePage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/92d3b0e4-24e4-4982-8900-4ec5294fa5ed)
+![13_ExplorePage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/d8ac3348-2d4b-47e1-a92c-5fd109d44990)
 
-![14_ExploreScienceCategory](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/23e24815-3d8b-4d09-a860-a23397e10b4f)
+![14_ExploreScienceCategory](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/0eeb9f36-d6bc-4f42-b754-a046a87f5bac)
 
 
 ## Bookmark Page 
-![15_BookmarkPage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/84cb1849-3068-44af-81ca-818cf1cecb04)
+![15_BookmarkPage](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/45feff24-37f0-464d-bcd0-23ea25e618e7)
 
 ## Like Posts
-![16_LikePost](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/3d24d9ad-59f6-42b1-8f9f-924bdc138f37)
+![16_LikePost](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/5143b9ae-3af5-4d20-85f4-76a98f4c93bb)
 
 ## Trending Posts
-![17_TrendingLatestPosts](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/754a8cb9-58b4-4508-a9bd-aba9559cb411)
+![17_TrendingLatestPosts](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/d9eaab75-5ba8-407f-b290-95f985e90155)
 
-![17_TrendingPosts1](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/5b1557ff-88da-488f-8a90-e8ad30a9fe55)
+![17_TrendingPosts1](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/39c32b61-60a3-47f7-a760-4b4ae6e1d7bd)
 
 ## Latest Posts 
-![19_LatestsPosts](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/2d8cee9a-2ddd-4bff-ac4f-5fd94f3ca13b)
+![19_LatestsPosts](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/a1144f29-d676-4a9c-a1bc-461082a66cad)
 
 ## Toast Messages 
-![LoggedinToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/162f90f7-f5fa-4fc3-9a1b-14bf7b9a292f)
+![LoggedinToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/787c21c1-525e-4358-b3ad-7d53a73fcf7c)
 
-![LoggedOutToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/04818db3-5656-4902-bab6-e5b2e2d7f8c3)
+![LoggedOutToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/90a3f777-b8e6-412a-8564-d7f1ca9e1e6d)
 
 
