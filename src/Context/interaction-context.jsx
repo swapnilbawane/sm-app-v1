@@ -247,11 +247,11 @@ export function InteractionProvider({ children }) {
                 setBookmarkData(removedBookmarkData.bookmarks)
                 removedFromBookmarksToastMessage()
             }
-            else if (bookMarkResponse.status === 400) {
+            else if (removeBookMarkResponse.status === 400) {
                 notBookmarkedToastMessage()
-            } else if (bookMarkResponse.status === 404) {
+            } else if (removeBookMarkResponse.status === 404) {
                 bookmarkUsernameErrorToastMessage()
-            } else if (bookMarkResponse.status === 500) {
+            } else if (removeBookMarkResponse.status === 500) {
                 removeBookmarkErrorToastMessage()
             }
         } catch (error) {
