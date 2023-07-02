@@ -15,3 +15,4 @@
 | Follow / Unfollow other profile | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Like / remove like all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
 | Bookmark / remove bookmark all posts | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
+| Logout | :heavy_check_mark:   |  :construction:  | :heavy_check_mark: |
