@@ -17,7 +17,7 @@ https://baat-cheet-reactv1.netlify.app/
 - Logged in user can create new posts. 
 - Private routes for all routes except Login and Signup pages.
 - This website uses useState, useContext and React Router for routing. 
-- use React toastify to show alerts for authentication, cart and wishlist. 
+- use React toastify to show alerts for some of the user actions like login, signup, logout, add/remove bookmarks, edit user details and unfollow other profile. 
 
 ### Legends: 
 :construction: - in process of checking 
@@ -103,8 +103,9 @@ https://baat-cheet-reactv1.netlify.app/
 ## Latest Posts 
 ![19_LatestsPosts](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/2d8cee9a-2ddd-4bff-ac4f-5fd94f3ca13b)
 
+## Toast Messages 
+![LoggedinToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/162f90f7-f5fa-4fc3-9a1b-14bf7b9a292f)
 
-
-
+![LoggedOutToast](https://github.com/swapnilbawane/sm-app-v1/assets/90078330/04818db3-5656-4902-bab6-e5b2e2d7f8c3)
 
 
