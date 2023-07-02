@@ -1,4 +1,4 @@
-## Baat-CheetSocial Media App
+## Baat-Cheet - Social Media App
 
 - The project is built with Mockbee as backend and ReactJS, Vanilla CSS. 
 
