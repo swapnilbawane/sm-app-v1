@@ -180,7 +180,7 @@ export function AuthProvider({ children }) {
             if (allDataResponse.status === 200) {
                 let allPosts = await allDataResponse.json()
                 const posts = Array.from(allPosts.posts).reverse() // this is done so that the newest post is seen first.
-                console.log({ posts }) // CONSOLE
+                // console.log({ posts }) // CONSOLE
                 allPosts = { posts } // this is because in home page we are rendering data.posts so data : { posts : [] }
                 setData(allPosts)
                 setOriginalPostsData(allPosts)
@@ -198,7 +198,7 @@ export function AuthProvider({ children }) {
 
             if (userDataResponse.status === 200) {
                 const userList = await userDataResponse?.data?.users
-                console.log('api data about all users', userList)
+                // console.log('api data about all users', userList)
 
                 const currentUserData = userList?.find(
                     (item) => item.username === loggedUserName

@@ -42,7 +42,7 @@ export function PostComponent({
     let bookmarkLikes
 
     if (bookmark) {
-        console.log(data.posts)
+        // console.log(data.posts)
         const { likes } = data?.posts?.find((item) => item._id === _id)
         bookmarkLikes = likes
     }

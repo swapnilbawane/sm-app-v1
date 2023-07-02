@@ -59,7 +59,7 @@ export function PostProvider({ children }) {
 
                 postsData = { posts }
 
-                console.log( postsData )
+                // console.log( postsData )
 
                 setData(postsData)
                 setOriginalPostsData(postsData)
@@ -192,7 +192,7 @@ export function PostProvider({ children }) {
         // const posts = {...originalPostsData}.posts
         // console.log("original posts", {...originalPostsData}.posts)
         const latestPosts = { posts }
-        console.log("latest posts", latestPosts)
+        // console.log("latest posts", latestPosts)
         setData(latestPosts)
     }
 
