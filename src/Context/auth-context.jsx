@@ -1,3 +1,74 @@
+/**
+ * @description This is a context provider that provides all state variables and functions on to the children.  
+ * --------------------------------------------------------------------------
+ * 
+ * @description THIS Auth Provider COMPONENT CONTROLS THE FOLLOWING STATE VARIABLES  
+ * 
+ * - { @link loggedIn }: used to define if a user is logged in. 
+ *  values: true / false 
+ *  default value: false  
+ *  c
+ * This is set to false and on firing guest login, login or signup functions this is set to true, false by default. 
+ * - { @link data }: 
+ * - { @link loggedUserName }: used to store the username of logged in person.   
+ * - { @link currentUser }: stores all details of the current user which is there in users.js file 
+ * - { @link allUsers }: store all details of all users as obtained from the backend users.js file
+ * - { @link bookmarkData}: stores the details of all bookmarks as obtained from the users in users.js file updated by backend 
+ * - { @link profilePostsData}: stores the posts to be shown on logged in user's profile page 
+ * - { @link otherProfilePostsData}: stores the posts to be shown on other user's profile page 
+ * - { @link originalPostsData}: 
+ * 
+ * --------------------------------------------------------------------------
+ * 
+ * @description THIS Auth Provider COMPONENT HAS FOLLOWING FUNCTIONS DEFINED
+ * 
+ * @function {handleLogin} - This function fires when the login button is triggered on UI. 
+ * @function {handleGuestLogin} - This function fires when the login as guest button is triggered on UI. 
+ * @function {handleSignup} - This function fires when the signup button is triggered on UI. 
+ * @function {handleLogout} - This function fires when the logout button is triggered on UI. 
+ * 
+ * @function {editUserHandler} - This function fires when edit details button is triggered on UI
+ * 
+ * @function {getSingleUserPostsData} - This function fires via useEffect when loggedIn state variable's state changes. 
+ * @function {getAllPostsData} - This function fires when via useEffect loggedIn state variable's state changes.
+ * @function {getUserData} - This function fires when via useEffect loggedIn state variable's state changes.
+ * @function {getAllBookMarks} - This function fires via useEffect when loggedIn state variable's state changes.
+ * 
+ * --------------------------------------------------------------------------
+ * 
+ * @description THIS SECTION DESCRIBES WHAT EACH FUNCTION DOES 
+ * 
+ * for {handleLogout} 
+ * This function deletes the encoded token stored in local storage and sets loggedIn state variable to false so that private routing is maintained.
+ * 
+ * for {getSingleUserPostsData}
+ * This function gets single user posts
+ * 
+ * for {getAllPostsData}
+ * This function loads all the data for the user feed on login
+ * 
+ * for {getUserData}
+ * This function gets all users data, needed to display on home feed and also helps me get the logged in user detail like firstName and lastName
+ * 
+ * for {getAllBookMarks}
+ * This function makes API call to get all bookmarked posts from the db.
+ * 
+ * for {editUserHandler}
+ * This function makes API call to send details to be updated at backend. It also updates the details on UI.  
+ * 
+ * --------------------------------------------------------------------------
+ * 
+ * @description USE EFFECT triggers following function whenever loggedIn state variable changes value.  
+ * getUserData()
+ * getSingleUserPostsData()
+ * getAllPostsData()
+ * getAllBookMarks()
+ * 
+ * --------------------------------------------------------------------------
+ * 
+ *      
+ */
+
 import axios from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -137,7 +208,7 @@ export function AuthProvider({ children }) {
         }
     }
 
-    // for logout we need to delete the encoded token and set logged in to false so that private routing is maintained.
+
     const handleLogout = () => {
         localStorage.removeItem('encodedToken')
         setLoggedIn(false)
@@ -145,7 +216,7 @@ export function AuthProvider({ children }) {
         navigate('/')
     }
 
-    // POSTS : get single user posts
+
     const getSingleUserPostsData = async () => {
         // console.log(`/api/posts/user/${loggedUserName}`)
 
@@ -167,7 +238,7 @@ export function AuthProvider({ children }) {
         }
     }
 
-    // POSTS : This function loads all the data for the user feed on login
+
     const getAllPostsData = async () => {
         try {
             const allDataResponse = await fetch('/api/posts')
@@ -185,7 +256,6 @@ export function AuthProvider({ children }) {
         }
     }
 
-    // USERS : with this, we get all users data, needed to display on home feed and also helps me get the logged in user detail like firstname and lastname
     const getUserData = async () => {
         try {
             const userDataResponse = await axios.get('/api/users')
@@ -208,7 +278,6 @@ export function AuthProvider({ children }) {
         }
     }
 
-    // This API call gets all user bookmarked posts from the db.
     const getAllBookMarks = async () => {
         try {
             const encodedToken = localStorage.getItem('encodedToken')
@@ -226,7 +295,7 @@ export function AuthProvider({ children }) {
                 const bookmarkResponseData = await bookmarkResponse.json()
                 setBookmarkData(bookmarkResponseData.bookmarks)
             }
-        } catch (error) {}
+        } catch (error) { }
     }
 
     const editUserHandler = async (user) => {
@@ -268,11 +337,11 @@ export function AuthProvider({ children }) {
                 const allUserEditedData = allUsers.map((item) =>
                     item.username === user.username
                         ? {
-                              ...item,
-                              bio: updatedUserData.bio,
-                              link: updatedUserData.link,
-                              profileimage: updatedUserData.profileimage,
-                          }
+                            ...item,
+                            bio: updatedUserData.bio,
+                            link: updatedUserData.link,
+                            profileimage: updatedUserData.profileimage,
+                        }
                         : item
                 )
 

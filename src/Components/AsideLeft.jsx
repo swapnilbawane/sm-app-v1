@@ -1,3 +1,10 @@
+/**
+ * Components In Aside Left  
+ * <Navbar>
+ * <ProfileTab />
+ * This is visible in <Home> <Explore> <Bookmark> <Profile> Components
+ */
+
 import '../index.css'
 import '../style.css'
 import { NavBar } from './NavBar'
@@ -7,12 +14,9 @@ export function AsideLeft() {
     return (
         <>
             <aside className="p-s pt-xl ml-m sidebar1">
-                {/* removed from above mr-xxl / pl-xxl class */}
                 <div className="flex flex-column sidebar gapleft">
-                    {/* Nav bar side */}
                     <NavBar />
 
-                    {/* profile name */}
                     <ProfileTab />
                 </div>
             </aside>
