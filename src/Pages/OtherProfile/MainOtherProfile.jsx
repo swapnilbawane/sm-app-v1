@@ -4,15 +4,13 @@ import '../../style.css'
 import { useEffect, useState } from 'react'
 import { PostComponentOther } from '../../Components/PostComponentOther'
 import { useAuth } from '../../Context/auth-context'
-import { EmptyProfileFeed } from '../Profile/EmptyProfileFeed'
 import { useInteraction } from '../../Context/interaction-context'
+import { EmptyProfileFeed } from '../Profile/EmptyProfileFeed'
 
 export function MainOtherProfile({
     firstName,
     lastName,
     username,
-    followers, // comment
-    following, // comment
     bio,
     link,
     profileimage,
@@ -23,7 +21,6 @@ export function MainOtherProfile({
         otherProfilePostsData,
         setOtherProfilePostsData,
         originalPostsData,
-        loggedUserName,
         currentUser,
     } = useAuth()
 
@@ -142,7 +139,7 @@ export function MainOtherProfile({
                         {otherProfilePostsData?.length === 0 ? (
                             <EmptyProfileFeed />
                         ) : (
-                            otherProfilePostsData?.map((item, index) => {
+                            otherProfilePostsData?.map((item) => {
                                 const itemData = {
                                     ...item,
                                     firstName,

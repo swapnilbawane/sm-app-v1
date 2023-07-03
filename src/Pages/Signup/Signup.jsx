@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../Context/auth-context'
 
 export function Signup() {
-
-
-const { handleSignup } = useAuth()
+    const { handleSignup } = useAuth()
 
     const [user, setUser] = useState({
         firstName: '',
@@ -41,8 +39,8 @@ const { handleSignup } = useAuth()
                 break
 
             default:
-                console.log("default case for signup")
-                break    
+                console.log('default case for signup')
+                break
         }
     }
 

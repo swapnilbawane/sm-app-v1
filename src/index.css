@@ -1,57 +1,57 @@
-@import url("../src/stylesheets/base.css");
+@import url('../src/stylesheets/base.css');
 
 .new-post-btn {
-  width: 12rem;
+    width: 12rem;
 }
 
 .gap-m {
-  gap: var(--m-size);
+    gap: var(--m-size);
 }
 
 .border-bottom {
-  border-bottom: 1px solid var(--lynx-gray-color);
+    border-bottom: 1px solid var(--lynx-gray-color);
 }
 
 .width-xl {
-  width: var(--xl-size);
+    width: var(--xl-size);
 }
 
 .height-xl {
-  height: var(--xl-size);
+    height: var(--xl-size);
 }
 
 .sidebar {
-  height: 80vh;
+    height: 80vh;
 }
 
 .border {
-  border: 1px solid var(--lynx-gray-color);
+    border: 1px solid var(--lynx-gray-color);
 }
 
 .width-16 {
-  width: 16rem;
+    width: 16rem;
 }
 
 .width-7 {
-  width: 7rem;
+    width: 7rem;
 }
 
 .height-7 {
-  height: 7rem;
+    height: 7rem;
 }
 
 .width-10 {
-  width: 10rem;
+    width: 10rem;
 }
 
 .primary-border {
-  border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 .red-color {
-  color: #ff3b30;
+    color: #ff3b30;
 }
 
 .green-color {
-  color: #34d399;
+    color: #34d399;
 }

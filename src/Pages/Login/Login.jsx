@@ -1,12 +1,12 @@
-import '../../style.css'
-import '../../index.css'
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../Context/auth-context'
+import '../../index.css'
+import '../../style.css'
 
 export function Login() {
     const [user, setUser] = useState({ username: '', password: '' })
-    const { handleLogin, handleGuestLogin } = useAuth(); 
+    const { handleLogin, handleGuestLogin } = useAuth()
 
     const handleLoginInput = (e) => {
         const targetValue = e.target.value
@@ -76,14 +76,16 @@ export function Login() {
                         </Link>
                     </div> */}
 
-                    <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
-                    onClick={()=> handleLogin(user)}
+                    <button
+                        className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s"
+                        onClick={() => handleLogin(user)}
                     >
                         Login
                     </button>
 
-                    <button className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s" 
-                    onClick={()=> handleGuestLogin()}
+                    <button
+                        className="w-full primary-bg white-color p-s outline-transparent border-none pt-xs pb-xs txt-s"
+                        onClick={() => handleGuestLogin()}
                     >
                         Login as Guest
                     </button>
@@ -95,9 +97,6 @@ export function Login() {
                     >
                         Create New Account
                     </Link>
-
-                    
-
                 </div>
             </div>
         </>

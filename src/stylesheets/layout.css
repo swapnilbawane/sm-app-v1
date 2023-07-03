@@ -5,31 +5,29 @@
     /* grid-gap: 1rem; */
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas:
-      "header header header"
-      "aside1 main aside2"
-      "aside1 main aside2"
-      "aside1 main aside2";
-      overflow: auto;
+        'header header header'
+        'aside1 main aside2'
+        'aside1 main aside2'
+        'aside1 main aside2';
+    overflow: auto;
+}
 
-  }
-  
-  nav {
+nav {
     grid-area: header;
     /* width: max-content; */
-  }
-  
-  .sidebar1 {
+}
+
+.sidebar1 {
     grid-area: aside1;
     width: max-content;
-  }
-  
-  .sidebar2 {
+}
+
+.sidebar2 {
     grid-area: aside2;
     /* width: max-content; */
     height: max-content;
-  }
-  
-  main {
+}
+
+main {
     grid-area: main;
-  }
-  
+}

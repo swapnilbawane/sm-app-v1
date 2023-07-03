@@ -1,6 +1,6 @@
-import { Header } from '../../Components/Header'
-import { AsideLeft } from '../../Components/AsideLeft'
-import { AsideRight } from '../../Components/AsideRight'
+import { AsideLeft } from '../../Components/AsideLeft';
+import { AsideRight } from '../../Components/AsideRight';
+import { Header } from '../../Components/Header';
 import { MainProfile } from './MainProfile';
 
 export function Profile() { 

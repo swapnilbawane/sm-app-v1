@@ -1,19 +1,19 @@
-import '../../style.css'
 import '../../index.css'
+import '../../style.css'
 
+import { useState } from 'react'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
-import { useState } from 'react'
 import { EmptyProfileFeed } from './EmptyProfileFeed'
 
 import {
     Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
 } from '@chakra-ui/react'
 
 import { Button } from '@chakra-ui/react'
@@ -22,10 +22,8 @@ export function MainProfile() {
     const {
         data,
         currentUser,
-        setData,
         loggedUserName,
         profilePostsData,
-        setProfilePostsData,
         editUserHandler,
     } = useAuth()
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -211,7 +209,10 @@ export function MainProfile() {
 
                                     <hr />
                                     <br />
-                                    <p> Link ( eg. https://www.example.com ) </p>
+                                    <p>
+                                        {' '}
+                                        Link ( eg. https://www.example.com ){' '}
+                                    </p>
                                     <textarea
                                         name="link"
                                         value={textEdit.link}
@@ -279,7 +280,7 @@ export function MainProfile() {
                         {profilePostsData?.posts.length === 0 ? (
                             <EmptyProfileFeed />
                         ) : (
-                            profilePostsData?.posts?.map((item, index) => {
+                            profilePostsData?.posts?.map((item) => {
                                 // const postData = { ...item}
                                 const firstName = currentUser.firstName
                                 const lastName = currentUser.lastName
@@ -289,7 +290,7 @@ export function MainProfile() {
                                     ...item,
                                     firstName,
                                     lastName,
-                                    profileimage
+                                    profileimage,
                                 }
                                 // console.log(index, 'item data', itemData)
 

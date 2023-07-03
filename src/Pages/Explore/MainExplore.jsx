@@ -1,16 +1,15 @@
-import '../../style.css'
 import '../../index.css'
+import '../../style.css'
 
+import { useState } from 'react'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
-import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
 
 export function MainExplore() {
-    const { data, currentUser, setData, allUsers } = useAuth()
+    const { data, allUsers } = useAuth()
     // const [ newPost, setNewPost ] = useState("");
     const [exploreData, setExploreData] = useState(data)
-    const [category, setCategory] = useState('foryou')
+    // const [category, setCategory] = useState('foryou')
 
     const [isActive, setIsActive] = useState({
         foryou: true,
@@ -143,7 +142,7 @@ export function MainExplore() {
                         value="cricket"
                         onClick={categoryHandler}
                     >
-                       Cricket
+                        Cricket
                     </button>
 
                     <button
@@ -161,8 +160,16 @@ export function MainExplore() {
                     {/* TODO: Add a map function here but first get data on first load in login context */}
 
                     {exploreData?.posts?.map((item) => {
-                        const { firstName, lastName, profileimage } = allUsers.find((user)=> user.username===item.username)
-                        const postData = { ...item, firstName, lastName, profileimage }
+                        const { firstName, lastName, profileimage } =
+                            allUsers.find(
+                                (user) => user.username === item.username
+                            )
+                        const postData = {
+                            ...item,
+                            firstName,
+                            lastName,
+                            profileimage,
+                        }
                         return (
                             <div key={item._id}>
                                 <PostComponent {...postData} />

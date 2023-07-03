@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import { AuthProvider } from './Context/auth-context'
+import { InteractionProvider } from './Context/interaction-context'
+import { PostProvider } from './Context/post-context'
+import { ToastProvider } from './Context/toast-context'
 import reportWebVitals from './reportWebVitals'
 import { makeServer } from './server'
-import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider } from './Context/auth-context'
-import { PostProvider } from './Context/post-context'
-import { InteractionProvider } from './Context/interaction-context'
-import { ToastProvider } from './Context/toast-context'
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'

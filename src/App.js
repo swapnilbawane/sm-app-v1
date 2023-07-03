@@ -1,18 +1,18 @@
-import { Routes, Route } from 'react-router-dom'
-import { Login } from './Pages/Login/Login'
-import { Signup } from './Pages/Signup/Signup'
-import { Home } from './Pages/Home/Home'
-import { Explore } from './Pages/Explore/Explore'
+import { Route, Routes } from 'react-router-dom'
 import { Bookmark } from './Pages/Bookmark/Bookmark'
-import { Profile } from './Pages/Profile/Profile'
+import { Explore } from './Pages/Explore/Explore'
+import { Home } from './Pages/Home/Home'
+import { Login } from './Pages/Login/Login'
 import { OtherProfile } from './Pages/OtherProfile/OtherProfile'
+import { Profile } from './Pages/Profile/Profile'
+import { Signup } from './Pages/Signup/Signup'
 
+import Mockman from 'mockman-js'
 import { ModalTests } from './ModalTests'
 import { ModalTests2 } from './ModalTests2'
-import Mockman from 'mockman-js'
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { RequiresAuth } from './Components/RequiresAuth'
 

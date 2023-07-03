@@ -1,15 +1,15 @@
-import '../../style.css'
-import '../../index.css'
 import { useState } from 'react'
 import { PostComponent } from '../../Components/PostComponent'
 import { useAuth } from '../../Context/auth-context'
 import { usePost } from '../../Context/post-context'
+import '../../index.css'
+import '../../style.css'
 
 import {
     Menu,
     MenuButton,
-    MenuList,
     MenuItem,
+    MenuList,
     useDisclosure,
 } from '@chakra-ui/react'
 
@@ -25,7 +25,7 @@ export function MainHome() {
         latestPostsHandler,
     } = usePost()
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { onOpen } = useDisclosure()
 
     const [posts, setPosts] = useState({ trending: false, latest: true })
 
