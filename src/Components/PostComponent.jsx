@@ -84,7 +84,7 @@ export function PostComponent({
                     className="br-full width-xl height-xl mr-xs"
                 />
 
-                <div>
+                <div style={{width: "100%"}}>
                     {/* TODO: CSS BUG the three dots spacing is affected by the number of lines posted */}
                     <div className="flex flex-row flex-align-center flex-space-between">
                         <div className="flex flex-row">
